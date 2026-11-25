@@ -1,0 +1,19 @@
+# 動作を確認した版（Python 3.11）。torch は README の手順で別に入れる。
+numpy==1.26.4
+scipy==1.11.4
+pandas==2.1.4
+scikit-learn==1.2.2
+lightgbm==4.7.0
+xgboost==3.2.0
+catboost==1.2.10
+matplotlib==3.8.0
+h5py==3.9.0
+joblib==1.2.0
+numpy-quaternion==2024.0.13
+vqf==2.1.2
+pyarrow==14.0.2          # IDOL の feather ファイルの読み込み
+# external/ の RoNIN・EqNIO のコードが import する
+numba==0.59.0
+einops==0.8.2
+tensorboardX==2.6.5
+tqdm==4.65.0

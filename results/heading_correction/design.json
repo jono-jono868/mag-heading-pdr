@@ -1,0 +1,995 @@
+{
+ "kind": "heading_correction",
+ "split": "design",
+ "constants": {
+  "tolerance_margin_m": 0.02946596904557519,
+  "large_change_m": 0.12835936025027148,
+  "fix_error_threshold_deg": 5.33,
+  "observation_std_deg": 29.8,
+  "huber_c": 1.345,
+  "fix_spacing_m": 4.0,
+  "detector_threshold": 0.6691885450917815
+ },
+ "series": [
+  {
+   "name": "a000_11",
+   "subject": "a000",
+   "ronin": {
+    "baseline": {
+     "ate": 5.674509781920662,
+     "rte": null
+    },
+    "corrected": {
+     "ate": 5.494017962780023,
+     "rte": null,
+     "n_fix": 17,
+     "n_candidates": 281
+    }
+   },
+   "eqnio": {
+    "baseline": {
+     "ate": 4.769052252454787,
+     "rte": null
+    },
+    "corrected": {
+     "ate": 4.5862403129947324,
+     "rte": null,
+     "n_fix": 17,
+     "n_candidates": 281
+    }
+   }
+  },
+  {
+   "name": "a000_7",
+   "subject": "a000",
+   "ronin": {
+    "baseline": {
+     "ate": 3.2389202089568747,
+     "rte": null
+    },
+    "corrected": {
+     "ate": 3.239525767237531,
+     "rte": null,
+     "n_fix": 4,
+     "n_candidates": 187
+    }
+   },
+   "eqnio": {
+    "baseline": {
+     "ate": 1.9535907268814694,
+     "rte": null
+    },
+    "corrected": {
+     "ate": 1.9539597567027949,
+     "rte": null,
+     "n_fix": 4,
+     "n_candidates": 187
+    }
+   }
+  },
+  {
+   "name": "a001_2",
+   "subject": "a001",
+   "ronin": {
+    "baseline": {
+     "ate": 5.266785824945867,
+     "rte": null
+    },
+    "corrected": {
+     "ate": 4.4943649962857695,
+     "rte": null,
+     "n_fix": 27,
+     "n_candidates": 468
+    }
+   },
+   "eqnio": {
+    "baseline": {
+     "ate": 5.085836628946109,
+     "rte": null
+    },
+    "corrected": {
+     "ate": 4.268467338839007,
+     "rte": null,
+     "n_fix": 27,
+     "n_candidates": 468
+    }
+   }
+  },
+  {
+   "name": "a003_3",
+   "subject": "a003",
+   "ronin": {
+    "baseline": {
+     "ate": 4.360413724585679,
+     "rte": null
+    },
+    "corrected": {
+     "ate": 4.360413724585679,
+     "rte": null,
+     "n_fix": 1,
+     "n_candidates": 238
+    }
+   },
+   "eqnio": {
+    "baseline": {
+     "ate": 2.851688308185906,
+     "rte": null
+    },
+    "corrected": {
+     "ate": 2.851688308185906,
+     "rte": null,
+     "n_fix": 1,
+     "n_candidates": 238
+    }
+   }
+  },
+  {
+   "name": "a004_3",
+   "subject": "a004",
+   "ronin": {
+    "baseline": {
+     "ate": 2.7817167134552374,
+     "rte": null
+    },
+    "corrected": {
+     "ate": 2.7770832473445224,
+     "rte": null,
+     "n_fix": 5,
+     "n_candidates": 208
+    }
+   },
+   "eqnio": {
+    "baseline": {
+     "ate": 2.720768911507965,
+     "rte": null
+    },
+    "corrected": {
+     "ate": 2.717103978354748,
+     "rte": null,
+     "n_fix": 5,
+     "n_candidates": 208
+    }
+   }
+  },
+  {
+   "name": "a005_3",
+   "subject": "a005",
+   "ronin": {
+    "baseline": {
+     "ate": 7.6779564716711555,
+     "rte": null
+    },
+    "corrected": {
+     "ate": 7.779370256448289,
+     "rte": null,
+     "n_fix": 3,
+     "n_candidates": 325
+    }
+   },
+   "eqnio": {
+    "baseline": {
+     "ate": 6.858917249751544,
+     "rte": null
+    },
+    "corrected": {
+     "ate": 6.8298722011981585,
+     "rte": null,
+     "n_fix": 3,
+     "n_candidates": 325
+    }
+   }
+  },
+  {
+   "name": "a009_1",
+   "subject": "a009",
+   "ronin": {
+    "baseline": {
+     "ate": 2.9922946475093393,
+     "rte": null
+    },
+    "corrected": {
+     "ate": 2.928606808851999,
+     "rte": null,
+     "n_fix": 4,
+     "n_candidates": 135
+    }
+   },
+   "eqnio": {
+    "baseline": {
+     "ate": 3.7102138513923895,
+     "rte": null
+    },
+    "corrected": {
+     "ate": 3.6976833149029704,
+     "rte": null,
+     "n_fix": 4,
+     "n_candidates": 135
+    }
+   }
+  },
+  {
+   "name": "a010_2",
+   "subject": "a010",
+   "ronin": {
+    "baseline": {
+     "ate": 4.114316271537542,
+     "rte": null
+    },
+    "corrected": {
+     "ate": 3.4911654348858883,
+     "rte": null,
+     "n_fix": 11,
+     "n_candidates": 292
+    }
+   },
+   "eqnio": {
+    "baseline": {
+     "ate": 4.428210871748549,
+     "rte": null
+    },
+    "corrected": {
+     "ate": 3.7224386333351105,
+     "rte": null,
+     "n_fix": 11,
+     "n_candidates": 292
+    }
+   }
+  },
+  {
+   "name": "a011_2",
+   "subject": "a011",
+   "ronin": {
+    "baseline": {
+     "ate": 5.26714081717665,
+     "rte": null
+    },
+    "corrected": {
+     "ate": 4.359379976689335,
+     "rte": null,
+     "n_fix": 8,
+     "n_candidates": 415
+    }
+   },
+   "eqnio": {
+    "baseline": {
+     "ate": 5.416871197301427,
+     "rte": null
+    },
+    "corrected": {
+     "ate": 4.490160891086493,
+     "rte": null,
+     "n_fix": 8,
+     "n_candidates": 415
+    }
+   }
+  },
+  {
+   "name": "a012_2",
+   "subject": "a012",
+   "ronin": {
+    "baseline": {
+     "ate": 5.985423951752876,
+     "rte": null
+    },
+    "corrected": {
+     "ate": 5.985423951752876,
+     "rte": null,
+     "n_fix": 0,
+     "n_candidates": 90
+    }
+   },
+   "eqnio": {
+    "baseline": {
+     "ate": 4.303142607066179,
+     "rte": null
+    },
+    "corrected": {
+     "ate": 4.303142607066179,
+     "rte": null,
+     "n_fix": 0,
+     "n_candidates": 90
+    }
+   }
+  },
+  {
+   "name": "a013_2",
+   "subject": "a013",
+   "ronin": {
+    "baseline": {
+     "ate": 3.6760049144861084,
+     "rte": null
+    },
+    "corrected": {
+     "ate": 3.6760049144861084,
+     "rte": null,
+     "n_fix": 1,
+     "n_candidates": 268
+    }
+   },
+   "eqnio": {
+    "baseline": {
+     "ate": 2.5519855585206215,
+     "rte": null
+    },
+    "corrected": {
+     "ate": 2.5519855585206215,
+     "rte": null,
+     "n_fix": 1,
+     "n_candidates": 268
+    }
+   }
+  },
+  {
+   "name": "a014_2",
+   "subject": "a014",
+   "ronin": {
+    "baseline": {
+     "ate": 3.894266167051037,
+     "rte": null
+    },
+    "corrected": {
+     "ate": 3.9751210368010885,
+     "rte": null,
+     "n_fix": 9,
+     "n_candidates": 391
+    }
+   },
+   "eqnio": {
+    "baseline": {
+     "ate": 3.265759874629095,
+     "rte": null
+    },
+    "corrected": {
+     "ate": 3.3401803841265765,
+     "rte": null,
+     "n_fix": 9,
+     "n_candidates": 391
+    }
+   }
+  },
+  {
+   "name": "a016_1",
+   "subject": "a016",
+   "ronin": {
+    "baseline": {
+     "ate": 1.9318045365110694,
+     "rte": null
+    },
+    "corrected": {
+     "ate": 1.8893497156779702,
+     "rte": null,
+     "n_fix": 10,
+     "n_candidates": 256
+    }
+   },
+   "eqnio": {
+    "baseline": {
+     "ate": 3.659040258642518,
+     "rte": null
+    },
+    "corrected": {
+     "ate": 3.481138733035576,
+     "rte": null,
+     "n_fix": 10,
+     "n_candidates": 256
+    }
+   }
+  },
+  {
+   "name": "a017_2",
+   "subject": "a017",
+   "ronin": {
+    "baseline": {
+     "ate": 2.1397837117975174,
+     "rte": null
+    },
+    "corrected": {
+     "ate": 2.7296636913768473,
+     "rte": null,
+     "n_fix": 11,
+     "n_candidates": 359
+    }
+   },
+   "eqnio": {
+    "baseline": {
+     "ate": 1.4269982816035256,
+     "rte": null
+    },
+    "corrected": {
+     "ate": 1.7355942375739135,
+     "rte": null,
+     "n_fix": 11,
+     "n_candidates": 359
+    }
+   }
+  },
+  {
+   "name": "a018_1",
+   "subject": "a018",
+   "ronin": {
+    "baseline": {
+     "ate": 4.57675121480832,
+     "rte": null
+    },
+    "corrected": {
+     "ate": 4.57675121480832,
+     "rte": null,
+     "n_fix": 0,
+     "n_candidates": 81
+    }
+   },
+   "eqnio": {
+    "baseline": {
+     "ate": 0.6338187380229678,
+     "rte": null
+    },
+    "corrected": {
+     "ate": 0.6338187380229678,
+     "rte": null,
+     "n_fix": 0,
+     "n_candidates": 81
+    }
+   }
+  },
+  {
+   "name": "a020_2",
+   "subject": "a020",
+   "ronin": {
+    "baseline": {
+     "ate": 2.6317444105072005,
+     "rte": null
+    },
+    "corrected": {
+     "ate": 2.6317444105072005,
+     "rte": null,
+     "n_fix": 0,
+     "n_candidates": 111
+    }
+   },
+   "eqnio": {
+    "baseline": {
+     "ate": 1.819608902176699,
+     "rte": null
+    },
+    "corrected": {
+     "ate": 1.819608902176699,
+     "rte": null,
+     "n_fix": 0,
+     "n_candidates": 111
+    }
+   }
+  },
+  {
+   "name": "a021_2",
+   "subject": "a021",
+   "ronin": {
+    "baseline": {
+     "ate": 4.322861180726272,
+     "rte": null
+    },
+    "corrected": {
+     "ate": 4.827238885404341,
+     "rte": null,
+     "n_fix": 22,
+     "n_candidates": 403
+    }
+   },
+   "eqnio": {
+    "baseline": {
+     "ate": 5.649582127220879,
+     "rte": null
+    },
+    "corrected": {
+     "ate": 6.0864572487404605,
+     "rte": null,
+     "n_fix": 22,
+     "n_candidates": 403
+    }
+   }
+  },
+  {
+   "name": "a022_2",
+   "subject": "a022",
+   "ronin": {
+    "baseline": {
+     "ate": 4.518786370641286,
+     "rte": null
+    },
+    "corrected": {
+     "ate": 4.805369105109232,
+     "rte": null,
+     "n_fix": 11,
+     "n_candidates": 409
+    }
+   },
+   "eqnio": {
+    "baseline": {
+     "ate": 5.449332345268852,
+     "rte": null
+    },
+    "corrected": {
+     "ate": 5.692784709671217,
+     "rte": null,
+     "n_fix": 11,
+     "n_candidates": 409
+    }
+   }
+  },
+  {
+   "name": "a023_1",
+   "subject": "a023",
+   "ronin": {
+    "baseline": {
+     "ate": 2.5339632706833966,
+     "rte": null
+    },
+    "corrected": {
+     "ate": 2.5339632706833966,
+     "rte": null,
+     "n_fix": 0,
+     "n_candidates": 166
+    }
+   },
+   "eqnio": {
+    "baseline": {
+     "ate": 2.468994784549085,
+     "rte": null
+    },
+    "corrected": {
+     "ate": 2.468994784549085,
+     "rte": null,
+     "n_fix": 0,
+     "n_candidates": 166
+    }
+   }
+  },
+  {
+   "name": "a025_2",
+   "subject": "a025",
+   "ronin": {
+    "baseline": {
+     "ate": 4.500436638455746,
+     "rte": null
+    },
+    "corrected": {
+     "ate": 4.469438806010028,
+     "rte": null,
+     "n_fix": 4,
+     "n_candidates": 403
+    }
+   },
+   "eqnio": {
+    "baseline": {
+     "ate": 3.8158957105547993,
+     "rte": null
+    },
+    "corrected": {
+     "ate": 3.788692806928157,
+     "rte": null,
+     "n_fix": 4,
+     "n_candidates": 403
+    }
+   }
+  },
+  {
+   "name": "a026_2",
+   "subject": "a026",
+   "ronin": {
+    "baseline": {
+     "ate": 2.7726489404848067,
+     "rte": null
+    },
+    "corrected": {
+     "ate": 3.021827200424612,
+     "rte": null,
+     "n_fix": 19,
+     "n_candidates": 482
+    }
+   },
+   "eqnio": {
+    "baseline": {
+     "ate": 2.23256182625289,
+     "rte": null
+    },
+    "corrected": {
+     "ate": 2.4497962673731,
+     "rte": null,
+     "n_fix": 19,
+     "n_candidates": 482
+    }
+   }
+  },
+  {
+   "name": "a027_2",
+   "subject": "a027",
+   "ronin": {
+    "baseline": {
+     "ate": 3.5154657223487877,
+     "rte": null
+    },
+    "corrected": {
+     "ate": 3.5154657223487877,
+     "rte": null,
+     "n_fix": 0,
+     "n_candidates": 155
+    }
+   },
+   "eqnio": {
+    "baseline": {
+     "ate": 3.1881351846855153,
+     "rte": null
+    },
+    "corrected": {
+     "ate": 3.1881351846855153,
+     "rte": null,
+     "n_fix": 0,
+     "n_candidates": 155
+    }
+   }
+  },
+  {
+   "name": "a030_3",
+   "subject": "a030",
+   "ronin": {
+    "baseline": {
+     "ate": 3.488980627389582,
+     "rte": null
+    },
+    "corrected": {
+     "ate": 3.488980627389582,
+     "rte": null,
+     "n_fix": 1,
+     "n_candidates": 114
+    }
+   },
+   "eqnio": {
+    "baseline": {
+     "ate": 3.239783934955843,
+     "rte": null
+    },
+    "corrected": {
+     "ate": 3.239783934955843,
+     "rte": null,
+     "n_fix": 1,
+     "n_candidates": 114
+    }
+   }
+  },
+  {
+   "name": "a031_2",
+   "subject": "a031",
+   "ronin": {
+    "baseline": {
+     "ate": 2.128135857432649,
+     "rte": null
+    },
+    "corrected": {
+     "ate": 2.128135857432649,
+     "rte": null,
+     "n_fix": 1,
+     "n_candidates": 212
+    }
+   },
+   "eqnio": {
+    "baseline": {
+     "ate": 2.6308413230265497,
+     "rte": null
+    },
+    "corrected": {
+     "ate": 2.6308413230265497,
+     "rte": null,
+     "n_fix": 1,
+     "n_candidates": 212
+    }
+   }
+  },
+  {
+   "name": "a033_2",
+   "subject": "a033",
+   "ronin": {
+    "baseline": {
+     "ate": 4.206396995892759,
+     "rte": null
+    },
+    "corrected": {
+     "ate": 4.061009825542286,
+     "rte": null,
+     "n_fix": 9,
+     "n_candidates": 398
+    }
+   },
+   "eqnio": {
+    "baseline": {
+     "ate": 3.875827023461298,
+     "rte": null
+    },
+    "corrected": {
+     "ate": 4.014705072072746,
+     "rte": null,
+     "n_fix": 9,
+     "n_candidates": 398
+    }
+   }
+  },
+  {
+   "name": "a034_2",
+   "subject": "a034",
+   "ronin": {
+    "baseline": {
+     "ate": 3.170376739796782,
+     "rte": null
+    },
+    "corrected": {
+     "ate": 3.170376739796782,
+     "rte": null,
+     "n_fix": 1,
+     "n_candidates": 165
+    }
+   },
+   "eqnio": {
+    "baseline": {
+     "ate": 0.5476957037788579,
+     "rte": null
+    },
+    "corrected": {
+     "ate": 0.5476957037788579,
+     "rte": null,
+     "n_fix": 1,
+     "n_candidates": 165
+    }
+   }
+  },
+  {
+   "name": "a035_3",
+   "subject": "a035",
+   "ronin": {
+    "baseline": {
+     "ate": 2.3945350392016547,
+     "rte": null
+    },
+    "corrected": {
+     "ate": 2.3945350392016547,
+     "rte": null,
+     "n_fix": 1,
+     "n_candidates": 342
+    }
+   },
+   "eqnio": {
+    "baseline": {
+     "ate": 2.495347809344991,
+     "rte": null
+    },
+    "corrected": {
+     "ate": 2.495347809344991,
+     "rte": null,
+     "n_fix": 1,
+     "n_candidates": 342
+    }
+   }
+  },
+  {
+   "name": "a036_2",
+   "subject": "a036",
+   "ronin": {
+    "baseline": {
+     "ate": 2.840886523961226,
+     "rte": null
+    },
+    "corrected": {
+     "ate": 1.90226913312008,
+     "rte": null,
+     "n_fix": 28,
+     "n_candidates": 664
+    }
+   },
+   "eqnio": {
+    "baseline": {
+     "ate": 2.6408822606636875,
+     "rte": null
+    },
+    "corrected": {
+     "ate": 1.699320492986528,
+     "rte": null,
+     "n_fix": 28,
+     "n_candidates": 664
+    }
+   }
+  },
+  {
+   "name": "a037_1",
+   "subject": "a037",
+   "ronin": {
+    "baseline": {
+     "ate": 0.6772427043413848,
+     "rte": null
+    },
+    "corrected": {
+     "ate": 0.6772427043413848,
+     "rte": null,
+     "n_fix": 1,
+     "n_candidates": 231
+    }
+   },
+   "eqnio": {
+    "baseline": {
+     "ate": 0.7490858917825906,
+     "rte": null
+    },
+    "corrected": {
+     "ate": 0.7490858917825906,
+     "rte": null,
+     "n_fix": 1,
+     "n_candidates": 231
+    }
+   }
+  },
+  {
+   "name": "a038_2",
+   "subject": "a038",
+   "ronin": {
+    "baseline": {
+     "ate": 1.4780307876567784,
+     "rte": null
+    },
+    "corrected": {
+     "ate": 1.7980588136410076,
+     "rte": null,
+     "n_fix": 6,
+     "n_candidates": 381
+    }
+   },
+   "eqnio": {
+    "baseline": {
+     "ate": 1.1526346609341103,
+     "rte": null
+    },
+    "corrected": {
+     "ate": 1.469617694655013,
+     "rte": null,
+     "n_fix": 6,
+     "n_candidates": 381
+    }
+   }
+  },
+  {
+   "name": "a043_3",
+   "subject": "a043",
+   "ronin": {
+    "baseline": {
+     "ate": 6.443086677382858,
+     "rte": null
+    },
+    "corrected": {
+     "ate": 6.443086677382858,
+     "rte": null,
+     "n_fix": 1,
+     "n_candidates": 231
+    }
+   },
+   "eqnio": {
+    "baseline": {
+     "ate": 0.8557147703481572,
+     "rte": null
+    },
+    "corrected": {
+     "ate": 0.8557147703481572,
+     "rte": null,
+     "n_fix": 1,
+     "n_candidates": 231
+    }
+   }
+  },
+  {
+   "name": "a044_2",
+   "subject": "a044",
+   "ronin": {
+    "baseline": {
+     "ate": 5.376214290708013,
+     "rte": null
+    },
+    "corrected": {
+     "ate": 5.422350336375061,
+     "rte": null,
+     "n_fix": 3,
+     "n_candidates": 320
+    }
+   },
+   "eqnio": {
+    "baseline": {
+     "ate": 3.892617191885716,
+     "rte": null
+    },
+    "corrected": {
+     "ate": 3.941034954815895,
+     "rte": null,
+     "n_fix": 3,
+     "n_candidates": 320
+    }
+   }
+  },
+  {
+   "name": "a046_2",
+   "subject": "a046",
+   "ronin": {
+    "baseline": {
+     "ate": 7.345457606086756,
+     "rte": null
+    },
+    "corrected": {
+     "ate": 6.79768735698455,
+     "rte": null,
+     "n_fix": 6,
+     "n_candidates": 414
+    }
+   },
+   "eqnio": {
+    "baseline": {
+     "ate": 6.9566989998160835,
+     "rte": null
+    },
+    "corrected": {
+     "ate": 6.324495500765617,
+     "rte": null,
+     "n_fix": 6,
+     "n_candidates": 414
+    }
+   }
+  },
+  {
+   "name": "a047_2",
+   "subject": "a047",
+   "ronin": {
+    "baseline": {
+     "ate": 1.8138026820599942,
+     "rte": null
+    },
+    "corrected": {
+     "ate": 1.8138026820599942,
+     "rte": null,
+     "n_fix": 0,
+     "n_candidates": 281
+    }
+   },
+   "eqnio": {
+    "baseline": {
+     "ate": 1.4273743762136473,
+     "rte": null
+    },
+    "corrected": {
+     "ate": 1.4273743762136473,
+     "rte": null,
+     "n_fix": 0,
+     "n_candidates": 281
+    }
+   }
+  },
+  {
+   "name": "a059_2",
+   "subject": "a059",
+   "ronin": {
+    "baseline": {
+     "ate": 3.2128318836788368,
+     "rte": null
+    },
+    "corrected": {
+     "ate": 3.2233804369037546,
+     "rte": null,
+     "n_fix": 6,
+     "n_candidates": 226
+    }
+   },
+   "eqnio": {
+    "baseline": {
+     "ate": 4.034823133890113,
+     "rte": null
+    },
+    "corrected": {
+     "ate": 4.049226171107392,
+     "rte": null,
+     "n_fix": 6,
+     "n_candidates": 226
+    }
+   }
+  }
+ ]
+}

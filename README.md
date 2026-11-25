@@ -1,0 +1,114 @@
+# mag-heading-pdr
+
+**Summary.** Code and results for the paper "Geomagnetic Correction of Position and Heading for Deep Learning-Based Pedestrian Dead Reckoning" (Haruya Sukeno and Nobuhiko Nishio, Ritsumeikan University; manuscript in preparation). On top of deep-learning PDR models (RoNIN, EqNIO), the code adds two corrections that use the magnetometer indoors. A *position correction* detects revisits from the sequence of place-specific magnetic disturbances and pulls the estimated position toward the earlier estimate of the same place; it lowers the position error on the RoNIN test sequences and on a second public dataset (IDOL). A *heading correction* uses the geomagnetic field as a reference of constant direction, only at moments when the pedestrian is walking straight and a learned evaluator judges the field to be reliable; on the test sequences it keeps the degradation of the position error to the level of the fluctuation caused by merely shifting the inference window, and it shows no significant improvement (15 of the 32 test sequences are unchanged, and the largest degradation on a sequence is 0.15 m). The RoNIN test data were also used during development, so they are not a clean hold-out. From the saved per-sequence results, the code builds the main result table with its supplementary tables and Figures 1 and 2; Figure 3 needs trajectory coordinates, which are not included, and the comparison with other attitude estimators, the comparison of fix-point selection rules and the results of removing components are given as aggregated values only. The RoNIN and IDOL datasets, the pretrained models and the EqNIO code are not included either.
+
+## 概要
+
+論文「地磁気による深層学習PDRの位置と方位の補正」（助野 晴哉、西尾 信彦。立命館大学大学院 情報理工学研究科。投稿に向けて準備中）のコードと結果。スマートフォンの IMU から歩行軌跡を推定する深層学習 PDR（RoNIN、EqNIO）に、屋内で地磁気を使う次の 2 つの補正を加える。職場や病院、店舗のように人が同じ建物の中を行き来し、地図や設備なしに長い時間の歩行軌跡を記録する場面を想定する。
+
+- **位置補正**: 地磁気の乱れは場所ごとに決まる。地磁気の鉛直成分と水平成分の大きさの並び（直前 8 m）を場所の目印にして自分の再訪を検出し、推定位置を当時の推定位置へ少しずつ寄せる。別の公開データ IDOL でも評価する。
+- **方位補正**: 地磁気を、向きの変わらない基準として使う。直進中で、学習した評価器が地磁気方位の誤差が小さいと予測した瞬間だけ使う。直進判定器（GBDT と因果 TCN）が旋回中を除き、補正点評価器（GBDT）が地磁気方位の誤差を予測し、予測誤差が小さい点だけをカルマンフィルタで軌跡に反映する。
+
+データの呼び名は論文に合わせる: 学習データ（`train`）、設計データ（`design`。被験者が学習データと共通のテスト用の系列。構成の選定に使う）、評価データ（`test`。学習に含まれない被験者のテスト用の系列）。RoNIN の配布フォルダ名との対応は、`train_dataset_1`・`train_dataset_2` が学習データ、`seen_subjects_test_set` が設計データ、`unseen_subjects_test_set` が評価データ。
+
+```
+magpdr/          コード（data、backbones、heading、position、evaluation）
+paper/           論文の表と図を作るスクリプト
+results/         系列ごとの結果（方位補正・位置補正・改善余地・既存手法の参考値）、許容幅の値、集計した値だけの結果（ablation/、attitude_comparison/）。各ファイルの説明は results/README.md
+configs/         直進判定器・位置補正の設定。キーと論文の記号の対応は configs/README.md
+tables/          主結果の表（paper.tables の出力）
+external/        第三者のコードとデータの置き場所（RoNIN への修正は PATCHES.md）
+```
+
+## 結果の要約
+
+主結果の表は [tables/main_results.md](tables/main_results.md)、位置補正の補足は [tables/position_details.md](tables/position_details.md)。
+
+論文との対応:
+
+| 論文 | このリポジトリ |
+|---|---|
+| 表 1（定数と決め方） | 位置補正の定数は [configs/README.md](configs/README.md)。方位補正の定数は [configs/straight_detector.json](configs/straight_detector.json) と、結果の JSON（`results/heading_correction/test.json` など）の `constants` |
+| 表 2（主結果） | `tables/main_results.md` の最初の表。論文の表にない行（設計データの方位補正、既存手法 VQF の参考値）も載せている |
+| 表 3（補正点の選び方の比較） | [results/ablation/README.md](results/ablation/README.md) の表 A（論文は、そこにある 8 通りのうち 6 通りを載せる） |
+| 表 4（各部分を外したときの結果） | 同じファイルの表 B（方位補正）と表 C（位置補正）。論文の行はすべてここにある |
+| 5.2 節（地磁気を常に使う姿勢との比較） | [results/attitude_comparison/README.md](results/attitude_comparison/README.md) |
+| 図 1・図 2・図 3 | `python -m paper.figures f1`・`f2`・`f3`（出力は `f1_overview_1col.pdf`・`f2_headroom_a.pdf`・`f3_revisit_two.pdf`） |
+
+- 位置補正は、評価データで RoNIN と EqNIO のどちらの位置誤差も有意に下げた。別のデータ IDOL（130 系列、3 つの建物）でも、構成を変えずに評価し、位置誤差の中央値は RoNIN で 8.83 m から 7.54 m、EqNIO で 9.11 m から 8.02 m に下がった（Holm 補正した p < 0.001）。悪化した系列も残る（表の最悪・w 超の欄）。RTE（60 秒の相対誤差）は、評価データでは RoNIN・EqNIO とも有意な差がなかった。IDOL では、RoNIN でわずかに下がり（中央値は 6.29 m から 6.26 m、HL -0.098 m、多重比較の補正前の p = 0.012）、EqNIO では有意な差がなかった（`tables/main_results.md` の RTE の補助表）。
+- 方位補正は、RoNIN と EqNIO のどちらに加えても、評価データで位置誤差の悪化を、推論の窓の区切りをずらすだけで生じる揺れ（許容幅 δ = 0.0295 m）と同程度に抑えた（補正なしに対する非劣性の基準を満たした）が、有意な改善は示せなかった（差の HL はほぼ 0）。評価データ 32 系列のうち 15 系列は変化がなく、最悪の系列は +0.15 m（EqNIO）悪化した。位置誤差が変化した系列だけで同じ計算をすると、評価データでは HL の 95% 信頼区間の上限が許容幅を下回ったが、設計データ（21 系列）では、差の HL は改善の向きだが、信頼区間の上限が +0.09 m で許容幅を超えたので、悪化が許容幅に収まるとは示せなかった（`tables/main_results.md` の補助表）。設計データでは、大きな変化の目安 0.128 m を超えて悪化した系列が RoNIN で 5、EqNIO で 6 ある。特徴の 1 つが、通路が主に直交する建物を仮定する。曲がった通路や広い空間での効果は確かめていない。
+- 地磁気を常に使う姿勢（VQF 9 軸、Android の rotation vector の記録のまま）で入力を座標に直し、学習済みのモデルで推論し直すと、評価データの RoNIN で位置誤差の中央値は補正なしの 4.25 m から 11.22 m と 13.69 m に悪化し、悪化した系列は 32 系列中 29 と 30 だった。集計した値だけを [results/attitude_comparison/README.md](results/attitude_comparison/README.md) に載せる。
+- 提案の各部分を外したときの結果と、補正点の選び方の比較（設計データ 35 系列）は [results/ablation/README.md](results/ablation/README.md)。
+- 評価データは、開発の途中の評価にも使っており、一度も見ていないデータではない。位置補正は別のデータ IDOL でも評価した。方位補正は IDOL では評価していない。
+
+## 必要な環境
+
+- Python 3.11。`pip install -r requirements.txt`。
+- torch 2.13.0 は別に入れる。Linux/WSL2: `pip install torch==2.13.0`（GPU が古い場合は `--index-url https://download.pytorch.org/whl/cu126`）。Mac: 同じコマンド（MPS）。
+- 図の日本語フォント（IPAexGothic など）。`PAPER_FIG_FONT=<ttf のパス>` で指定できる。
+
+## データとモデルの入手先
+
+次はこのリポジトリに含めない。各自が配布元から取得し、その条件に従う。
+
+| 対象 | 入手元 | 置き場所 | 条件 |
+|---|---|---|---|
+| RoNIN データ | FRDR, doi:10.20383/102.0543 | リポジトリの隣の `Data/`（`train_dataset_1`、`train_dataset_2`、`seen_subjects_test_set`、`unseen_subjects_test_set`） | 非商用・研究目的の独自ライセンス |
+| RoNIN 事前学習済みモデル | 同上 | `models/ronin_resnet/checkpoint_gsn_latest.pt` | 同上 |
+| RoNIN コード | https://github.com/Sachini/ronin の commit `805b7f0f28bb164ce89ada9ac05a9470dbe3d715` | `external/ronin/`（[PATCHES.md](external/PATCHES.md) の修正を当てる） | GPL-3.0 |
+| EqNIO コードと重み | https://github.com/RoyinaJayanth/EqNIO | `external/eqnio/`（重みは `checkpoints/Ronin_o2/checkpoint_38.pt`） | ライセンスの表示なし。同梱しない |
+| IDOL データ | Zenodo, doi:10.5281/zenodo.4484093（`building1.zip`〜`building3.zip`） | `external/idol_dataset/building{1,2,3}/`（展開する） | CC BY 4.0 |
+
+IDOL: S. Sun, D. Melamed, K. Kitani, "IDOL: Inertial Deep Orientation-estimation and Localization," AAAI 2021（データは [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)）。`results/position_correction/idol.json` の系列ごとの数値は、このデータを変換したもの（単位・軸・始点の向きの合わせ、100 Hz → 200 Hz。`magpdr/data/idol_dataset.py`）から計算した。
+
+## 再現の手順
+
+リポジトリの根で実行する。`results/ablation/` と `results/attitude_comparison/` は集計した値だけを載せており、このリポジトリのコマンドでは再現できない。
+
+**1. 保存済みの結果から表と図を作る**（データ不要）
+
+```bash
+python -m paper.tables         # 主結果の表 -> tables/main_results.md・.csv、位置補正の補足 -> tables/position_details.md
+python -m paper.figures all    # 図 1（全体図）、図 2（改善余地）、図 3（位置補正の軌跡の例）-> figures/
+```
+
+図 3 は、軌跡の座標の配列（`results/position_correction/trajectories_test.json`）を載せていないので、`all` では飛ばされる。評価データを使って `python -m paper.export_revisit_trajectories` で配列を作ってから `python -m paper.figures f3` で描く（`figures/f3_revisit_two.pdf`）。
+
+**2. キャッシュから評価をやり直す**（学習済みモデルと中間キャッシュが要る。設計データ）
+
+```bash
+python -m magpdr.heading.evaluate --split design --out /tmp/heading_design.json     # 方位補正
+python -m magpdr.position.evaluate --split design --out /tmp/position_design.json   # 位置補正
+```
+
+`--out` を省くと、出力先は `results/heading_correction/design.json`・`results/position_correction/design.json` で、保存済みの結果を上書きする。保存済みの結果と比べるときは、上のように別の場所に書く。評価データは `--split test`、IDOL の位置補正は `--split idol`（変換と推論を済ませておく）。
+
+**3. 生データから作り直す**（RoNIN のデータ・コード・事前学習済みモデル、EqNIO のコードと重み、IDOL のデータが要る。学習が長い）
+
+以下は順に実行する。`Data/` は RoNIN のデータ、`<系列一覧>` は分割のフォルダにある系列フォルダの名前を 1 行に 1 つ書いたテキスト（例: `ls -d ../Data/seen_subjects_test_set/*/ | xargs -n1 basename > list_design.txt`）。
+
+1. 速度のキャッシュ（RoNIN）: 分割ごとに `python -m magpdr.backbones.ronin_inference ../Data/<フォルダ> <系列一覧> cache/vel_<名前> --device cpu`。フォルダと名前の対応は、`train_dataset_1` → `vel_train_dataset_1`、`train_dataset_2` → `vel_train_dataset_2`、`seen_subjects_test_set` → `vel_design`、`unseen_subjects_test_set` → `vel_test`。EqNIO は `python -m magpdr.backbones.eqnio_inference o2 {design,test} --device cpu`（`cache/heading_correction/eqnio_o2/vel_{design,test}` に書く）。
+2. 直進判定器の入力: `magpdr.heading.straight_detector` の `label_build`、`window_features ../Data cache/window_features 100000`（3 つ目は 1 回の実行の時間の上限 [秒]。途中で止まったら再実行し、`ALL DONE` が出るまで繰り返す）、`gait_features`、`imu_cache`、`causal_gait_features --split train design test`、`window_layout --split train design test`
+3. 直進判定器の学習: `gbdt_train`、`tcn_train <シード>`（シード 0・1・2）、`select_threshold`（出力の閾値を `configs/straight_detector.json` の `threshold_p_turn` に入れる）。`gbdt_predict check`・`tcn_predict check` は、学習データだけで学習したモデルの設計データへの予測が学習時の保存値と一致することを確かめる。評価データへの適用用に `gbdt_train --final`、`tcn_train <シード> --final`、`gbdt_predict test`、`tcn_predict test`
+4. 補正点評価器: `magpdr.heading.fix_evaluator` の `base_cache_builder --test`（学習・設計・評価データの基礎キャッシュ）、`base_cache --all`（姿勢を `game_rv` に固定した版）、`feature_cache`、`train`
+5. カルマンフィルタの定数と許容幅: `magpdr.heading.kalman.drift_statistics`。許容幅は、`magpdr.evaluation.fluctuation_margin_infer 3` と `fluctuation_margin_infer 5`（推論窓の開始位置を 3・5 フレームずらして設計データを再推論する）のあと `magpdr.evaluation.fluctuation_margin`
+6. 評価: 2 の 2 つのコマンド（`--out` を省くと保存済みの結果を上書きする）
+7. IDOL: `python -m magpdr.data.idol_dataset`（`external/idol_dataset/` を RoNIN の形式に変換して `cache/idol/converted/` に書く）、`python -m magpdr.backbones.ronin_inference cache/idol/converted cache/idol/converted/list.txt cache/idol/vel_ronin --device cpu`、`python -m magpdr.backbones.eqnio_inference o2 --root cache/idol/converted --list cache/idol/converted/list.txt --out cache/idol/vel_eqnio --device cpu`、評価は `python -m magpdr.position.evaluate --split idol`
+8. 既存手法（VQF 9 軸）の参考値: `python -m magpdr.backbones.vqf_attitude_inference {design,test}`、`python -m magpdr.evaluation.vqf_reference --split {design,test}`
+9. 改善余地の図のデータ: `python -m paper.headroom_data --split {train,design,test}`
+
+手順 3 のコマンドは、引数までコードに合わせて書いたが、全工程を通して再実行して確かめてはいない。学習し直したモデルは、CUDA と CPU の違いなどで、保存済みの結果と完全には一致しない。速度のキャッシュは `--device cpu` で作る。torch を import するプロセスで lightgbm の学習をすると不具合が出た環境があるため、GBDT と TCN の学習は別のプロセスで行う。出力先のディレクトリを作らないスクリプトがあるので、`results/straight_detector/preds`、`figures` などは先に作っておく。
+
+## ライセンス
+
+- このリポジトリは GPL-3.0-only（[LICENSE](LICENSE)）。コード（`magpdr/`、`paper/`）は RoNIN（GPL-3.0）のコードに依存する。`configs/` の設定ファイル（定数）もコードと同じ GPL-3.0-only とする。
+- ただし、`results/`（`results/ablation/`、`results/attitude_comparison/` を含む）と `tables/` の、RoNIN の系列に関する数値（ATE など）は、RoNIN のデータから計算した。GPL に優先してデータ提供元の条件に従い、**研究目的のみ**で使うこと。座標の配列・生データ・学習済みモデルは含めない。
+- `results/position_correction/idol.json` と、`tables/` の IDOL の行は、IDOL データ（CC BY 4.0）から計算した数値で、上の引用と変更の明示のもとで使える。
+
+## 引用
+
+- このリポジトリ: [CITATION.cff](CITATION.cff)
+- RoNIN: S. Herath, H. Yan, Y. Furukawa, "RoNIN: Robust Neural Inertial Navigation in the Wild: Benchmark, Evaluations, & New Methods," ICRA 2020. データは研究目的のみ。
+- EqNIO: R. K. Jayanth, Y. Xu, Z. Wang, E. Chatzipantazis, K. Daniilidis, D. Gehrig, "EqNIO: Subequivariant Neural Inertial Odometry," ICLR 2025.
+- IDOL: S. Sun, D. Melamed, K. Kitani, "IDOL: Inertial Deep Orientation-estimation and Localization," AAAI 2021. データ: doi:10.5281/zenodo.4484093（CC BY 4.0）。
+- VQF: D. Laidig, T. Seel, "VQF: Highly accurate IMU orientation estimation with bias estimation and magnetic disturbance rejection," Information Fusion 91 (2023).

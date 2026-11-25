@@ -1,0 +1,1881 @@
+{
+ "description": "構成要素を外したときの結果。設計データ 35 系列（34 被験者）。評価データと IDOL は使っていない。差は「構成の位置誤差 − 比較対象の位置誤差」（負なら良い）。",
+ "large_change_threshold_m": 0.12835936025027148,
+ "definitions": {
+  "field_variation_loose": "緩い閾値: 4 m 区間の磁場の強さの標準偏差が 5 µT（50 µT の 10%）未満、かつ伏角の標準偏差が 10° 未満",
+  "field_variation_strict": "厳しい閾値: 4 m 区間の磁場の強さの標準偏差が 1 µT（50 µT の 2%）未満、かつ伏角の標準偏差が 5° 未満",
+  "field_variation_matched": "緩い閾値・厳しい閾値の形（強さと伏角の比）を保ったまま、学習データ 85 系列の正解の直進候補で、提案と同じ補正点の数（810 個）になる倍率を決めた",
+  "residual_test": "窓内の磁場ベクトルの、最初の 20 秒から作った参照との残差の χ² 検定（有意水準 5%）",
+  "fix_error_attitude_basis": "補正点の誤差（付属の姿勢推定を基準）: 地磁気も使う付属の姿勢推定を基準にした、補正点での磁北方向の誤差（4 m の平均）。評価器が学習で予測している量",
+  "fix_error_position_basis": "補正点の誤差（位置の正解を基準）: 位置の正解から求めた方位の補正量（補正点の前後 30 秒で、RoNIN の速度と正解の速度の向きの差を、速さで重みづけして平均したもの）との差から、系列ごとの一定のずれ（その系列の補正点の候補すべての誤差の円形中央値）を引いた値"
+ },
+ "selection_comparison": {
+  "proposal": {
+   "label": "提案（評価器が予測した誤差が 5.33° 以下の点を選ぶ）",
+   "definition": null,
+   "fix_points": {
+    "total": 231,
+    "per_series_median": 4.0,
+    "series_without_points": 6
+   },
+   "fix_error_deg_attitude_basis": {
+    "median": 5.143,
+    "p90": 14.144,
+    "share_over_10": 0.24675324675324675,
+    "share_over_20": 0.025974025974025976
+   },
+   "fix_error_deg_position_basis": {
+    "median": 4.805,
+    "p90": 12.912,
+    "share_over_10": 0.19480519480519481,
+    "share_over_20": 0.021645021645021644
+   },
+   "ronin": {
+    "ate_median_m": 3.491167134323391,
+    "ate_mean_m": 3.7394914193356676,
+    "baseline_ate_median_m": 3.515468394948718,
+    "vs_baseline": {
+     "hl_m": 0.0,
+     "hl_ci95_m": [
+      -0.07269319745356606,
+      0.023068050914567095
+     ],
+     "p_exact": 0.5620746612548828,
+     "p_exact_holm": 1.0,
+     "p_subject": 0.33185,
+     "p_subject_holm": 1.0,
+     "better": 11,
+     "worse": 10,
+     "unchanged": 14,
+     "worse_over_w": 5,
+     "better_over_w": 7,
+     "worst_diff_m": 0.5898803863676902
+    },
+    "rte_median_m": 2.406196723329587,
+    "rte_vs_baseline": {
+     "hl_m": 0.0,
+     "hl_ci95_m": [
+      -0.080248708576379,
+      0.03767199261036969
+     ],
+     "p_exact": 0.8648872375488281
+    }
+   },
+   "eqnio": {
+    "ate_median_m": 3.1881332080507114,
+    "ate_mean_m": 3.1457763849272884,
+    "baseline_ate_median_m": 3.1881332080507114,
+    "vs_baseline": {
+     "hl_m": 0.0,
+     "hl_ci95_m": [
+      -0.08895044635076688,
+      0.024208874526345348
+     ],
+     "p_exact": 0.5854024887084961,
+     "p_exact_holm": 1.0,
+     "p_subject": 0.2031,
+     "p_subject_holm": 1.0,
+     "better": 11,
+     "worse": 10,
+     "unchanged": 14,
+     "worse_over_w": 6,
+     "better_over_w": 7,
+     "worst_diff_m": 0.4368779262981075
+    },
+    "rte_median_m": 2.3357594994917057,
+    "rte_vs_baseline": {
+     "hl_m": 0.0,
+     "hl_ci95_m": [
+      -0.047297802987438686,
+      0.01190796811768241
+     ],
+     "p_exact": 0.8983173370361328
+    }
+   }
+  },
+  "use_all": {
+   "label": "すべて使う（直進の候補をすべて使う）",
+   "definition": null,
+   "fix_points": {
+    "total": 1471,
+    "per_series_median": 37.0,
+    "series_without_points": 0
+   },
+   "fix_error_deg_attitude_basis": {
+    "median": 14.769,
+    "p90": 42.179,
+    "share_over_10": 0.628144119646499,
+    "share_over_20": 0.36301835486063905
+   },
+   "fix_error_deg_position_basis": {
+    "median": 13.855,
+    "p90": 41.618,
+    "share_over_10": 0.6227056424201224,
+    "share_over_20": 0.35078178110129166
+   },
+   "ronin": {
+    "ate_median_m": 3.371222060134767,
+    "ate_mean_m": 3.765321022531389,
+    "baseline_ate_median_m": 3.515468394948718,
+    "vs_baseline": {
+     "hl_m": 0.007471063277066481,
+     "hl_ci95_m": [
+      -0.23779124251977088,
+      0.2443511194915996
+     ],
+     "p_exact": 0.9806487238383852,
+     "p_exact_holm": 1.0,
+     "p_subject": 0.85955,
+     "p_subject_holm": 1.0,
+     "better": 17,
+     "worse": 18,
+     "unchanged": 0,
+     "worse_over_w": 15,
+     "better_over_w": 14,
+     "worst_diff_m": 1.9513268550442548
+    },
+    "rte_median_m": 2.783368181327555,
+    "rte_vs_baseline": {
+     "hl_m": 0.2204762254810202,
+     "hl_ci95_m": [
+      -0.006889820188486273,
+      0.5507789531799415
+     ],
+     "p_exact": 0.07261793391080573
+    },
+    "vs_proposal": {
+     "hl_m": 0.02106832901480296,
+     "hl_ci95_m": [
+      -0.19366105168482645,
+      0.25011550494935486
+     ],
+     "p_exact": 0.8524555477779359,
+     "p_exact_holm": 1.0,
+     "p_subject": 0.80505,
+     "p_subject_holm": 1.0,
+     "better": 18,
+     "worse": 17,
+     "unchanged": 0,
+     "worse_over_w": 14,
+     "better_over_w": 14,
+     "worst_diff_m": 1.6647441768066535,
+     "rte_hl_m": 0.2327679112980513,
+     "rte_hl_ci95_m": [
+      0.019576572049341934,
+      0.5152153726558553
+     ],
+     "rte_p_exact": 0.04037401336245239
+    }
+   },
+   "eqnio": {
+    "ate_median_m": 3.1961171724324453,
+    "ate_mean_m": 3.3450923470661995,
+    "baseline_ate_median_m": 3.1881332080507114,
+    "vs_baseline": {
+     "hl_m": 0.14796143598700712,
+     "hl_ci95_m": [
+      -0.1042305663556197,
+      0.3762043697080473
+     ],
+     "p_exact": 0.25850554718635976,
+     "p_exact_holm": 1.0,
+     "p_subject": 0.44805,
+     "p_subject_holm": 1.0,
+     "better": 14,
+     "worse": 21,
+     "unchanged": 0,
+     "worse_over_w": 18,
+     "better_over_w": 12,
+     "worst_diff_m": 2.6484218312205754
+    },
+    "rte_median_m": 2.647463995090604,
+    "rte_vs_baseline": {
+     "hl_m": 0.3073772207388507,
+     "hl_ci95_m": [
+      -0.007183081701214892,
+      0.6819083504188174
+     ],
+     "p_exact": 0.08103993412805721
+    },
+    "vs_proposal": {
+     "hl_m": 0.18333651374911103,
+     "hl_ci95_m": [
+      -0.03980560691973323,
+      0.41012319129460506
+     ],
+     "p_exact": 0.130954785796348,
+     "p_exact_holm": 1.0,
+     "p_subject": 0.16035,
+     "p_subject_holm": 1.0,
+     "better": 14,
+     "worse": 21,
+     "unchanged": 0,
+     "worse_over_w": 17,
+     "better_over_w": 12,
+     "worst_diff_m": 2.6484218312205754,
+     "rte_hl_m": 0.3042164182202101,
+     "rte_hl_ci95_m": [
+      0.053667815716422346,
+      0.6405268912285431
+     ],
+     "rte_p_exact": 0.02872607356403023
+    }
+   }
+  },
+  "field_variation_loose": {
+   "label": "磁場の変動が小さい区間を選ぶ: 緩い閾値",
+   "definition": null,
+   "fix_points": {
+    "total": 1105,
+    "per_series_median": 30.0,
+    "series_without_points": 0
+   },
+   "fix_error_deg_attitude_basis": {
+    "median": 12.511,
+    "p90": 35.6046,
+    "share_over_10": 0.5819004524886878,
+    "share_over_20": 0.3040723981900452
+   },
+   "fix_error_deg_position_basis": {
+    "median": 11.804,
+    "p90": 34.4544,
+    "share_over_10": 0.5701357466063348,
+    "share_over_20": 0.2923076923076923
+   },
+   "ronin": {
+    "ate_median_m": 3.279939860568268,
+    "ate_mean_m": 3.7467180277514402,
+    "baseline_ate_median_m": 3.515468394948718,
+    "vs_baseline": {
+     "hl_m": -0.04456140144323417,
+     "hl_ci95_m": [
+      -0.2521000700765226,
+      0.20722793812051912
+     ],
+     "p_exact": 0.7401566408807412,
+     "p_exact_holm": 1.0,
+     "p_subject": 0.7758,
+     "p_subject_holm": 1.0,
+     "better": 19,
+     "worse": 16,
+     "unchanged": 0,
+     "worse_over_w": 11,
+     "better_over_w": 16,
+     "worst_diff_m": 1.746765658813369
+    },
+    "rte_median_m": 2.5039631851751047,
+    "rte_vs_baseline": {
+     "hl_m": 0.1447276296022228,
+     "hl_ci95_m": [
+      -0.07605280278722644,
+      0.33228355418757727
+     ],
+     "p_exact": 0.189775186823681
+    },
+    "vs_proposal": {
+     "hl_m": 0.0059017675192176156,
+     "hl_ci95_m": [
+      -0.19441960985687362,
+      0.2440281877328925
+     ],
+     "p_exact": 0.9677533526555635,
+     "p_exact_holm": 1.0,
+     "p_subject": 0.89855,
+     "p_subject_holm": 1.0,
+     "better": 18,
+     "worse": 17,
+     "unchanged": 0,
+     "worse_over_w": 12,
+     "better_over_w": 14,
+     "worst_diff_m": 1.296406057926136,
+     "rte_hl_m": 0.12854415130691782,
+     "rte_hl_ci95_m": [
+      0.005490320223525802,
+      0.2852261935525931
+     ],
+     "rte_p_exact": 0.057869382842909545
+    }
+   },
+   "eqnio": {
+    "ate_median_m": 3.0046751101183107,
+    "ate_mean_m": 3.30973154036775,
+    "baseline_ate_median_m": 3.1881332080507114,
+    "vs_baseline": {
+     "hl_m": 0.10469657651956465,
+     "hl_ci95_m": [
+      -0.13499839604827882,
+      0.39717962822940445
+     ],
+     "p_exact": 0.33407549653202295,
+     "p_exact_holm": 1.0,
+     "p_subject": 0.5558,
+     "p_subject_holm": 1.0,
+     "better": 15,
+     "worse": 20,
+     "unchanged": 0,
+     "worse_over_w": 17,
+     "better_over_w": 12,
+     "worst_diff_m": 2.0875876812708136
+    },
+    "rte_median_m": 2.482081075440811,
+    "rte_vs_baseline": {
+     "hl_m": 0.18890941959373347,
+     "hl_ci95_m": [
+      -0.055612276838875783,
+      0.3809350082616171
+     ],
+     "p_exact": 0.11867389117833227
+    },
+    "vs_proposal": {
+     "hl_m": 0.12991638427036323,
+     "hl_ci95_m": [
+      -0.06006344869238461,
+      0.40101947008028793
+     ],
+     "p_exact": 0.17355046153534204,
+     "p_exact_holm": 1.0,
+     "p_subject": 0.19455,
+     "p_subject_holm": 1.0,
+     "better": 15,
+     "worse": 20,
+     "unchanged": 0,
+     "worse_over_w": 17,
+     "better_over_w": 12,
+     "worst_diff_m": 2.0875876812708136,
+     "rte_hl_m": 0.1692385110749216,
+     "rte_hl_ci95_m": [
+      0.028028031878610915,
+      0.34055118755858693
+     ],
+     "rte_p_exact": 0.043826959445141256
+    }
+   }
+  },
+  "field_variation_strict": {
+   "label": "磁場の変動が小さい区間を選ぶ: 厳しい閾値",
+   "definition": null,
+   "fix_points": {
+    "total": 94,
+    "per_series_median": 2.0,
+    "series_without_points": 7
+   },
+   "fix_error_deg_attitude_basis": {
+    "median": 15.621500000000001,
+    "p90": 38.6757,
+    "share_over_10": 0.6702127659574468,
+    "share_over_20": 0.40425531914893614
+   },
+   "fix_error_deg_position_basis": {
+    "median": 17.3355,
+    "p90": 35.7788,
+    "share_over_10": 0.6808510638297872,
+    "share_over_20": 0.43617021276595747
+   },
+   "ronin": {
+    "ate_median_m": 3.5979212416872475,
+    "ate_mean_m": 3.7769255675944073,
+    "baseline_ate_median_m": 3.515468394948718,
+    "vs_baseline": {
+     "hl_m": 0.0,
+     "hl_ci95_m": [
+      -0.11606009583554266,
+      0.021703600219012742
+     ],
+     "p_exact": 0.5879268646240234,
+     "p_exact_holm": 1.0,
+     "p_subject": 0.77045,
+     "p_subject_holm": 1.0,
+     "better": 12,
+     "worse": 10,
+     "unchanged": 13,
+     "worse_over_w": 6,
+     "better_over_w": 9,
+     "worst_diff_m": 1.6103631461411592
+    },
+    "rte_median_m": 2.440692315660182,
+    "rte_vs_baseline": {
+     "hl_m": -0.0020209954457162116,
+     "hl_ci95_m": [
+      -0.09759750888934615,
+      0.0
+     ],
+     "p_exact": 0.3369474411010742
+    },
+    "vs_proposal": {
+     "hl_m": 0.001987857361781087,
+     "hl_ci95_m": [
+      -0.06208454788010515,
+      0.11194800445389896
+     ],
+     "p_exact": 0.6431422233581543,
+     "p_exact_holm": 1.0,
+     "p_subject": 0.60865,
+     "p_subject_holm": 1.0,
+     "better": 10,
+     "worse": 14,
+     "unchanged": 11,
+     "worse_over_w": 10,
+     "better_over_w": 8,
+     "worst_diff_m": 1.3611855420453352,
+     "rte_hl_m": 0.0,
+     "rte_hl_ci95_m": [
+      -0.023291611961269384,
+      0.10734379963768306
+     ],
+     "rte_p_exact": 0.45587432384490967
+    }
+   },
+   "eqnio": {
+    "ate_median_m": 3.1881332080507114,
+    "ate_mean_m": 3.233027851248752,
+    "baseline_ate_median_m": 3.1881332080507114,
+    "vs_baseline": {
+     "hl_m": 0.0,
+     "hl_ci95_m": [
+      -0.07411666252490298,
+      0.06838702110056705
+     ],
+     "p_exact": 0.7261838912963867,
+     "p_exact_holm": 1.0,
+     "p_subject": 0.8942,
+     "p_subject_holm": 1.0,
+     "better": 10,
+     "worse": 12,
+     "unchanged": 13,
+     "worse_over_w": 8,
+     "better_over_w": 7,
+     "worst_diff_m": 1.8297396868999458
+    },
+    "rte_median_m": 2.377867270066575,
+    "rte_vs_baseline": {
+     "hl_m": 0.0,
+     "hl_ci95_m": [
+      -0.10765888412942215,
+      0.012059313152740447
+     ],
+     "p_exact": 0.5660676956176758
+    },
+    "vs_proposal": {
+     "hl_m": 0.0575408133322719,
+     "hl_ci95_m": [
+      0.0,
+      0.13452761563535087
+     ],
+     "p_exact": 0.10738253593444824,
+     "p_exact_holm": 0.9664428234100342,
+     "p_subject": 0.18085,
+     "p_subject_holm": 1.0,
+     "better": 8,
+     "worse": 16,
+     "unchanged": 11,
+     "worse_over_w": 12,
+     "better_over_w": 4,
+     "worst_diff_m": 1.6125055744798535,
+     "rte_hl_m": 0.0,
+     "rte_hl_ci95_m": [
+      -0.008946801091134216,
+      0.10729744648155926
+     ],
+     "rte_p_exact": 0.4389305114746094
+    }
+   }
+  },
+  "field_variation_loose_matched": {
+   "label": "磁場の変動が小さい区間を選ぶ: 緩い閾値の形（提案と同じ補正点の数に合わせた）",
+   "definition": null,
+   "fix_points": {
+    "total": 236,
+    "per_series_median": 5.0,
+    "series_without_points": 1
+   },
+   "fix_error_deg_attitude_basis": {
+    "median": 11.315999999999999,
+    "p90": 35.753,
+    "share_over_10": 0.5508474576271186,
+    "share_over_20": 0.3220338983050847
+   },
+   "fix_error_deg_position_basis": {
+    "median": 13.6745,
+    "p90": 34.909499999999994,
+    "share_over_10": 0.5932203389830508,
+    "share_over_20": 0.3305084745762712
+   },
+   "ronin": {
+    "ate_median_m": 3.4157746089076215,
+    "ate_mean_m": 3.757899063609345,
+    "baseline_ate_median_m": 3.515468394948718,
+    "vs_baseline": {
+     "hl_m": 0.001544623895065489,
+     "hl_ci95_m": [
+      -0.05279833383092225,
+      0.08292123372359654
+     ],
+     "p_exact": 0.83135736733675,
+     "p_exact_holm": 1.0,
+     "p_subject": 0.6851,
+     "p_subject_holm": 1.0,
+     "better": 14,
+     "worse": 15,
+     "unchanged": 6,
+     "worse_over_w": 7,
+     "better_over_w": 6,
+     "worst_diff_m": 0.8282951530474572
+    },
+    "rte_median_m": 2.4299760181540546,
+    "rte_vs_baseline": {
+     "hl_m": -0.0057371531242202956,
+     "hl_ci95_m": [
+      -0.10720115301494354,
+      0.05595897435247789
+     ],
+     "p_exact": 0.7013288475573063
+    },
+    "vs_proposal": {
+     "hl_m": 0.0,
+     "hl_ci95_m": [
+      -0.054575595897276674,
+      0.1527738366920722
+     ],
+     "p_exact": 0.9152156375348568,
+     "p_exact_holm": 1.0,
+     "p_subject": 0.81675,
+     "p_subject_holm": 1.0,
+     "better": 16,
+     "worse": 13,
+     "unchanged": 6,
+     "worse_over_w": 9,
+     "better_over_w": 6,
+     "worst_diff_m": 1.0669429128667216,
+     "rte_hl_m": 0.020664739722446646,
+     "rte_hl_ci95_m": [
+      -0.016668864921638226,
+      0.15931257874129057
+     ],
+     "rte_p_exact": 0.2941182516515255
+    }
+   },
+   "eqnio": {
+    "ate_median_m": 3.1648820365027652,
+    "ate_mean_m": 3.19651057509026,
+    "baseline_ate_median_m": 3.1881332080507114,
+    "vs_baseline": {
+     "hl_m": 0.0,
+     "hl_ci95_m": [
+      -0.042668475684127606,
+      0.13896874810199875
+     ],
+     "p_exact": 0.966034073382616,
+     "p_exact_holm": 1.0,
+     "p_subject": 0.8073,
+     "p_subject_holm": 1.0,
+     "better": 16,
+     "worse": 13,
+     "unchanged": 6,
+     "worse_over_w": 8,
+     "better_over_w": 7,
+     "worst_diff_m": 0.9206069094550675
+    },
+    "rte_median_m": 2.2089309332481406,
+    "rte_vs_baseline": {
+     "hl_m": -0.00533073348675811,
+     "hl_ci95_m": [
+      -0.11668922214197464,
+      0.04452335039325478
+     ],
+     "p_exact": 0.7013288475573063
+    },
+    "vs_proposal": {
+     "hl_m": 0.0,
+     "hl_ci95_m": [
+      -0.033540526004578464,
+      0.15137212156333113
+     ],
+     "p_exact": 0.6239256113767624,
+     "p_exact_holm": 1.0,
+     "p_subject": 0.5105,
+     "p_subject_holm": 1.0,
+     "better": 17,
+     "worse": 12,
+     "unchanged": 6,
+     "worse_over_w": 11,
+     "better_over_w": 7,
+     "worst_diff_m": 0.9818104733125557,
+     "rte_hl_m": 0.01984562805018575,
+     "rte_hl_ci95_m": [
+      -0.01507079612111184,
+      0.1374943210126599
+     ],
+     "rte_p_exact": 0.30419324710965157
+    }
+   }
+  },
+  "field_variation_strict_matched": {
+   "label": "磁場の変動が小さい区間を選ぶ: 厳しい閾値の形（提案と同じ補正点の数に合わせた）",
+   "definition": null,
+   "fix_points": {
+    "total": 233,
+    "per_series_median": 5.0,
+    "series_without_points": 1
+   },
+   "fix_error_deg_attitude_basis": {
+    "median": 13.284,
+    "p90": 36.6284,
+    "share_over_10": 0.5965665236051502,
+    "share_over_20": 0.351931330472103
+   },
+   "fix_error_deg_position_basis": {
+    "median": 15.235,
+    "p90": 33.628400000000006,
+    "share_over_10": 0.6523605150214592,
+    "share_over_20": 0.37339055793991416
+   },
+   "ronin": {
+    "ate_median_m": 3.613302243818815,
+    "ate_mean_m": 3.8486248441749815,
+    "baseline_ate_median_m": 3.515468394948718,
+    "vs_baseline": {
+     "hl_m": -0.00594061949947855,
+     "hl_ci95_m": [
+      -0.15336167383107122,
+      0.07368440065979723
+     ],
+     "p_exact": 0.7062525749206543,
+     "p_exact_holm": 1.0,
+     "p_subject": 0.6931,
+     "p_subject_holm": 1.0,
+     "better": 18,
+     "worse": 13,
+     "unchanged": 4,
+     "worse_over_w": 7,
+     "better_over_w": 9,
+     "worst_diff_m": 2.8038375134071507
+    },
+    "rte_median_m": 2.4665613012913012,
+    "rte_vs_baseline": {
+     "hl_m": -0.01300937666711749,
+     "hl_ci95_m": [
+      -0.08990251246047265,
+      0.13374198257848535
+     ],
+     "p_exact": 0.6776954075321555
+    },
+    "vs_proposal": {
+     "hl_m": 0.0,
+     "hl_ci95_m": [
+      -0.07393659918047585,
+      0.1545886027802751
+     ],
+     "p_exact": 0.8695757398381829,
+     "p_exact_holm": 1.0,
+     "p_subject": 0.3405,
+     "p_subject_holm": 1.0,
+     "better": 17,
+     "worse": 14,
+     "unchanged": 4,
+     "worse_over_w": 10,
+     "better_over_w": 8,
+     "worst_diff_m": 2.8038375134071507,
+     "rte_hl_m": 0.033993412132649836,
+     "rte_hl_ci95_m": [
+      -0.013183224388058301,
+      0.19426159177056435
+     ],
+     "rte_p_exact": 0.18865238688886166
+    }
+   },
+   "eqnio": {
+    "ate_median_m": 3.2397946284180597,
+    "ate_mean_m": 3.3003120996949713,
+    "baseline_ate_median_m": 3.1881332080507114,
+    "vs_baseline": {
+     "hl_m": -0.004297088348876488,
+     "hl_ci95_m": [
+      -0.07128371325853873,
+      0.12827761751333194
+     ],
+     "p_exact": 0.8695757398381829,
+     "p_exact_holm": 1.0,
+     "p_subject": 0.574,
+     "p_subject_holm": 1.0,
+     "better": 19,
+     "worse": 12,
+     "unchanged": 4,
+     "worse_over_w": 9,
+     "better_over_w": 8,
+     "worst_diff_m": 3.1764013494181143
+    },
+    "rte_median_m": 2.3357594994917057,
+    "rte_vs_baseline": {
+     "hl_m": -0.009160901363706342,
+     "hl_ci95_m": [
+      -0.09368962106038925,
+      0.15140381623152627
+     ],
+     "p_exact": 0.8392556216567755
+    },
+    "vs_proposal": {
+     "hl_m": 0.0005027394976861999,
+     "hl_ci95_m": [
+      -0.04283995360980082,
+      0.15804185945634205
+     ],
+     "p_exact": 0.7206862810999155,
+     "p_exact_holm": 1.0,
+     "p_subject": 0.1704,
+     "p_subject_holm": 1.0,
+     "better": 19,
+     "worse": 12,
+     "unchanged": 4,
+     "worse_over_w": 10,
+     "better_over_w": 7,
+     "worst_diff_m": 3.1764013494181143,
+     "rte_hl_m": 0.05081339805422064,
+     "rte_hl_ci95_m": [
+      -0.009360763626811208,
+      0.18986536354219669
+     ],
+     "rte_p_exact": 0.10662505030632019
+    }
+   }
+  },
+  "residual_test_5s": {
+   "label": "磁場の残差の検定: 窓 5 秒",
+   "definition": null,
+   "fix_points": {
+    "total": 538,
+    "per_series_median": 9.0,
+    "series_without_points": 2
+   },
+   "fix_error_deg_attitude_basis": {
+    "median": 12.785,
+    "p90": 34.5784,
+    "share_over_10": 0.5855018587360595,
+    "share_over_20": 0.31226765799256506
+   },
+   "fix_error_deg_position_basis": {
+    "median": 12.489,
+    "p90": 33.1806,
+    "share_over_10": 0.5929368029739777,
+    "share_over_20": 0.3159851301115242
+   },
+   "ronin": {
+    "ate_median_m": 3.449914167215726,
+    "ate_mean_m": 3.779893787702207,
+    "baseline_ate_median_m": 3.515468394948718,
+    "vs_baseline": {
+     "hl_m": 0.01115085187588516,
+     "hl_ci95_m": [
+      -0.044795323408705734,
+      0.16760652792971456
+     ],
+     "p_exact": 0.4521643426269293,
+     "p_exact_holm": 1.0,
+     "p_subject": 0.9526,
+     "p_subject_holm": 1.0,
+     "better": 12,
+     "worse": 18,
+     "unchanged": 5,
+     "worse_over_w": 9,
+     "better_over_w": 7,
+     "worst_diff_m": 1.951733197021987
+    },
+    "rte_median_m": 2.556901066108419,
+    "rte_vs_baseline": {
+     "hl_m": 0.01291204117837752,
+     "hl_ci95_m": [
+      -0.028463892307567296,
+      0.19305632302830156
+     ],
+     "p_exact": 0.4521643426269293
+    },
+    "vs_proposal": {
+     "hl_m": 0.013554790898594155,
+     "hl_ci95_m": [
+      -0.10778068281822206,
+      0.17975470549114192
+     ],
+     "p_exact": 0.6212516147643328,
+     "p_exact_holm": 1.0,
+     "p_subject": 0.66835,
+     "p_subject_holm": 1.0,
+     "better": 15,
+     "worse": 18,
+     "unchanged": 2,
+     "worse_over_w": 11,
+     "better_over_w": 9,
+     "worst_diff_m": 1.6651505187843858,
+     "rte_hl_m": 0.06908066900321308,
+     "rte_hl_ci95_m": [
+      -0.008141338800566897,
+      0.3328961504862493
+     ],
+     "rte_p_exact": 0.16004560654982924
+    }
+   },
+   "eqnio": {
+    "ate_median_m": 3.178916338478108,
+    "ate_mean_m": 3.224303614558887,
+    "baseline_ate_median_m": 3.1881332080507114,
+    "vs_baseline": {
+     "hl_m": 0.019114756046204606,
+     "hl_ci95_m": [
+      -0.039695957659141745,
+      0.125794232826076
+     ],
+     "p_exact": 0.5082960315048695,
+     "p_exact_holm": 1.0,
+     "p_subject": 0.937,
+     "p_subject_holm": 1.0,
+     "better": 13,
+     "worse": 16,
+     "unchanged": 6,
+     "worse_over_w": 8,
+     "better_over_w": 7,
+     "worst_diff_m": 2.075065190302978
+    },
+    "rte_median_m": 2.5374548857878314,
+    "rte_vs_baseline": {
+     "hl_m": 0.014557899429420429,
+     "hl_ci95_m": [
+      -0.03002735248378896,
+      0.19972151338913835
+     ],
+     "p_exact": 0.46454504504799843
+    },
+    "vs_proposal": {
+     "hl_m": 0.030210211787752295,
+     "hl_ci95_m": [
+      -0.08006893812778058,
+      0.2792184978212939
+     ],
+     "p_exact": 0.4797959038987756,
+     "p_exact_holm": 1.0,
+     "p_subject": 0.50855,
+     "p_subject_holm": 1.0,
+     "better": 16,
+     "worse": 17,
+     "unchanged": 2,
+     "worse_over_w": 11,
+     "better_over_w": 9,
+     "worst_diff_m": 1.7664690345192164,
+     "rte_hl_m": 0.05185869925333936,
+     "rte_hl_ci95_m": [
+      -0.014214265674403759,
+      0.3218224713968246
+     ],
+     "rte_p_exact": 0.15472633647732437
+    }
+   }
+  },
+  "residual_test_10s": {
+   "label": "磁場の残差の検定: 窓 10 秒",
+   "definition": null,
+   "fix_points": {
+    "total": 484,
+    "per_series_median": 6.0,
+    "series_without_points": 2
+   },
+   "fix_error_deg_attitude_basis": {
+    "median": 12.785,
+    "p90": 35.082300000000004,
+    "share_over_10": 0.5702479338842975,
+    "share_over_20": 0.30785123966942146
+   },
+   "fix_error_deg_position_basis": {
+    "median": 12.3215,
+    "p90": 33.1858,
+    "share_over_10": 0.5847107438016529,
+    "share_over_20": 0.3119834710743802
+   },
+   "ronin": {
+    "ate_median_m": 3.370649795621586,
+    "ate_mean_m": 3.779020348172591,
+    "baseline_ate_median_m": 3.515468394948718,
+    "vs_baseline": {
+     "hl_m": -0.016658814021936114,
+     "hl_ci95_m": [
+      -0.098707742737706,
+      0.020037053830562757
+     ],
+     "p_exact": 0.40468135103583336,
+     "p_exact_holm": 1.0,
+     "p_subject": 0.93955,
+     "p_subject_holm": 1.0,
+     "better": 17,
+     "worse": 12,
+     "unchanged": 6,
+     "worse_over_w": 6,
+     "better_over_w": 10,
+     "worst_diff_m": 1.950071715893201
+    },
+    "rte_median_m": 2.442071763853511,
+    "rte_vs_baseline": {
+     "hl_m": -0.0006359881073378926,
+     "hl_ci95_m": [
+      -0.035278742394030366,
+      0.056923071022165476
+     ],
+     "p_exact": 0.8815100230276585
+    },
+    "vs_proposal": {
+     "hl_m": 0.0017622350054866676,
+     "hl_ci95_m": [
+      -0.0935753390253824,
+      0.19254442869590108
+     ],
+     "p_exact": 0.8050345461815596,
+     "p_exact_holm": 1.0,
+     "p_subject": 0.66305,
+     "p_subject_holm": 1.0,
+     "better": 17,
+     "worse": 16,
+     "unchanged": 2,
+     "worse_over_w": 10,
+     "better_over_w": 9,
+     "worst_diff_m": 1.6634890376555997,
+     "rte_hl_m": 0.047842839493024925,
+     "rte_hl_ci95_m": [
+      -0.013412711236815422,
+      0.29641145985867895
+     ],
+     "rte_p_exact": 0.25653275568038225
+    }
+   },
+   "eqnio": {
+    "ate_median_m": 2.8503832461260723,
+    "ate_mean_m": 3.2073992076266173,
+    "baseline_ate_median_m": 3.1881332080507114,
+    "vs_baseline": {
+     "hl_m": -0.0016656777046243354,
+     "hl_ci95_m": [
+      -0.08098084542861983,
+      0.055856837971059864
+     ],
+     "p_exact": 0.6136380508542061,
+     "p_exact_holm": 1.0,
+     "p_subject": 0.9697,
+     "p_subject_holm": 1.0,
+     "better": 17,
+     "worse": 11,
+     "unchanged": 7,
+     "worse_over_w": 7,
+     "better_over_w": 10,
+     "worst_diff_m": 1.9583613999584921
+    },
+    "rte_median_m": 2.3887534326613737,
+    "rte_vs_baseline": {
+     "hl_m": -0.01087951211563748,
+     "hl_ci95_m": [
+      -0.09765907072756813,
+      0.03542145065455702
+     ],
+     "p_exact": 0.5647306069731712
+    },
+    "vs_proposal": {
+     "hl_m": 0.019209583988420542,
+     "hl_ci95_m": [
+      -0.06547555397226246,
+      0.19160629763689727
+     ],
+     "p_exact": 0.5721765686757863,
+     "p_exact_holm": 1.0,
+     "p_subject": 0.55275,
+     "p_subject_holm": 1.0,
+     "better": 17,
+     "worse": 16,
+     "unchanged": 2,
+     "worse_over_w": 9,
+     "better_over_w": 9,
+     "worst_diff_m": 1.714907784059661,
+     "rte_hl_m": 0.024831059429328922,
+     "rte_hl_ci95_m": [
+      -0.02535976960078586,
+      0.2866531959125501
+     ],
+     "rte_p_exact": 0.38616096158511937
+    }
+   }
+  }
+ },
+ "heading_ablation": {
+  "proposal": {
+   "label": "提案（全部入り）",
+   "definition": null,
+   "fix_points": {
+    "total": 231,
+    "per_series_median": 4.0,
+    "series_without_points": 6
+   },
+   "fix_error_deg_attitude_basis": {
+    "median": 5.143,
+    "p90": 14.144,
+    "share_over_10": 0.24675324675324675,
+    "share_over_20": 0.025974025974025976
+   },
+   "fix_error_deg_position_basis": {
+    "median": 4.805,
+    "p90": 12.912,
+    "share_over_10": 0.19480519480519481,
+    "share_over_20": 0.021645021645021644
+   },
+   "ronin": {
+    "ate_median_m": 3.491167134323391,
+    "ate_mean_m": 3.7394914193356676,
+    "baseline_ate_median_m": 3.515468394948718,
+    "vs_baseline": {
+     "hl_m": 0.0,
+     "hl_ci95_m": [
+      -0.07269319745356606,
+      0.023068050914567095
+     ],
+     "p_exact": 0.5620746612548828,
+     "p_exact_holm": 1.0,
+     "p_subject": 0.33185,
+     "p_subject_holm": 1.0,
+     "better": 11,
+     "worse": 10,
+     "unchanged": 14,
+     "worse_over_w": 5,
+     "better_over_w": 7,
+     "worst_diff_m": 0.5898803863676902
+    },
+    "rte_median_m": 2.406196723329587,
+    "rte_vs_baseline": {
+     "hl_m": 0.0,
+     "hl_ci95_m": [
+      -0.080248708576379,
+      0.03767199261036969
+     ],
+     "p_exact": 0.8648872375488281
+    }
+   },
+   "eqnio": {
+    "ate_median_m": 3.1881332080507114,
+    "ate_mean_m": 3.1457763849272884,
+    "baseline_ate_median_m": 3.1881332080507114,
+    "vs_baseline": {
+     "hl_m": 0.0,
+     "hl_ci95_m": [
+      -0.08895044635076688,
+      0.024208874526345348
+     ],
+     "p_exact": 0.5854024887084961,
+     "p_exact_holm": 1.0,
+     "p_subject": 0.2031,
+     "p_subject_holm": 1.0,
+     "better": 11,
+     "worse": 10,
+     "unchanged": 14,
+     "worse_over_w": 6,
+     "better_over_w": 7,
+     "worst_diff_m": 0.4368779262981075
+    },
+    "rte_median_m": 2.3357594994917057,
+    "rte_vs_baseline": {
+     "hl_m": 0.0,
+     "hl_ci95_m": [
+      -0.047297802987438686,
+      0.01190796811768241
+     ],
+     "p_exact": 0.8983173370361328
+    }
+   }
+  },
+  "no_robust_update": {
+   "label": "外れ値に強い更新（Huber）を外す",
+   "definition": null,
+   "fix_points": {
+    "total": 231,
+    "per_series_median": 4.0,
+    "series_without_points": 6
+   },
+   "fix_error_deg_attitude_basis": {
+    "median": 5.143,
+    "p90": 14.144,
+    "share_over_10": 0.24675324675324675,
+    "share_over_20": 0.025974025974025976
+   },
+   "fix_error_deg_position_basis": {
+    "median": 4.805,
+    "p90": 12.912,
+    "share_over_10": 0.19480519480519481,
+    "share_over_20": 0.021645021645021644
+   },
+   "ronin": {
+    "ate_median_m": 3.491167134323391,
+    "ate_mean_m": 3.7586862312711276,
+    "baseline_ate_median_m": 3.515468394948718,
+    "vs_baseline": {
+     "hl_m": 0.0,
+     "hl_ci95_m": [
+      -0.06748485128455742,
+      0.023068050914567095
+     ],
+     "p_exact": 0.682713508605957,
+     "p_exact_holm": 1.0,
+     "p_subject": 0.54955,
+     "p_subject_holm": 1.0,
+     "better": 11,
+     "worse": 10,
+     "unchanged": 14,
+     "worse_over_w": 6,
+     "better_over_w": 7,
+     "worst_diff_m": 0.7732323800085474
+    },
+    "rte_median_m": 2.406196723329587,
+    "rte_vs_baseline": {
+     "hl_m": 0.0,
+     "hl_ci95_m": [
+      -0.00949052443095888,
+      0.046337451032787746
+     ],
+     "p_exact": 0.785365104675293
+    },
+    "vs_proposal": {
+     "hl_m": 0.0,
+     "hl_ci95_m": [
+      0.0,
+      0.0
+     ],
+     "p_exact": 1.0,
+     "p_exact_holm": 1.0,
+     "p_subject": 1.0,
+     "p_subject_holm": 1.0,
+     "better": 0,
+     "worse": 1,
+     "unchanged": 34,
+     "worse_over_w": 1,
+     "better_over_w": 0,
+     "worst_diff_m": 0.6718184177411075,
+     "rte_hl_m": 0.0,
+     "rte_hl_ci95_m": [
+      0.0,
+      0.0
+     ],
+     "rte_p_exact": 1.0
+    }
+   },
+   "eqnio": {
+    "ate_median_m": 3.1881332080507114,
+    "ate_mean_m": 3.1565168911728496,
+    "baseline_ate_median_m": 3.1881332080507114,
+    "vs_baseline": {
+     "hl_m": 0.0,
+     "hl_ci95_m": [
+      -0.08895044635076688,
+      0.03720940777223869
+     ],
+     "p_exact": 0.785365104675293,
+     "p_exact_holm": 1.0,
+     "p_subject": 0.28555,
+     "p_subject_holm": 1.0,
+     "better": 10,
+     "worse": 11,
+     "unchanged": 14,
+     "worse_over_w": 7,
+     "better_over_w": 7,
+     "worst_diff_m": 0.4368779262981075
+    },
+    "rte_median_m": 2.3357594994917057,
+    "rte_vs_baseline": {
+     "hl_m": 8.854304755834264e-06,
+     "hl_ci95_m": [
+      -0.009398486242604198,
+      0.04536228512565077
+     ],
+     "p_exact": 0.7561664581298828
+    },
+    "vs_proposal": {
+     "hl_m": 0.0,
+     "hl_ci95_m": [
+      0.0,
+      0.0
+     ],
+     "p_exact": 1.0,
+     "p_exact_holm": 1.0,
+     "p_subject": 1.0,
+     "p_subject_holm": 1.0,
+     "better": 0,
+     "worse": 1,
+     "unchanged": 34,
+     "worse_over_w": 1,
+     "better_over_w": 0,
+     "worst_diff_m": 0.3759177185946436,
+     "rte_hl_m": 0.0,
+     "rte_hl_ci95_m": [
+      0.0,
+      0.0
+     ],
+     "rte_p_exact": 1.0
+    }
+   }
+  },
+  "no_straight_detector": {
+   "label": "直進判定器を外す（評価器だけで選ぶ）",
+   "definition": null,
+   "fix_points": {
+    "total": 434,
+    "per_series_median": 8.0,
+    "series_without_points": 0
+   },
+   "fix_error_deg_attitude_basis": {
+    "median": 5.9705,
+    "p90": 16.655399999999997,
+    "share_over_10": 0.2857142857142857,
+    "share_over_20": 0.05069124423963134
+   },
+   "fix_error_deg_position_basis": {
+    "median": 6.0375,
+    "p90": 16.2441,
+    "share_over_10": 0.28110599078341014,
+    "share_over_20": 0.05069124423963134
+   },
+   "ronin": {
+    "ate_median_m": 3.361268120111393,
+    "ate_mean_m": 3.7216422422861406,
+    "baseline_ate_median_m": 3.515468394948718,
+    "vs_baseline": {
+     "hl_m": -0.032998439829439175,
+     "hl_ci95_m": [
+      -0.1073433476019472,
+      0.024707612915124445
+     ],
+     "p_exact": 0.35754538839682937,
+     "p_exact_holm": 1.0,
+     "p_subject": 0.34925,
+     "p_subject_holm": 1.0,
+     "better": 20,
+     "worse": 13,
+     "unchanged": 2,
+     "worse_over_w": 7,
+     "better_over_w": 10,
+     "worst_diff_m": 0.6886935884991177
+    },
+    "rte_median_m": 2.1373159136282545,
+    "rte_vs_baseline": {
+     "hl_m": -0.005197568307322875,
+     "hl_ci95_m": [
+      -0.10795158402633764,
+      0.04617386349905299
+     ],
+     "p_exact": 0.7778494691010565
+    },
+    "vs_proposal": {
+     "hl_m": -0.014838815438631303,
+     "hl_ci95_m": [
+      -0.06508533613492828,
+      0.025042878415101024
+     ],
+     "p_exact": 0.42636040854267776,
+     "p_exact_holm": 1.0,
+     "p_subject": 0.71825,
+     "p_subject_holm": 1.0,
+     "better": 20,
+     "worse": 13,
+     "unchanged": 2,
+     "worse_over_w": 7,
+     "better_over_w": 7,
+     "worst_diff_m": 0.8340799834062498,
+     "rte_hl_m": 0.0004638165895147206,
+     "rte_hl_ci95_m": [
+      -0.06477562047612435,
+      0.03867459823726449
+     ],
+     "rte_p_exact": 0.9718779842369258
+    }
+   },
+   "eqnio": {
+    "ate_median_m": 2.9384648943050307,
+    "ate_mean_m": 3.1225914941215582,
+    "baseline_ate_median_m": 3.1881332080507114,
+    "vs_baseline": {
+     "hl_m": -0.019851190948997427,
+     "hl_ci95_m": [
+      -0.12073261409197894,
+      0.024382433757021458
+     ],
+     "p_exact": 0.29599490854889154,
+     "p_exact_holm": 1.0,
+     "p_subject": 0.2383,
+     "p_subject_holm": 1.0,
+     "better": 21,
+     "worse": 12,
+     "unchanged": 2,
+     "worse_over_w": 7,
+     "better_over_w": 9,
+     "worst_diff_m": 0.6949021809124885
+    },
+    "rte_median_m": 2.1303287178679056,
+    "rte_vs_baseline": {
+     "hl_m": -0.004907792830240315,
+     "hl_ci95_m": [
+      -0.10753477560681107,
+      0.038101703781141694
+     ],
+     "p_exact": 0.737572681857273
+    },
+    "vs_proposal": {
+     "hl_m": -0.002877901359553764,
+     "hl_ci95_m": [
+      -0.06607177017430943,
+      0.04717509385804357
+     ],
+     "p_exact": 0.7643533307127655,
+     "p_exact_holm": 1.0,
+     "p_subject": 0.62655,
+     "p_subject_holm": 1.0,
+     "better": 18,
+     "worse": 15,
+     "unchanged": 2,
+     "worse_over_w": 7,
+     "better_over_w": 7,
+     "worst_diff_m": 0.5560247489715167,
+     "rte_hl_m": -0.004291522560263855,
+     "rte_hl_ci95_m": [
+      -0.07521618462323748,
+      0.03636134325791293
+     ],
+     "rte_p_exact": 0.737572681857273
+    }
+   }
+  },
+  "no_average": {
+   "label": "4 m の平均を外す（観測を直前 1 秒の 1 標本にする）",
+   "definition": null,
+   "fix_points": {
+    "total": 231,
+    "per_series_median": 4.0,
+    "series_without_points": 6
+   },
+   "fix_error_deg_attitude_basis": {
+    "median": 8.654,
+    "p90": 22.839,
+    "share_over_10": 0.42857142857142855,
+    "share_over_20": 0.17316017316017315
+   },
+   "fix_error_deg_position_basis": {
+    "median": 7.906,
+    "p90": 23.686,
+    "share_over_10": 0.4025974025974026,
+    "share_over_20": 0.1471861471861472
+   },
+   "ronin": {
+    "ate_median_m": 3.515468394948718,
+    "ate_mean_m": 3.8202779255314017,
+    "baseline_ate_median_m": 3.515468394948718,
+    "vs_baseline": {
+     "hl_m": 0.010107110607163516,
+     "hl_ci95_m": [
+      0.0,
+      0.06835813229709897
+     ],
+     "p_exact": 0.35541629791259766,
+     "p_exact_holm": 1.0,
+     "p_subject": 0.5625,
+     "p_subject_holm": 1.0,
+     "better": 7,
+     "worse": 14,
+     "unchanged": 14,
+     "worse_over_w": 8,
+     "better_over_w": 5,
+     "worst_diff_m": 0.5300605076009566
+    },
+    "rte_median_m": 2.469033886426655,
+    "rte_vs_baseline": {
+     "hl_m": 0.0,
+     "hl_ci95_m": [
+      -0.0627392341113077,
+      0.09715686867142181
+     ],
+     "p_exact": 0.9728584289550781
+    },
+    "vs_proposal": {
+     "hl_m": 0.028789178057361475,
+     "hl_ci95_m": [
+      0.0,
+      0.07574990767126633
+     ],
+     "p_exact": 0.011346817016601562,
+     "p_exact_holm": 0.11346817016601562,
+     "p_subject": 0.037,
+     "p_subject_holm": 0.37,
+     "better": 5,
+     "worse": 16,
+     "unchanged": 14,
+     "worse_over_w": 6,
+     "better_over_w": 1,
+     "worst_diff_m": 0.9091356370601922,
+     "rte_hl_m": 0.009535065000113807,
+     "rte_hl_ci95_m": [
+      0.0,
+      0.09038487585630002
+     ],
+     "rte_p_exact": 0.1372833251953125
+    }
+   },
+   "eqnio": {
+    "ate_median_m": 3.1881332080507114,
+    "ate_mean_m": 3.25735869929491,
+    "baseline_ate_median_m": 3.1881332080507114,
+    "vs_baseline": {
+     "hl_m": 0.008623092079189432,
+     "hl_ci95_m": [
+      0.0,
+      0.07972626023746576
+     ],
+     "p_exact": 0.2877340316772461,
+     "p_exact_holm": 1.0,
+     "p_subject": 0.3027,
+     "p_subject_holm": 1.0,
+     "better": 8,
+     "worse": 13,
+     "unchanged": 14,
+     "worse_over_w": 8,
+     "better_over_w": 5,
+     "worst_diff_m": 0.5715805457528564
+    },
+    "rte_median_m": 2.4511141235965765,
+    "rte_vs_baseline": {
+     "hl_m": 0.0,
+     "hl_ci95_m": [
+      -0.055162896553818896,
+      0.10100412455841279
+     ],
+     "p_exact": 0.8983173370361328
+    },
+    "vs_proposal": {
+     "hl_m": 0.03615290955883266,
+     "hl_ci95_m": [
+      0.004703971828563522,
+      0.13149219498454723
+     ],
+     "p_exact": 0.0021514892578125,
+     "p_exact_holm": 0.021514892578125,
+     "p_subject": 0.0126,
+     "p_subject_holm": 0.126,
+     "better": 4,
+     "worse": 17,
+     "unchanged": 14,
+     "worse_over_w": 9,
+     "better_over_w": 1,
+     "worst_diff_m": 1.0499497849882937,
+     "rte_hl_m": 0.011328410138324196,
+     "rte_hl_ci95_m": [
+      0.0,
+      0.11002635134700389
+     ],
+     "rte_p_exact": 0.07598018646240234
+    }
+   }
+  }
+ },
+ "position_ablation": {
+  "proposal": {
+   "label": "提案（照合の構成すべて、寄せ幅 0.1）",
+   "ronin": {
+    "ate_median_m": 3.206124723514129,
+    "ate_mean_m": 3.3148402964738666,
+    "baseline_ate_median_m": 3.515468394948718,
+    "vs_baseline": {
+     "hl_m": -0.3384566928813103,
+     "hl_ci95_m": [
+      -0.5875441630317588,
+      -0.18145365726562068
+     ],
+     "p_exact": 1.5422701835632324e-06,
+     "better": 26,
+     "worse": 2,
+     "unchanged": 7,
+     "worse_over_w": 1,
+     "better_over_w": 22,
+     "worst_diff_m": 0.27869582459445175
+    },
+    "rte_vs_baseline": {
+     "hl_m": 0.01862789379352381,
+     "hl_ci95_m": [
+      -0.08433080435222184,
+      0.09725672252589473
+     ],
+     "p_exact": 0.6455853804945946
+    },
+    "updates": 2274
+   },
+   "eqnio": {
+    "ate_median_m": 2.6495681231738537,
+    "ate_mean_m": 2.8496580526667517,
+    "baseline_ate_median_m": 3.1881332080507114,
+    "vs_baseline": {
+     "hl_m": -0.20336148791188313,
+     "hl_ci95_m": [
+      -0.5175162059612486,
+      -0.03575387272545294
+     ],
+     "p_exact": 0.0003814026713371277,
+     "better": 24,
+     "worse": 4,
+     "unchanged": 7,
+     "worse_over_w": 2,
+     "better_over_w": 14,
+     "worst_diff_m": 0.36518015974020823
+    },
+    "rte_vs_baseline": {
+     "hl_m": 0.006393532493219167,
+     "hl_ci95_m": [
+      -0.0737689758652819,
+      0.09246798573092159
+     ],
+     "p_exact": 0.7450922578573227
+    },
+    "updates": 2268
+   }
+  },
+  "no_distance_limit": {
+   "label": "照合の距離の上限 D_max を外す",
+   "ronin": {
+    "ate_median_m": 2.7772811854904345,
+    "ate_mean_m": 3.0542602808405115,
+    "baseline_ate_median_m": 3.515468394948718,
+    "vs_baseline": {
+     "hl_m": -0.6449040132093786,
+     "hl_ci95_m": [
+      -0.9321629581167699,
+      -0.3963807655157768
+     ],
+     "p_exact": 8.195638656616211e-08,
+     "better": 29,
+     "worse": 2,
+     "unchanged": 4,
+     "worse_over_w": 2,
+     "better_over_w": 27,
+     "worst_diff_m": 0.3761752487379726
+    },
+    "rte_vs_baseline": {
+     "hl_m": 0.012125078145626467,
+     "hl_ci95_m": [
+      -0.14496518596796662,
+      0.1388362738739659
+     ],
+     "p_exact": 0.8091655615717173
+    },
+    "updates": 4415,
+    "vs_proposal": {
+     "hl_m": -0.20764180003523347,
+     "hl_ci95_m": [
+      -0.32383050349349846,
+      -0.11891717171166594
+     ],
+     "p_exact": 8.856505155563354e-05,
+     "p_exact_holm": 0.0004428252577781677,
+     "better": 26,
+     "worse": 4,
+     "unchanged": 5,
+     "worse_over_w": null,
+     "worst_diff_m": null
+    }
+   },
+   "eqnio": {
+    "ate_median_m": 2.4845608490686875,
+    "ate_mean_m": 2.6650213674241607,
+    "baseline_ate_median_m": 3.1881332080507114,
+    "vs_baseline": {
+     "hl_m": -0.427179860416917,
+     "hl_ci95_m": [
+      -0.7383034615250325,
+      -0.1662093513867231
+     ],
+     "p_exact": 0.000177089124917984,
+     "better": 25,
+     "worse": 6,
+     "unchanged": 4,
+     "worse_over_w": 5,
+     "better_over_w": 21,
+     "worst_diff_m": 0.3734065059617564
+    },
+    "rte_vs_baseline": {
+     "hl_m": 0.007310889547961885,
+     "hl_ci95_m": [
+      -0.12066573403263992,
+      0.1437899232573884
+     ],
+     "p_exact": 0.8848088048398495
+    },
+    "updates": 4437,
+    "vs_proposal": {
+     "hl_m": -0.132289349416562,
+     "hl_ci95_m": [
+      -0.23134544621112907,
+      -0.04563833611173047
+     ],
+     "p_exact": 0.0011314544826745987,
+     "p_exact_holm": 0.0056572724133729935,
+     "better": 23,
+     "worse": 7,
+     "unchanged": 5,
+     "worse_over_w": null,
+     "worst_diff_m": null
+    }
+   }
+  },
+  "no_continuity": {
+   "label": "連続性の条件を外す",
+   "ronin": {
+    "ate_median_m": 3.17037372675297,
+    "ate_mean_m": 3.270465190742387,
+    "baseline_ate_median_m": 3.515468394948718,
+    "vs_baseline": {
+     "hl_m": -0.3864227869855154,
+     "hl_ci95_m": [
+      -0.6460734244895541,
+      -0.20003496547325694
+     ],
+     "p_exact": 1.0207295417785645e-06,
+     "better": 26,
+     "worse": 2,
+     "unchanged": 7,
+     "worse_over_w": 1,
+     "better_over_w": 24,
+     "worst_diff_m": 0.3212762544604384
+    },
+    "rte_vs_baseline": {
+     "hl_m": 0.01127761204565203,
+     "hl_ci95_m": [
+      -0.07434427863799098,
+      0.1110363379748695
+     ],
+     "p_exact": 0.6455853804945946
+    },
+    "updates": 2526,
+    "vs_proposal": {
+     "hl_m": -0.023578108639379036,
+     "hl_ci95_m": [
+      -0.042793371774363376,
+      -0.008341071918252396
+     ],
+     "p_exact": 0.0003418475389480591,
+     "p_exact_holm": 0.0013673901557922363,
+     "better": 22,
+     "worse": 6,
+     "unchanged": 7,
+     "worse_over_w": null,
+     "worst_diff_m": null
+    }
+   },
+   "eqnio": {
+    "ate_median_m": 2.662676418276628,
+    "ate_mean_m": 2.833776303238488,
+    "baseline_ate_median_m": 3.1881332080507114,
+    "vs_baseline": {
+     "hl_m": -0.22799009816955493,
+     "hl_ci95_m": [
+      -0.5245186063948755,
+      -0.046668736924340926
+     ],
+     "p_exact": 0.0005255788564682007,
+     "better": 23,
+     "worse": 5,
+     "unchanged": 7,
+     "worse_over_w": 3,
+     "better_over_w": 15,
+     "worst_diff_m": 0.3792722158858206
+    },
+    "rte_vs_baseline": {
+     "hl_m": 0.008608766250067734,
+     "hl_ci95_m": [
+      -0.06408485189445165,
+      0.1017464777170296
+     ],
+     "p_exact": 0.6455853804945946
+    },
+    "updates": 2511,
+    "vs_proposal": {
+     "hl_m": -0.012562283151395237,
+     "hl_ci95_m": [
+      -0.02772718936800169,
+      0.0004695701435428088
+     ],
+     "p_exact": 0.06623983383178711,
+     "p_exact_holm": 0.26495933532714844,
+     "better": 17,
+     "worse": 11,
+     "unchanged": 7,
+     "worse_over_w": null,
+     "worst_diff_m": null
+    }
+   }
+  },
+  "magnitude_only": {
+   "label": "磁場の大きさだけで照合する（鉛直成分と水平成分を使わない）",
+   "ronin": {
+    "ate_median_m": 3.0857833636156737,
+    "ate_mean_m": 3.1998965973277746,
+    "baseline_ate_median_m": 3.515468394948718,
+    "vs_baseline": {
+     "hl_m": -0.5154825181041413,
+     "hl_ci95_m": [
+      -0.8209585832169676,
+      -0.2819163573082156
+     ],
+     "p_exact": 1.009204424917698e-06,
+     "better": 29,
+     "worse": 5,
+     "unchanged": 1,
+     "worse_over_w": 2,
+     "better_over_w": 24,
+     "worst_diff_m": 0.5000565783026152
+    },
+    "rte_vs_baseline": {
+     "hl_m": 0.11928741749369448,
+     "hl_ci95_m": [
+      0.002763590358607626,
+      0.3104357185909685
+     ],
+     "p_exact": 0.06182266934774816
+    },
+    "updates": 3392,
+    "vs_proposal": {
+     "hl_m": -0.07385854140593912,
+     "hl_ci95_m": [
+      -0.1825317589151038,
+      0.0074695506839556735
+     ],
+     "p_exact": 0.08424431679304689,
+     "p_exact_holm": 0.2527329503791407,
+     "better": 20,
+     "worse": 14,
+     "unchanged": 1,
+     "worse_over_w": 6,
+     "worst_diff_m": 0.8292268782347483
+    }
+   },
+   "eqnio": {
+    "ate_median_m": 2.72554814749629,
+    "ate_mean_m": 2.8634371217482686,
+    "baseline_ate_median_m": 3.1881332080507114,
+    "vs_baseline": {
+     "hl_m": -0.26593876901293373,
+     "hl_ci95_m": [
+      -0.5670504968087359,
+      -0.04838341200182887
+     ],
+     "p_exact": 0.01961147238034755,
+     "better": 22,
+     "worse": 12,
+     "unchanged": 1,
+     "worse_over_w": 9,
+     "better_over_w": 19,
+     "worst_diff_m": 0.5720158010179666
+    },
+    "rte_vs_baseline": {
+     "hl_m": 0.10847738796915354,
+     "hl_ci95_m": [
+      -0.025640856422876383,
+      0.30251721664758413
+     ],
+     "p_exact": 0.13375806238036603
+    },
+    "updates": 3447,
+    "vs_proposal": {
+     "hl_m": 0.03116076553983682,
+     "hl_ci95_m": [
+      -0.07703231218463254,
+      0.13580442660526967
+     ],
+     "p_exact": 0.6606290930649266,
+     "p_exact_holm": 1.0,
+     "better": 16,
+     "worse": 18,
+     "unchanged": 1,
+     "worse_over_w": 11,
+     "worst_diff_m": 1.0245399414737357
+    }
+   }
+  },
+  "position_only": {
+   "label": "位置だけで照合する（地磁気を使わない）",
+   "ronin": {
+    "ate_median_m": 3.195155069616787,
+    "ate_mean_m": 3.445187298874475,
+    "baseline_ate_median_m": 3.515468394948718,
+    "vs_baseline": {
+     "hl_m": -0.2406375815895216,
+     "hl_ci95_m": [
+      -0.5459719795588177,
+      0.005430184560853635
+     ],
+     "p_exact": 0.06182266934774816,
+     "better": 21,
+     "worse": 13,
+     "unchanged": 1,
+     "worse_over_w": 9,
+     "better_over_w": 18,
+     "worst_diff_m": 1.3565005805838553
+    },
+    "rte_vs_baseline": {
+     "hl_m": -0.04558707501020087,
+     "hl_ci95_m": [
+      -0.1884351105304144,
+      0.07563984501432752
+     ],
+     "p_exact": 0.48818062560167164
+    },
+    "updates": 8021,
+    "vs_proposal": {
+     "hl_m": 0.08026763386092844,
+     "hl_ci95_m": [
+      -0.14339372645401038,
+      0.4143702419071107
+     ],
+     "p_exact": 0.5317529394524172,
+     "p_exact_holm": 1.0,
+     "better": 17,
+     "worse": 17,
+     "unchanged": 1,
+     "worse_over_w": 15,
+     "worst_diff_m": 2.1108759097468472
+    }
+   },
+   "eqnio": {
+    "ate_median_m": 2.7081375451382947,
+    "ate_mean_m": 3.0439957405802787,
+    "baseline_ate_median_m": 3.1881332080507114,
+    "vs_baseline": {
+     "hl_m": -0.027471678820704837,
+     "hl_ci95_m": [
+      -0.25382733175677363,
+      0.09535287335281195
+     ],
+     "p_exact": 0.5771621782332659,
+     "better": 19,
+     "worse": 15,
+     "unchanged": 1,
+     "worse_over_w": 9,
+     "better_over_w": 10,
+     "worst_diff_m": 1.5828672136835666
+    },
+    "rte_vs_baseline": {
+     "hl_m": 0.012520322490830571,
+     "hl_ci95_m": [
+      -0.0789560867073639,
+      0.11110122758879953
+     ],
+     "p_exact": 0.7871285933069885
+    },
+    "updates": 7892,
+    "vs_proposal": {
+     "hl_m": 0.13455478766805004,
+     "hl_ci95_m": [
+      -0.05381328239138116,
+      0.4212624376462444
+     ],
+     "p_exact": 0.1681906844023615,
+     "p_exact_holm": 0.5045720532070845,
+     "better": 15,
+     "worse": 19,
+     "unchanged": 1,
+     "worse_over_w": 16,
+     "worst_diff_m": 1.897677452468793
+    }
+   }
+  }
+ }
+}

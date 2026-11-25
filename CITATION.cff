@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+message: "If you use this code or these results, please cite the paper below. References for RoNIN, EqNIO, IDOL and VQF are listed in the README."
+title: "mag-heading-pdr: code and results for Geomagnetic Correction of Position and Heading for Deep Learning-Based Pedestrian Dead Reckoning"
+type: software
+authors:
+  - family-names: "Sukeno"
+    given-names: "Haruya"
+    affiliation: "Graduate School of Information Science and Engineering, Ritsumeikan University"
+  - family-names: "Nishio"
+    given-names: "Nobuhiko"
+    affiliation: "Graduate School of Information Science and Engineering, Ritsumeikan University"
+license: GPL-3.0-only
+repository-code: "https://github.com/jono-jono868/mag-heading-pdr"
+preferred-citation:
+  type: generic
+  title: "Geomagnetic Correction of Position and Heading for Deep Learning-Based Pedestrian Dead Reckoning"
+  authors:
+    - family-names: "Sukeno"
+      given-names: "Haruya"
+      affiliation: "Graduate School of Information Science and Engineering, Ritsumeikan University"
+    - family-names: "Nishio"
+      given-names: "Nobuhiko"
+      affiliation: "Graduate School of Information Science and Engineering, Ritsumeikan University"
+  status: in-preparation
+  notes: "情報処理学会論文誌への投稿に向けて準備中の原稿"

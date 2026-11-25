@@ -1,0 +1,21 @@
+# 再生成できるもの・大きなもの
+cache/
+models/
+external/*
+!external/PATCHES.md
+*.npz
+*.pt
+*.joblib
+
+# 図（paper/figures.py で作り直す）
+figures/
+
+# 軌跡の座標の配列（図 3 の入力。paper/export_revisit_trajectories.py で作る。載せない）
+results/position_correction/trajectories_test.json
+
+# 雑物
+catboost_info/
+__pycache__/
+*.pyc
+.DS_Store
+.ipynb_checkpoints/

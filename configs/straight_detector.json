@@ -1,0 +1,21 @@
+{
+ "description": "直進判定器（未来を使わない版）の構成。GBDT 4 種と因果 TCN 3 シードのロジット平均、直前 4 m の判定。",
+ "families": {
+  "GBDT": [
+   "lgbm",
+   "lgbm_tuned",
+   "xgb",
+   "histgb"
+  ],
+  "TCN": [
+   "tcnrn_ln_s0",
+   "tcnrn_ln_s1",
+   "tcnrn_ln_s2"
+  ]
+ },
+ "combine": "家族ごとにロジット平均（GBDT 4 種・TCN 3 シード）→ 2 家族のロジット平均",
+ "features_gbdt": "窓特徴のうち因果な 12 個、歩行周期に基づく因果な 22 個、RoNIN の速度から作る 13 個。過去の窓（0.5・1・2・4・6 秒前）を連結",
+ "tcn": "因果 TCN（時刻ごとの LayerNorm。入力は行の終わりまで、予測は窓の終わりまでに終わる行）",
+ "threshold_p_turn": 0.6691885450917815,
+ "threshold_rule": "設計データの予測（学習データだけで学習したモデル）で MCC が最大になる閾値。p_turn < 閾値 を直進とする"
+}
