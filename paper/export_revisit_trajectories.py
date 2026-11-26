@@ -1,4 +1,4 @@
-"""論文の図 3（位置補正の軌跡の例）のために、評価データの軌跡を書き出す。評価のやり直しではない。
+"""補足の図 s2（位置補正の軌跡の例。論文の本文には載せていない）のために、評価データの軌跡を書き出す。評価のやり直しではない。
 
 系列は PICKS: RoNIN の a055_3（位置補正で ATE の低下が最大の系列）と、EqNIO の a049_3
 （位置補正で ATE が変わった系列を差の小さい順に並べた真ん中の系列。例として選んだ）。
@@ -7,7 +7,7 @@
 更新の一覧の向きを残すため、照合は revisit_correction.run で回す。固定の寄せ幅では gated_run.run_gated と同じ結果になり、
 ATE が results/position_correction/test.json の値と一致することをここでも確かめる（一致しなければ止まる）。
 入力: results/position_correction/test.json（python -m magpdr.position.evaluate --split test の出力）
-出力: results/position_correction/trajectories_test.json（軌跡の座標の配列なので公開しない。paper/figures.py の f3 が読む）
+出力: results/position_correction/trajectories_test.json（軌跡の座標の配列なので公開しない。paper/figures.py の s2 が読む）
 """
 import json
 import os
@@ -33,7 +33,7 @@ def main():
         recorded = {s['name']: s for s in json.load(f)['series']}
     C = V.load_config()
     assert C['est'] == ('gain', 0.1)
-    out = dict(note='論文の図 3 のための書き出し。寄せ幅 g = %g' % C['est'][1],
+    out = dict(note='補足の図 s2 のための書き出し。寄せ幅 g = %g' % C['est'][1],
                units='m, s（時刻は data.hdf5 の synced/time, start_frame 以降）', decimation='200 Hz → 2 Hz（100 サンプルおき）', series={})
     for bb, name in PICKS:
         key = f'test_{bb}'                                  # 速度のキャッシュの組（revisit_correction.SETS のキー）

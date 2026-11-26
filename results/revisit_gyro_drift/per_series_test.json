@@ -1,0 +1,3026 @@
+{
+ "description": "評価データ 32 系列の系列ごとの値。評価データは開発の途中にも使ったデータ。バックボーンごと（ronin・eqnio）に、4 通りの構成の遅い方位誤差・ATE・RTE。measurements はカルマンフィルタに入れた測定の値（角度のスカラーだけ。位置は含めない）",
+ "arms": {
+  "none": "補正なし",
+  "proposal": "提案の方位補正（補正点だけをカルマンフィルタに入れる）",
+  "revisit_only": "再訪の測定だけをカルマンフィルタに入れる（補正点は使わない）",
+  "proposal_plus_revisit": "提案の方位補正に再訪の測定を加える"
+ },
+ "units": "slow_heading_error_rms_deg: 遅い方位誤差（方位誤差の 300 秒の中心移動平均）の系列ごとの二乗平均平方根。ate_m: RoNIN 公式の ATE。rte_m: 60 秒の RTE",
+ "series": [
+  {
+   "series": "a006_2",
+   "subject": "a006",
+   "device": "samsung",
+   "n_correction_points": 1,
+   "n_matched_same_direction_pairs": 26,
+   "n_measurements_used": 3,
+   "n_measurements_downweighted": 2,
+   "ronin": {
+    "none": {
+     "slow_heading_error_rms_deg": 6.705918883071457,
+     "ate_m": 3.8430452354019673,
+     "rte_m": 2.8668978883540572
+    },
+    "proposal": {
+     "slow_heading_error_rms_deg": 6.705918883071457,
+     "ate_m": 3.8430452354019673,
+     "rte_m": 2.8668978883540572
+    },
+    "revisit_only": {
+     "slow_heading_error_rms_deg": 13.187991569071004,
+     "ate_m": 4.110993417697728,
+     "rte_m": 3.069073166719276
+    },
+    "proposal_plus_revisit": {
+     "slow_heading_error_rms_deg": 13.187991145634975,
+     "ate_m": 4.110993396724567,
+     "rte_m": 3.06907315202739
+    },
+    "change_in_slow_heading_error_rms_deg": 6.482072262563517
+   },
+   "eqnio": {
+    "none": {
+     "slow_heading_error_rms_deg": 11.520185729906816,
+     "ate_m": 5.5389000831274,
+     "rte_m": 2.976683412488833
+    },
+    "proposal": {
+     "slow_heading_error_rms_deg": 11.520185729906816,
+     "ate_m": 5.5389000831274,
+     "rte_m": 2.976683412488833
+    },
+    "revisit_only": {
+     "slow_heading_error_rms_deg": 19.189307966843252,
+     "ate_m": 5.7988962211613,
+     "rte_m": 3.0899149021580112
+    },
+    "proposal_plus_revisit": {
+     "slow_heading_error_rms_deg": 19.189307527026497,
+     "ate_m": 5.798896210118108,
+     "rte_m": 3.0899148904508
+    },
+    "change_in_slow_heading_error_rms_deg": 7.669121797119681
+   },
+   "measurements": [
+    {
+     "measured_deg": -30.337949705977046,
+     "true_change_vs_attached_attitude_deg": -7.600574833701902,
+     "true_change_vs_position_truth_deg": -5.434467775109638,
+     "matched_distance_m": 0.16341854374196568
+    },
+    {
+     "measured_deg": -11.948285106437897,
+     "true_change_vs_attached_attitude_deg": -6.251951107678298,
+     "true_change_vs_position_truth_deg": -5.449990704526867,
+     "matched_distance_m": 0.5337406320502055
+    },
+    {
+     "measured_deg": 10.795449409637065,
+     "true_change_vs_attached_attitude_deg": -1.4309633533880155,
+     "true_change_vs_position_truth_deg": -2.9984748092747724,
+     "matched_distance_m": 0.5192486269667099
+    }
+   ]
+  },
+  {
+   "series": "a019_3",
+   "subject": "a019",
+   "device": "samsung",
+   "n_correction_points": 0,
+   "n_matched_same_direction_pairs": 0,
+   "n_measurements_used": 0,
+   "n_measurements_downweighted": 0,
+   "ronin": {
+    "none": {
+     "slow_heading_error_rms_deg": 5.83464360277688,
+     "ate_m": 5.953393919300874,
+     "rte_m": 5.379040003716353
+    },
+    "proposal": {
+     "slow_heading_error_rms_deg": 5.83464360277688,
+     "ate_m": 5.953393919300874,
+     "rte_m": 5.379040003716353
+    },
+    "revisit_only": {
+     "slow_heading_error_rms_deg": 5.83464360277688,
+     "ate_m": 5.953393919300874,
+     "rte_m": 5.379040003716353
+    },
+    "proposal_plus_revisit": {
+     "slow_heading_error_rms_deg": 5.83464360277688,
+     "ate_m": 5.953393919300874,
+     "rte_m": 5.379040003716353
+    },
+    "change_in_slow_heading_error_rms_deg": 0.0
+   },
+   "eqnio": {
+    "none": {
+     "slow_heading_error_rms_deg": 4.168280213009459,
+     "ate_m": 7.2670813214605054,
+     "rte_m": 5.43749488015847
+    },
+    "proposal": {
+     "slow_heading_error_rms_deg": 4.168280213009459,
+     "ate_m": 7.2670813214605054,
+     "rte_m": 5.43749488015847
+    },
+    "revisit_only": {
+     "slow_heading_error_rms_deg": 4.168280213009459,
+     "ate_m": 7.2670813214605054,
+     "rte_m": 5.43749488015847
+    },
+    "proposal_plus_revisit": {
+     "slow_heading_error_rms_deg": 4.168280213009459,
+     "ate_m": 7.2670813214605054,
+     "rte_m": 5.43749488015847
+    },
+    "change_in_slow_heading_error_rms_deg": 0.0
+   },
+   "measurements": []
+  },
+  {
+   "series": "a024_1",
+   "subject": "a024",
+   "device": "samsung",
+   "n_correction_points": 0,
+   "n_matched_same_direction_pairs": 13,
+   "n_measurements_used": 1,
+   "n_measurements_downweighted": 0,
+   "ronin": {
+    "none": {
+     "slow_heading_error_rms_deg": 4.8186289717705595,
+     "ate_m": 2.441361578804938,
+     "rte_m": 2.2225310884675245
+    },
+    "proposal": {
+     "slow_heading_error_rms_deg": 4.8186289717705595,
+     "ate_m": 2.441361578804938,
+     "rte_m": 2.2225310884675245
+    },
+    "revisit_only": {
+     "slow_heading_error_rms_deg": 3.7327253501944084,
+     "ate_m": 2.4092056806713917,
+     "rte_m": 2.183428898857846
+    },
+    "proposal_plus_revisit": {
+     "slow_heading_error_rms_deg": 3.7327253501944084,
+     "ate_m": 2.4092056806713917,
+     "rte_m": 2.183428898857846
+    },
+    "change_in_slow_heading_error_rms_deg": -1.085903621576151
+   },
+   "eqnio": {
+    "none": {
+     "slow_heading_error_rms_deg": 3.729922620606985,
+     "ate_m": 2.598843457709939,
+     "rte_m": 2.272314009414965
+    },
+    "proposal": {
+     "slow_heading_error_rms_deg": 3.729922620606985,
+     "ate_m": 2.598843457709939,
+     "rte_m": 2.272314009414965
+    },
+    "revisit_only": {
+     "slow_heading_error_rms_deg": 2.930301394217574,
+     "ate_m": 2.587148862212704,
+     "rte_m": 2.2419579377636953
+    },
+    "proposal_plus_revisit": {
+     "slow_heading_error_rms_deg": 2.930301394217574,
+     "ate_m": 2.587148862212704,
+     "rte_m": 2.2419579377636953
+    },
+    "change_in_slow_heading_error_rms_deg": -0.7996212263894109
+   },
+   "measurements": [
+    {
+     "measured_deg": 3.4628239696246066,
+     "true_change_vs_attached_attitude_deg": 1.108576624608518,
+     "true_change_vs_position_truth_deg": 3.2405536321949153,
+     "matched_distance_m": 0.19674646319476052
+    }
+   ]
+  },
+  {
+   "series": "a024_3",
+   "subject": "a024",
+   "device": "samsung",
+   "n_correction_points": 0,
+   "n_matched_same_direction_pairs": 0,
+   "n_measurements_used": 0,
+   "n_measurements_downweighted": 0,
+   "ronin": {
+    "none": {
+     "slow_heading_error_rms_deg": 1.7897168367992269,
+     "ate_m": 3.2412023514389667,
+     "rte_m": 2.454730153451054
+    },
+    "proposal": {
+     "slow_heading_error_rms_deg": 1.7897168367992269,
+     "ate_m": 3.2412023514389667,
+     "rte_m": 2.454730153451054
+    },
+    "revisit_only": {
+     "slow_heading_error_rms_deg": 1.7897168367992269,
+     "ate_m": 3.2412023514389667,
+     "rte_m": 2.454730153451054
+    },
+    "proposal_plus_revisit": {
+     "slow_heading_error_rms_deg": 1.7897168367992269,
+     "ate_m": 3.2412023514389667,
+     "rte_m": 2.454730153451054
+    },
+    "change_in_slow_heading_error_rms_deg": 0.0
+   },
+   "eqnio": {
+    "none": {
+     "slow_heading_error_rms_deg": 2.2038211482034384,
+     "ate_m": 3.905116914211167,
+     "rte_m": 2.093144764337244
+    },
+    "proposal": {
+     "slow_heading_error_rms_deg": 2.2038211482034384,
+     "ate_m": 3.905116914211167,
+     "rte_m": 2.093144764337244
+    },
+    "revisit_only": {
+     "slow_heading_error_rms_deg": 2.2038211482034384,
+     "ate_m": 3.905116914211167,
+     "rte_m": 2.093144764337244
+    },
+    "proposal_plus_revisit": {
+     "slow_heading_error_rms_deg": 2.2038211482034384,
+     "ate_m": 3.905116914211167,
+     "rte_m": 2.093144764337244
+    },
+    "change_in_slow_heading_error_rms_deg": 0.0
+   },
+   "measurements": []
+  },
+  {
+   "series": "a029_1",
+   "subject": "a029",
+   "device": "samsung",
+   "n_correction_points": 1,
+   "n_matched_same_direction_pairs": 68,
+   "n_measurements_used": 6,
+   "n_measurements_downweighted": 2,
+   "ronin": {
+    "none": {
+     "slow_heading_error_rms_deg": 21.952829770560502,
+     "ate_m": 4.167373761487154,
+     "rte_m": 6.871642346459517
+    },
+    "proposal": {
+     "slow_heading_error_rms_deg": 21.952829770560502,
+     "ate_m": 4.167373761487154,
+     "rte_m": 6.871642346459517
+    },
+    "revisit_only": {
+     "slow_heading_error_rms_deg": 21.18625842814685,
+     "ate_m": 3.9922526050812017,
+     "rte_m": 6.649247128403561
+    },
+    "proposal_plus_revisit": {
+     "slow_heading_error_rms_deg": 21.152962413050474,
+     "ate_m": 3.9587605705730455,
+     "rte_m": 6.625178179004009
+    },
+    "change_in_slow_heading_error_rms_deg": -0.7998673575100277
+   },
+   "eqnio": {
+    "none": {
+     "slow_heading_error_rms_deg": 19.681144259953804,
+     "ate_m": 4.315124727516724,
+     "rte_m": 6.369364773310687
+    },
+    "proposal": {
+     "slow_heading_error_rms_deg": 19.681144259953804,
+     "ate_m": 4.315124727516724,
+     "rte_m": 6.369364773310687
+    },
+    "revisit_only": {
+     "slow_heading_error_rms_deg": 18.92325284499423,
+     "ate_m": 4.050368887304763,
+     "rte_m": 6.132331661639328
+    },
+    "proposal_plus_revisit": {
+     "slow_heading_error_rms_deg": 18.893012169931463,
+     "ate_m": 3.992855173539115,
+     "rte_m": 6.103647546303698
+    },
+    "change_in_slow_heading_error_rms_deg": -0.7881320900223407
+   },
+   "measurements": [
+    {
+     "measured_deg": 36.663452008100286,
+     "true_change_vs_attached_attitude_deg": 28.25086743132563,
+     "true_change_vs_position_truth_deg": 2.4908186424826675,
+     "matched_distance_m": 0.4268093643965459
+    },
+    {
+     "measured_deg": 1.8466401308242413,
+     "true_change_vs_attached_attitude_deg": 6.989306259678166,
+     "true_change_vs_position_truth_deg": -8.624385014491162,
+     "matched_distance_m": 0.10452690456137653
+    },
+    {
+     "measured_deg": -4.176636080230232,
+     "true_change_vs_attached_attitude_deg": 2.5220790403189537,
+     "true_change_vs_position_truth_deg": -9.571241000238674,
+     "matched_distance_m": 0.5530954172290226
+    },
+    {
+     "measured_deg": 4.939438204730368,
+     "true_change_vs_attached_attitude_deg": -5.296850580583536,
+     "true_change_vs_position_truth_deg": -11.633807594240539,
+     "matched_distance_m": 0.2350181881879149
+    },
+    {
+     "measured_deg": 1.5950614193319153,
+     "true_change_vs_attached_attitude_deg": -12.633420581438843,
+     "true_change_vs_position_truth_deg": -14.279204703335289,
+     "matched_distance_m": 0.165145584073135
+    },
+    {
+     "measured_deg": -14.86678492128348,
+     "true_change_vs_attached_attitude_deg": -16.989321042343626,
+     "true_change_vs_position_truth_deg": -15.494355692747666,
+     "matched_distance_m": 0.2987460234481162
+    }
+   ]
+  },
+  {
+   "series": "a029_2",
+   "subject": "a029",
+   "device": "samsung",
+   "n_correction_points": 0,
+   "n_matched_same_direction_pairs": 0,
+   "n_measurements_used": 0,
+   "n_measurements_downweighted": 0,
+   "ronin": {
+    "none": {
+     "slow_heading_error_rms_deg": 6.429260354298618,
+     "ate_m": 2.801724806688987,
+     "rte_m": 1.8930416507013166
+    },
+    "proposal": {
+     "slow_heading_error_rms_deg": 6.429260354298618,
+     "ate_m": 2.801724806688987,
+     "rte_m": 1.8930416507013166
+    },
+    "revisit_only": {
+     "slow_heading_error_rms_deg": 6.429260354298618,
+     "ate_m": 2.801724806688987,
+     "rte_m": 1.8930416507013166
+    },
+    "proposal_plus_revisit": {
+     "slow_heading_error_rms_deg": 6.429260354298618,
+     "ate_m": 2.801724806688987,
+     "rte_m": 1.8930416507013166
+    },
+    "change_in_slow_heading_error_rms_deg": 0.0
+   },
+   "eqnio": {
+    "none": {
+     "slow_heading_error_rms_deg": 9.06369653561645,
+     "ate_m": 2.3719631938464185,
+     "rte_m": 2.3218006529515107
+    },
+    "proposal": {
+     "slow_heading_error_rms_deg": 9.06369653561645,
+     "ate_m": 2.3719631938464185,
+     "rte_m": 2.3218006529515107
+    },
+    "revisit_only": {
+     "slow_heading_error_rms_deg": 9.06369653561645,
+     "ate_m": 2.3719631938464185,
+     "rte_m": 2.3218006529515107
+    },
+    "proposal_plus_revisit": {
+     "slow_heading_error_rms_deg": 9.06369653561645,
+     "ate_m": 2.3719631938464185,
+     "rte_m": 2.3218006529515107
+    },
+    "change_in_slow_heading_error_rms_deg": 0.0
+   },
+   "measurements": []
+  },
+  {
+   "series": "a032_1",
+   "subject": "a032",
+   "device": "asus",
+   "n_correction_points": 3,
+   "n_matched_same_direction_pairs": 0,
+   "n_measurements_used": 0,
+   "n_measurements_downweighted": 0,
+   "ronin": {
+    "none": {
+     "slow_heading_error_rms_deg": 8.26188475490477,
+     "ate_m": 3.613433147398706,
+     "rte_m": 4.926380580549855
+    },
+    "proposal": {
+     "slow_heading_error_rms_deg": 8.332323754340939,
+     "ate_m": 3.6118119076989594,
+     "rte_m": 4.956208127866486
+    },
+    "revisit_only": {
+     "slow_heading_error_rms_deg": 8.26188475490477,
+     "ate_m": 3.613433147398706,
+     "rte_m": 4.926380580549855
+    },
+    "proposal_plus_revisit": {
+     "slow_heading_error_rms_deg": 8.332323754340939,
+     "ate_m": 3.6118119076989594,
+     "rte_m": 4.956208127866486
+    },
+    "change_in_slow_heading_error_rms_deg": 0.0
+   },
+   "eqnio": {
+    "none": {
+     "slow_heading_error_rms_deg": 8.005601084302572,
+     "ate_m": 3.7572573235649442,
+     "rte_m": 4.745106808718253
+    },
+    "proposal": {
+     "slow_heading_error_rms_deg": 8.07336438393052,
+     "ate_m": 3.7471428177375237,
+     "rte_m": 4.771273211872898
+    },
+    "revisit_only": {
+     "slow_heading_error_rms_deg": 8.005601084302572,
+     "ate_m": 3.7572573235649442,
+     "rte_m": 4.745106808718253
+    },
+    "proposal_plus_revisit": {
+     "slow_heading_error_rms_deg": 8.07336438393052,
+     "ate_m": 3.7471428177375237,
+     "rte_m": 4.771273211872898
+    },
+    "change_in_slow_heading_error_rms_deg": 0.0
+   },
+   "measurements": []
+  },
+  {
+   "series": "a032_3",
+   "subject": "a032",
+   "device": "asus",
+   "n_correction_points": 3,
+   "n_matched_same_direction_pairs": 95,
+   "n_measurements_used": 10,
+   "n_measurements_downweighted": 0,
+   "ronin": {
+    "none": {
+     "slow_heading_error_rms_deg": 8.741644947838903,
+     "ate_m": 14.60913483628014,
+     "rte_m": 6.788370319628272
+    },
+    "proposal": {
+     "slow_heading_error_rms_deg": 8.642224213279901,
+     "ate_m": 14.56165569830869,
+     "rte_m": 6.775937098656481
+    },
+    "revisit_only": {
+     "slow_heading_error_rms_deg": 9.358863644517156,
+     "ate_m": 14.552652425557337,
+     "rte_m": 6.849426734770731
+    },
+    "proposal_plus_revisit": {
+     "slow_heading_error_rms_deg": 9.34345412040919,
+     "ate_m": 14.543630923305525,
+     "rte_m": 6.847157972265783
+    },
+    "change_in_slow_heading_error_rms_deg": 0.7012299071292887
+   },
+   "eqnio": {
+    "none": {
+     "slow_heading_error_rms_deg": 3.2662039856873157,
+     "ate_m": 5.424318425471101,
+     "rte_m": 7.536848900367739
+    },
+    "proposal": {
+     "slow_heading_error_rms_deg": 3.2948800314423323,
+     "ate_m": 5.408436753554504,
+     "rte_m": 7.53360116271732
+    },
+    "revisit_only": {
+     "slow_heading_error_rms_deg": 3.4127718063944523,
+     "ate_m": 5.410874537359313,
+     "rte_m": 7.556930898492685
+    },
+    "proposal_plus_revisit": {
+     "slow_heading_error_rms_deg": 3.4092339120076685,
+     "ate_m": 5.408013899250819,
+     "rte_m": 7.556068812936241
+    },
+    "change_in_slow_heading_error_rms_deg": 0.11435388056533613
+   },
+   "measurements": [
+    {
+     "measured_deg": -2.2916549055350957,
+     "true_change_vs_attached_attitude_deg": -2.514723321899091,
+     "true_change_vs_position_truth_deg": -0.5678460465723808,
+     "matched_distance_m": 0.6972514027994258
+    },
+    {
+     "measured_deg": -1.4319542489791655,
+     "true_change_vs_attached_attitude_deg": -1.6191978754472358,
+     "true_change_vs_position_truth_deg": -0.5426570030839064,
+     "matched_distance_m": 0.5575284166908873
+    },
+    {
+     "measured_deg": 5.289323013320631,
+     "true_change_vs_attached_attitude_deg": -0.6369247070387245,
+     "true_change_vs_position_truth_deg": -0.3138388502980902,
+     "matched_distance_m": 0.9783166001560128
+    },
+    {
+     "measured_deg": -1.6598625846177262,
+     "true_change_vs_attached_attitude_deg": 0.29283272890281425,
+     "true_change_vs_position_truth_deg": -0.4521709453407234,
+     "matched_distance_m": 0.2596590485186448
+    },
+    {
+     "measured_deg": -8.006387367183486,
+     "true_change_vs_attached_attitude_deg": 2.525794110842958,
+     "true_change_vs_position_truth_deg": -1.5334386915061626,
+     "matched_distance_m": 0.47811131563584885
+    },
+    {
+     "measured_deg": -1.882304050775189,
+     "true_change_vs_attached_attitude_deg": 2.6805951126211434,
+     "true_change_vs_position_truth_deg": -2.1576103895460306,
+     "matched_distance_m": 0.23950655203244986
+    },
+    {
+     "measured_deg": -0.13313097023828036,
+     "true_change_vs_attached_attitude_deg": -7.717680198160765,
+     "true_change_vs_position_truth_deg": -2.962451051962312,
+     "matched_distance_m": 0.2064843023026971
+    },
+    {
+     "measured_deg": -6.720479232399532,
+     "true_change_vs_attached_attitude_deg": -6.3736079353388675,
+     "true_change_vs_position_truth_deg": -3.560706241412266,
+     "matched_distance_m": 0.11257661259127859
+    },
+    {
+     "measured_deg": 0.5689557988790224,
+     "true_change_vs_attached_attitude_deg": -0.06348681869052353,
+     "true_change_vs_position_truth_deg": -2.0389432014364623,
+     "matched_distance_m": 0.6760432089905206
+    },
+    {
+     "measured_deg": 1.011515517500138,
+     "true_change_vs_attached_attitude_deg": 0.1945227920973608,
+     "true_change_vs_position_truth_deg": -2.173845298126961,
+     "matched_distance_m": 0.05959704806288473
+    }
+   ]
+  },
+  {
+   "series": "a042_2",
+   "subject": "a042",
+   "device": "asus",
+   "n_correction_points": 4,
+   "n_matched_same_direction_pairs": 25,
+   "n_measurements_used": 3,
+   "n_measurements_downweighted": 0,
+   "ronin": {
+    "none": {
+     "slow_heading_error_rms_deg": 14.99415410651302,
+     "ate_m": 4.669115654030632,
+     "rte_m": 5.054123269634057
+    },
+    "proposal": {
+     "slow_heading_error_rms_deg": 14.86775432518092,
+     "ate_m": 4.638551265020221,
+     "rte_m": 5.0215289627456015
+    },
+    "revisit_only": {
+     "slow_heading_error_rms_deg": 13.801056708442767,
+     "ate_m": 4.947729644803176,
+     "rte_m": 4.5244436089365285
+    },
+    "proposal_plus_revisit": {
+     "slow_heading_error_rms_deg": 13.689161119220625,
+     "ate_m": 4.913154833796142,
+     "rte_m": 4.49850898959338
+    },
+    "change_in_slow_heading_error_rms_deg": -1.1785932059602953
+   },
+   "eqnio": {
+    "none": {
+     "slow_heading_error_rms_deg": 14.113843397121896,
+     "ate_m": 3.5050280146863955,
+     "rte_m": 4.763629298422113
+    },
+    "proposal": {
+     "slow_heading_error_rms_deg": 13.985907173201376,
+     "ate_m": 3.4818871852680995,
+     "rte_m": 4.732133793489572
+    },
+    "revisit_only": {
+     "slow_heading_error_rms_deg": 12.932178117268434,
+     "ate_m": 3.47708842052858,
+     "rte_m": 4.166042023805063
+    },
+    "proposal_plus_revisit": {
+     "slow_heading_error_rms_deg": 12.818701608005762,
+     "ate_m": 3.450494473648332,
+     "rte_m": 4.141684535207303
+    },
+    "change_in_slow_heading_error_rms_deg": -1.167205565195614
+   },
+   "measurements": [
+    {
+     "measured_deg": 12.542789486558327,
+     "true_change_vs_attached_attitude_deg": 8.521257560524782,
+     "true_change_vs_position_truth_deg": 9.649559524971343,
+     "matched_distance_m": 0.659673779614961
+    },
+    {
+     "measured_deg": 16.761113226966796,
+     "true_change_vs_attached_attitude_deg": 7.896568747234437,
+     "true_change_vs_position_truth_deg": 9.476709624812125,
+     "matched_distance_m": 0.5317483705359602
+    },
+    {
+     "measured_deg": 20.19329818408813,
+     "true_change_vs_attached_attitude_deg": 6.224142542235035,
+     "true_change_vs_position_truth_deg": 8.072163392520451,
+     "matched_distance_m": 0.3396824252833157
+    }
+   ]
+  },
+  {
+   "series": "a049_1",
+   "subject": "a049",
+   "device": "asus",
+   "n_correction_points": 1,
+   "n_matched_same_direction_pairs": 0,
+   "n_measurements_used": 0,
+   "n_measurements_downweighted": 0,
+   "ronin": {
+    "none": {
+     "slow_heading_error_rms_deg": 18.642806862526562,
+     "ate_m": 4.309192938950038,
+     "rte_m": 6.344337835110301
+    },
+    "proposal": {
+     "slow_heading_error_rms_deg": 18.642806862526562,
+     "ate_m": 4.309192938950038,
+     "rte_m": 6.344337835110301
+    },
+    "revisit_only": {
+     "slow_heading_error_rms_deg": 18.642806862526562,
+     "ate_m": 4.309192938950038,
+     "rte_m": 6.344337835110301
+    },
+    "proposal_plus_revisit": {
+     "slow_heading_error_rms_deg": 18.642806862526562,
+     "ate_m": 4.309192938950038,
+     "rte_m": 6.344337835110301
+    },
+    "change_in_slow_heading_error_rms_deg": 0.0
+   },
+   "eqnio": {
+    "none": {
+     "slow_heading_error_rms_deg": 17.195511543082755,
+     "ate_m": 4.027943362694533,
+     "rte_m": 5.956963149127176
+    },
+    "proposal": {
+     "slow_heading_error_rms_deg": 17.195511543082755,
+     "ate_m": 4.027943362694533,
+     "rte_m": 5.956963149127176
+    },
+    "revisit_only": {
+     "slow_heading_error_rms_deg": 17.195511543082755,
+     "ate_m": 4.027943362694533,
+     "rte_m": 5.956963149127176
+    },
+    "proposal_plus_revisit": {
+     "slow_heading_error_rms_deg": 17.195511543082755,
+     "ate_m": 4.027943362694533,
+     "rte_m": 5.956963149127176
+    },
+    "change_in_slow_heading_error_rms_deg": 0.0
+   },
+   "measurements": []
+  },
+  {
+   "series": "a049_2",
+   "subject": "a049",
+   "device": "asus",
+   "n_correction_points": 13,
+   "n_matched_same_direction_pairs": 133,
+   "n_measurements_used": 14,
+   "n_measurements_downweighted": 0,
+   "ronin": {
+    "none": {
+     "slow_heading_error_rms_deg": 2.923235850879762,
+     "ate_m": 2.2395787647995653,
+     "rte_m": 2.364592977389684
+    },
+    "proposal": {
+     "slow_heading_error_rms_deg": 1.2660816517401476,
+     "ate_m": 2.3047123701828878,
+     "rte_m": 2.3628570129008755
+    },
+    "revisit_only": {
+     "slow_heading_error_rms_deg": 2.9496320358420083,
+     "ate_m": 2.296864024494452,
+     "rte_m": 2.587581342509039
+    },
+    "proposal_plus_revisit": {
+     "slow_heading_error_rms_deg": 3.133410233383759,
+     "ate_m": 2.4937344654201357,
+     "rte_m": 2.696734229082033
+    },
+    "change_in_slow_heading_error_rms_deg": 1.8673285816436114
+   },
+   "eqnio": {
+    "none": {
+     "slow_heading_error_rms_deg": 3.8144317306533773,
+     "ate_m": 2.533355519118388,
+     "rte_m": 2.2755304842677484
+    },
+    "proposal": {
+     "slow_heading_error_rms_deg": 2.2456031986191216,
+     "ate_m": 2.4646355863065446,
+     "rte_m": 2.21741891687169
+    },
+    "revisit_only": {
+     "slow_heading_error_rms_deg": 3.7599610372436296,
+     "ate_m": 2.331992604670043,
+     "rte_m": 2.5582556889589956
+    },
+    "proposal_plus_revisit": {
+     "slow_heading_error_rms_deg": 3.9210365156890807,
+     "ate_m": 2.4609102938877885,
+     "rte_m": 2.6829138793744436
+    },
+    "change_in_slow_heading_error_rms_deg": 1.6754333170699591
+   },
+   "measurements": [
+    {
+     "measured_deg": 7.444303667208919,
+     "true_change_vs_attached_attitude_deg": 4.115099691329527,
+     "true_change_vs_position_truth_deg": -0.2241746235122019,
+     "matched_distance_m": 0.2375536389882719
+    },
+    {
+     "measured_deg": -0.20551429634826338,
+     "true_change_vs_attached_attitude_deg": 4.26834978433651,
+     "true_change_vs_position_truth_deg": -0.1459924753175683,
+     "matched_distance_m": 0.30545282604586155
+    },
+    {
+     "measured_deg": 4.005842898211585,
+     "true_change_vs_attached_attitude_deg": 5.048902476485995,
+     "true_change_vs_position_truth_deg": 0.13047702537647318,
+     "matched_distance_m": 0.6159666845889431
+    },
+    {
+     "measured_deg": 5.2288774521435615,
+     "true_change_vs_attached_attitude_deg": 3.588148780354427,
+     "true_change_vs_position_truth_deg": -0.10597123295464234,
+     "matched_distance_m": 0.2699139609111508
+    },
+    {
+     "measured_deg": 0.34968634588536557,
+     "true_change_vs_attached_attitude_deg": 4.072527464699216,
+     "true_change_vs_position_truth_deg": -0.2606694805887424,
+     "matched_distance_m": 0.06059002972046893
+    },
+    {
+     "measured_deg": -1.3669712861923355,
+     "true_change_vs_attached_attitude_deg": -3.5363986777735072,
+     "true_change_vs_position_truth_deg": -3.595201248763959,
+     "matched_distance_m": 0.3771976249770551
+    },
+    {
+     "measured_deg": -8.97222594326023,
+     "true_change_vs_attached_attitude_deg": -3.3828241447909306,
+     "true_change_vs_position_truth_deg": -3.5411999297511882,
+     "matched_distance_m": 0.5001714573249374
+    },
+    {
+     "measured_deg": -3.3463463522432315,
+     "true_change_vs_attached_attitude_deg": -3.134932906790478,
+     "true_change_vs_position_truth_deg": -3.594225895027875,
+     "matched_distance_m": 0.2157271008740594
+    },
+    {
+     "measured_deg": -6.584751669039713,
+     "true_change_vs_attached_attitude_deg": -3.2476703652427297,
+     "true_change_vs_position_truth_deg": -5.810596613462394,
+     "matched_distance_m": 0.15248972332445715
+    },
+    {
+     "measured_deg": -2.5247650696757336,
+     "true_change_vs_attached_attitude_deg": -1.1483706555657007,
+     "true_change_vs_position_truth_deg": -6.11063323448645,
+     "matched_distance_m": 0.12239703714869891
+    },
+    {
+     "measured_deg": -0.4774272799762319,
+     "true_change_vs_attached_attitude_deg": -0.746019938244834,
+     "true_change_vs_position_truth_deg": -6.346258626703361,
+     "matched_distance_m": 0.2874539154423026
+    },
+    {
+     "measured_deg": -13.865966999080964,
+     "true_change_vs_attached_attitude_deg": -2.833653264439852,
+     "true_change_vs_position_truth_deg": -6.660211511949457,
+     "matched_distance_m": 0.7958252144492611
+    },
+    {
+     "measured_deg": -14.991339087358803,
+     "true_change_vs_attached_attitude_deg": -1.333402193017827,
+     "true_change_vs_position_truth_deg": -6.893187665304575,
+     "matched_distance_m": 0.17516101681519028
+    },
+    {
+     "measured_deg": 3.3575224051607853,
+     "true_change_vs_attached_attitude_deg": -2.3724671137666538,
+     "true_change_vs_position_truth_deg": -1.9461800243714666,
+     "matched_distance_m": 0.16042291561129807
+    }
+   ]
+  },
+  {
+   "series": "a049_3",
+   "subject": "a049",
+   "device": "asus",
+   "n_correction_points": 32,
+   "n_matched_same_direction_pairs": 237,
+   "n_measurements_used": 18,
+   "n_measurements_downweighted": 0,
+   "ronin": {
+    "none": {
+     "slow_heading_error_rms_deg": 3.110584584096033,
+     "ate_m": 2.13532395306667,
+     "rte_m": 2.359256938507404
+    },
+    "proposal": {
+     "slow_heading_error_rms_deg": 0.46635224382303414,
+     "ate_m": 1.9635961399695403,
+     "rte_m": 1.9687666347103516
+    },
+    "revisit_only": {
+     "slow_heading_error_rms_deg": 1.9078272657735114,
+     "ate_m": 2.240918540095393,
+     "rte_m": 2.1389574206884494
+    },
+    "proposal_plus_revisit": {
+     "slow_heading_error_rms_deg": 0.9291737754706605,
+     "ate_m": 2.056591553746004,
+     "rte_m": 1.9991172237546189
+    },
+    "change_in_slow_heading_error_rms_deg": 0.46282153164762635
+   },
+   "eqnio": {
+    "none": {
+     "slow_heading_error_rms_deg": 4.239559417640826,
+     "ate_m": 3.422565080087068,
+     "rte_m": 2.3348266265381126
+    },
+    "proposal": {
+     "slow_heading_error_rms_deg": 1.557279125133999,
+     "ate_m": 3.4035173547720676,
+     "rte_m": 1.628882810139319
+    },
+    "revisit_only": {
+     "slow_heading_error_rms_deg": 3.0506784597844456,
+     "ate_m": 3.11326864185895,
+     "rte_m": 1.955845277351563
+    },
+    "proposal_plus_revisit": {
+     "slow_heading_error_rms_deg": 2.054480163958077,
+     "ate_m": 3.292991383624946,
+     "rte_m": 1.698085883871261
+    },
+    "change_in_slow_heading_error_rms_deg": 0.4972010388240782
+   },
+   "measurements": [
+    {
+     "measured_deg": -1.3178391930180786,
+     "true_change_vs_attached_attitude_deg": 0.885364653095076,
+     "true_change_vs_position_truth_deg": -2.2229826327712763,
+     "matched_distance_m": 0.17385945623920643
+    },
+    {
+     "measured_deg": -2.5933843823867266,
+     "true_change_vs_attached_attitude_deg": 2.3663856551622424,
+     "true_change_vs_position_truth_deg": -2.5517663783625872,
+     "matched_distance_m": 0.13633279321533942
+    },
+    {
+     "measured_deg": 6.059667982745176,
+     "true_change_vs_attached_attitude_deg": 2.037253310710139,
+     "true_change_vs_position_truth_deg": -2.7160212179466856,
+     "matched_distance_m": 0.24013670717745736
+    },
+    {
+     "measured_deg": -2.5306025873541618,
+     "true_change_vs_attached_attitude_deg": 1.8477557403807008,
+     "true_change_vs_position_truth_deg": -2.735341378594191,
+     "matched_distance_m": 0.1608176795035307
+    },
+    {
+     "measured_deg": -2.335282245310718,
+     "true_change_vs_attached_attitude_deg": 1.6437247874398149,
+     "true_change_vs_position_truth_deg": -2.8224125259122492,
+     "matched_distance_m": 0.16805529513600279
+    },
+    {
+     "measured_deg": -7.798842931303304,
+     "true_change_vs_attached_attitude_deg": 4.733975853726895,
+     "true_change_vs_position_truth_deg": -3.14967144923795,
+     "matched_distance_m": 0.15507256625820662
+    },
+    {
+     "measured_deg": -5.9648487988545345,
+     "true_change_vs_attached_attitude_deg": 1.2318172770533882,
+     "true_change_vs_position_truth_deg": -3.242364967095187,
+     "matched_distance_m": 0.16592414081104087
+    },
+    {
+     "measured_deg": -3.065865612210003,
+     "true_change_vs_attached_attitude_deg": 1.9422809674419297,
+     "true_change_vs_position_truth_deg": -3.539829259797834,
+     "matched_distance_m": 0.1676935584032052
+    },
+    {
+     "measured_deg": -3.6108635353166085,
+     "true_change_vs_attached_attitude_deg": 2.2044713321688736,
+     "true_change_vs_position_truth_deg": -3.4428274335141893,
+     "matched_distance_m": 0.11711888769940651
+    },
+    {
+     "measured_deg": -3.858923844280991,
+     "true_change_vs_attached_attitude_deg": 1.3593006875019797,
+     "true_change_vs_position_truth_deg": -3.394048249869711,
+     "matched_distance_m": 0.10381240279812383
+    },
+    {
+     "measured_deg": -3.600661728519003,
+     "true_change_vs_attached_attitude_deg": 1.274203058465396,
+     "true_change_vs_position_truth_deg": -3.3219355121053926,
+     "matched_distance_m": 0.13388367811271615
+    },
+    {
+     "measured_deg": -4.151921154814675,
+     "true_change_vs_attached_attitude_deg": 1.102420422938111,
+     "true_change_vs_position_truth_deg": -3.252243918749655,
+     "matched_distance_m": 0.262283904555375
+    },
+    {
+     "measured_deg": -3.1718392368488266,
+     "true_change_vs_attached_attitude_deg": 0.9655610002503148,
+     "true_change_vs_position_truth_deg": -3.2982182633261687,
+     "matched_distance_m": 0.28317952652200096
+    },
+    {
+     "measured_deg": 6.260760921609765,
+     "true_change_vs_attached_attitude_deg": 0.7005567436889057,
+     "true_change_vs_position_truth_deg": -3.1168162237618406,
+     "matched_distance_m": 0.2810677898681613
+    },
+    {
+     "measured_deg": 0.3477449177366904,
+     "true_change_vs_attached_attitude_deg": -0.3475924873400988,
+     "true_change_vs_position_truth_deg": -2.94884394246202,
+     "matched_distance_m": 0.6210783775914342
+    },
+    {
+     "measured_deg": -4.62671999155553,
+     "true_change_vs_attached_attitude_deg": -0.7547987742511234,
+     "true_change_vs_position_truth_deg": -2.7511638131288567,
+     "matched_distance_m": 0.5631793132938151
+    },
+    {
+     "measured_deg": -3.882080525577875,
+     "true_change_vs_attached_attitude_deg": -0.8998040787349676,
+     "true_change_vs_position_truth_deg": -3.0843709448130703,
+     "matched_distance_m": 0.22968435004645657
+    },
+    {
+     "measured_deg": -2.0223169128251657,
+     "true_change_vs_attached_attitude_deg": -1.3513527560629475,
+     "true_change_vs_position_truth_deg": -3.1441556875971615,
+     "matched_distance_m": 0.2740772581442443
+    }
+   ]
+  },
+  {
+   "series": "a050_1",
+   "subject": "a050",
+   "device": "samsung",
+   "n_correction_points": 1,
+   "n_matched_same_direction_pairs": 0,
+   "n_measurements_used": 0,
+   "n_measurements_downweighted": 0,
+   "ronin": {
+    "none": {
+     "slow_heading_error_rms_deg": 10.572556400465023,
+     "ate_m": 10.28810408514906,
+     "rte_m": 6.277419060363639
+    },
+    "proposal": {
+     "slow_heading_error_rms_deg": 10.572556400465023,
+     "ate_m": 10.28810408514906,
+     "rte_m": 6.277419060363639
+    },
+    "revisit_only": {
+     "slow_heading_error_rms_deg": 10.572556400465023,
+     "ate_m": 10.28810408514906,
+     "rte_m": 6.277419060363639
+    },
+    "proposal_plus_revisit": {
+     "slow_heading_error_rms_deg": 10.572556400465023,
+     "ate_m": 10.28810408514906,
+     "rte_m": 6.277419060363639
+    },
+    "change_in_slow_heading_error_rms_deg": 0.0
+   },
+   "eqnio": {
+    "none": {
+     "slow_heading_error_rms_deg": 9.01839756053542,
+     "ate_m": 7.095968926741057,
+     "rte_m": 4.942863072308677
+    },
+    "proposal": {
+     "slow_heading_error_rms_deg": 9.01839756053542,
+     "ate_m": 7.095968926741057,
+     "rte_m": 4.942863072308677
+    },
+    "revisit_only": {
+     "slow_heading_error_rms_deg": 9.01839756053542,
+     "ate_m": 7.095968926741057,
+     "rte_m": 4.942863072308677
+    },
+    "proposal_plus_revisit": {
+     "slow_heading_error_rms_deg": 9.01839756053542,
+     "ate_m": 7.095968926741057,
+     "rte_m": 4.942863072308677
+    },
+    "change_in_slow_heading_error_rms_deg": 0.0
+   },
+   "measurements": []
+  },
+  {
+   "series": "a050_3",
+   "subject": "a050",
+   "device": "samsung",
+   "n_correction_points": 0,
+   "n_matched_same_direction_pairs": 0,
+   "n_measurements_used": 0,
+   "n_measurements_downweighted": 0,
+   "ronin": {
+    "none": {
+     "slow_heading_error_rms_deg": 14.171797606625736,
+     "ate_m": 13.8465789119291,
+     "rte_m": 7.360954058647507
+    },
+    "proposal": {
+     "slow_heading_error_rms_deg": 14.171797606625736,
+     "ate_m": 13.8465789119291,
+     "rte_m": 7.360954058647507
+    },
+    "revisit_only": {
+     "slow_heading_error_rms_deg": 14.171797606625736,
+     "ate_m": 13.8465789119291,
+     "rte_m": 7.360954058647507
+    },
+    "proposal_plus_revisit": {
+     "slow_heading_error_rms_deg": 14.171797606625736,
+     "ate_m": 13.8465789119291,
+     "rte_m": 7.360954058647507
+    },
+    "change_in_slow_heading_error_rms_deg": 0.0
+   },
+   "eqnio": {
+    "none": {
+     "slow_heading_error_rms_deg": 13.021966260464925,
+     "ate_m": 7.34010451494535,
+     "rte_m": 4.994661987320714
+    },
+    "proposal": {
+     "slow_heading_error_rms_deg": 13.021966260464925,
+     "ate_m": 7.34010451494535,
+     "rte_m": 4.994661987320714
+    },
+    "revisit_only": {
+     "slow_heading_error_rms_deg": 13.021966260464925,
+     "ate_m": 7.34010451494535,
+     "rte_m": 4.994661987320714
+    },
+    "proposal_plus_revisit": {
+     "slow_heading_error_rms_deg": 13.021966260464925,
+     "ate_m": 7.34010451494535,
+     "rte_m": 4.994661987320714
+    },
+    "change_in_slow_heading_error_rms_deg": 0.0
+   },
+   "measurements": []
+  },
+  {
+   "series": "a051_1",
+   "subject": "a051",
+   "device": "asus",
+   "n_correction_points": 10,
+   "n_matched_same_direction_pairs": 6,
+   "n_measurements_used": 1,
+   "n_measurements_downweighted": 0,
+   "ronin": {
+    "none": {
+     "slow_heading_error_rms_deg": 17.737456003462896,
+     "ate_m": 6.4896422571484,
+     "rte_m": 4.917068469272852
+    },
+    "proposal": {
+     "slow_heading_error_rms_deg": 17.14524278135997,
+     "ate_m": 6.379187377734225,
+     "rte_m": 4.71816424243406
+    },
+    "revisit_only": {
+     "slow_heading_error_rms_deg": 10.789757851723229,
+     "ate_m": 5.0067965954720846,
+     "rte_m": 3.4693230744407297
+    },
+    "proposal_plus_revisit": {
+     "slow_heading_error_rms_deg": 10.307903611228966,
+     "ate_m": 4.831606728983421,
+     "rte_m": 3.2925025976638786
+    },
+    "change_in_slow_heading_error_rms_deg": -6.837339170131003
+   },
+   "eqnio": {
+    "none": {
+     "slow_heading_error_rms_deg": 16.57789912609339,
+     "ate_m": 5.631233379382209,
+     "rte_m": 4.429418955263842
+    },
+    "proposal": {
+     "slow_heading_error_rms_deg": 15.976106915459814,
+     "ate_m": 5.528696849956047,
+     "rte_m": 4.240265067574744
+    },
+    "revisit_only": {
+     "slow_heading_error_rms_deg": 9.55712395897004,
+     "ate_m": 4.183040791377293,
+     "rte_m": 2.926063899013111
+    },
+    "proposal_plus_revisit": {
+     "slow_heading_error_rms_deg": 9.08501982058611,
+     "ate_m": 4.000253820258688,
+     "rte_m": 2.764859362070638
+    },
+    "change_in_slow_heading_error_rms_deg": -6.891087094873704
+   },
+   "measurements": [
+    {
+     "measured_deg": -12.919098782183786,
+     "true_change_vs_attached_attitude_deg": -5.27204386100958,
+     "true_change_vs_position_truth_deg": -6.163488552134355,
+     "matched_distance_m": 4.432832207266721
+    }
+   ]
+  },
+  {
+   "series": "a051_2",
+   "subject": "a051",
+   "device": "asus",
+   "n_correction_points": 0,
+   "n_matched_same_direction_pairs": 5,
+   "n_measurements_used": 1,
+   "n_measurements_downweighted": 0,
+   "ronin": {
+    "none": {
+     "slow_heading_error_rms_deg": 5.326800877633434,
+     "ate_m": 3.4771810646139265,
+     "rte_m": 1.3666647027612855
+    },
+    "proposal": {
+     "slow_heading_error_rms_deg": 5.326800877633434,
+     "ate_m": 3.4771810646139265,
+     "rte_m": 1.3666647027612855
+    },
+    "revisit_only": {
+     "slow_heading_error_rms_deg": 5.02507352294436,
+     "ate_m": 3.481944396633431,
+     "rte_m": 1.2976248827038475
+    },
+    "proposal_plus_revisit": {
+     "slow_heading_error_rms_deg": 5.02507352294436,
+     "ate_m": 3.481944396633431,
+     "rte_m": 1.2976248827038475
+    },
+    "change_in_slow_heading_error_rms_deg": -0.3017273546890742
+   },
+   "eqnio": {
+    "none": {
+     "slow_heading_error_rms_deg": 3.644332942428108,
+     "ate_m": 3.142852206582138,
+     "rte_m": 1.1485794279300248
+    },
+    "proposal": {
+     "slow_heading_error_rms_deg": 3.644332942428108,
+     "ate_m": 3.142852206582138,
+     "rte_m": 1.1485794279300248
+    },
+    "revisit_only": {
+     "slow_heading_error_rms_deg": 3.3043340844776727,
+     "ate_m": 3.1530030229001755,
+     "rte_m": 1.0786358185635045
+    },
+    "proposal_plus_revisit": {
+     "slow_heading_error_rms_deg": 3.3043340844776727,
+     "ate_m": 3.1530030229001755,
+     "rte_m": 1.0786358185635045
+    },
+    "change_in_slow_heading_error_rms_deg": -0.33999885795043516
+   },
+   "measurements": [
+    {
+     "measured_deg": -3.4044085780573514,
+     "true_change_vs_attached_attitude_deg": -13.229038479334063,
+     "true_change_vs_position_truth_deg": -9.41047717634084,
+     "matched_distance_m": 0.45721211882046264
+    }
+   ]
+  },
+  {
+   "series": "a051_3",
+   "subject": "a051",
+   "device": "asus",
+   "n_correction_points": 0,
+   "n_matched_same_direction_pairs": 0,
+   "n_measurements_used": 0,
+   "n_measurements_downweighted": 0,
+   "ronin": {
+    "none": {
+     "slow_heading_error_rms_deg": 4.736721281846919,
+     "ate_m": 1.355797984434302,
+     "rte_m": 1.5260526214373435
+    },
+    "proposal": {
+     "slow_heading_error_rms_deg": 4.736721281846919,
+     "ate_m": 1.355797984434302,
+     "rte_m": 1.5260526214373435
+    },
+    "revisit_only": {
+     "slow_heading_error_rms_deg": 4.736721281846919,
+     "ate_m": 1.355797984434302,
+     "rte_m": 1.5260526214373435
+    },
+    "proposal_plus_revisit": {
+     "slow_heading_error_rms_deg": 4.736721281846919,
+     "ate_m": 1.355797984434302,
+     "rte_m": 1.5260526214373435
+    },
+    "change_in_slow_heading_error_rms_deg": 0.0
+   },
+   "eqnio": {
+    "none": {
+     "slow_heading_error_rms_deg": 4.2029743125976715,
+     "ate_m": 0.9709322848462401,
+     "rte_m": 1.4367584522311145
+    },
+    "proposal": {
+     "slow_heading_error_rms_deg": 4.2029743125976715,
+     "ate_m": 0.9709322848462401,
+     "rte_m": 1.4367584522311145
+    },
+    "revisit_only": {
+     "slow_heading_error_rms_deg": 4.2029743125976715,
+     "ate_m": 0.9709322848462401,
+     "rte_m": 1.4367584522311145
+    },
+    "proposal_plus_revisit": {
+     "slow_heading_error_rms_deg": 4.2029743125976715,
+     "ate_m": 0.9709322848462401,
+     "rte_m": 1.4367584522311145
+    },
+    "change_in_slow_heading_error_rms_deg": 0.0
+   },
+   "measurements": []
+  },
+  {
+   "series": "a052_2",
+   "subject": "a052",
+   "device": "samsung",
+   "n_correction_points": 3,
+   "n_matched_same_direction_pairs": 27,
+   "n_measurements_used": 3,
+   "n_measurements_downweighted": 0,
+   "ronin": {
+    "none": {
+     "slow_heading_error_rms_deg": 7.943607603519407,
+     "ate_m": 4.97801589158424,
+     "rte_m": 7.693135226640015
+    },
+    "proposal": {
+     "slow_heading_error_rms_deg": 7.973212888844344,
+     "ate_m": 4.979370743084806,
+     "rte_m": 7.693592460756054
+    },
+    "revisit_only": {
+     "slow_heading_error_rms_deg": 7.348352054338162,
+     "ate_m": 5.146001605120779,
+     "rte_m": 7.657849402170825
+    },
+    "proposal_plus_revisit": {
+     "slow_heading_error_rms_deg": 7.315800374342853,
+     "ate_m": 5.144213946456123,
+     "rte_m": 7.657272849670702
+    },
+    "change_in_slow_heading_error_rms_deg": -0.6574125145014911
+   },
+   "eqnio": {
+    "none": {
+     "slow_heading_error_rms_deg": 8.61422226145897,
+     "ate_m": 4.4483128079472,
+     "rte_m": 7.321929737052396
+    },
+    "proposal": {
+     "slow_heading_error_rms_deg": 8.652278567699897,
+     "ate_m": 4.450872132576193,
+     "rte_m": 7.323190901270817
+    },
+    "revisit_only": {
+     "slow_heading_error_rms_deg": 7.827552146460206,
+     "ate_m": 4.39612392823461,
+     "rte_m": 7.215424944250861
+    },
+    "proposal_plus_revisit": {
+     "slow_heading_error_rms_deg": 7.780449054570424,
+     "ate_m": 4.393282138758761,
+     "rte_m": 7.21382480744934
+    },
+    "change_in_slow_heading_error_rms_deg": -0.8718295131294731
+   },
+   "measurements": [
+    {
+     "measured_deg": 5.0018066259086345,
+     "true_change_vs_attached_attitude_deg": 3.7140579740950157,
+     "true_change_vs_position_truth_deg": -4.484817838106725,
+     "matched_distance_m": 0.5381827834998248
+    },
+    {
+     "measured_deg": -4.816237679067976,
+     "true_change_vs_attached_attitude_deg": 3.9742197486896504,
+     "true_change_vs_position_truth_deg": -3.8756796368000055,
+     "matched_distance_m": 0.570508386835722
+    },
+    {
+     "measured_deg": 11.205586406562034,
+     "true_change_vs_attached_attitude_deg": 3.5149641422971736,
+     "true_change_vs_position_truth_deg": -3.4806662098829095,
+     "matched_distance_m": 0.3524714038203354
+    }
+   ]
+  },
+  {
+   "series": "a053_1",
+   "subject": "a053",
+   "device": "asus",
+   "n_correction_points": 0,
+   "n_matched_same_direction_pairs": 144,
+   "n_measurements_used": 12,
+   "n_measurements_downweighted": 2,
+   "ronin": {
+    "none": {
+     "slow_heading_error_rms_deg": 7.742947171203725,
+     "ate_m": 2.958059268439667,
+     "rte_m": 3.8288768726053797
+    },
+    "proposal": {
+     "slow_heading_error_rms_deg": 7.742947171203725,
+     "ate_m": 2.958059268439667,
+     "rte_m": 3.8288768726053797
+    },
+    "revisit_only": {
+     "slow_heading_error_rms_deg": 4.262425491568619,
+     "ate_m": 2.765977843370584,
+     "rte_m": 2.6391078979038554
+    },
+    "proposal_plus_revisit": {
+     "slow_heading_error_rms_deg": 4.262425491568619,
+     "ate_m": 2.765977843370584,
+     "rte_m": 2.6391078979038554
+    },
+    "change_in_slow_heading_error_rms_deg": -3.480521679635106
+   },
+   "eqnio": {
+    "none": {
+     "slow_heading_error_rms_deg": 6.981515907285121,
+     "ate_m": 2.1114000323050983,
+     "rte_m": 3.526334584628064
+    },
+    "proposal": {
+     "slow_heading_error_rms_deg": 6.981515907285121,
+     "ate_m": 2.1114000323050983,
+     "rte_m": 3.526334584628064
+    },
+    "revisit_only": {
+     "slow_heading_error_rms_deg": 3.4981260727371453,
+     "ate_m": 1.4847288381043524,
+     "rte_m": 2.3129411686289334
+    },
+    "proposal_plus_revisit": {
+     "slow_heading_error_rms_deg": 3.4981260727371453,
+     "ate_m": 1.4847288381043524,
+     "rte_m": 2.3129411686289334
+    },
+    "change_in_slow_heading_error_rms_deg": -3.4833898345479755
+   },
+   "measurements": [
+    {
+     "measured_deg": 2.1949511414548053,
+     "true_change_vs_attached_attitude_deg": 0.09521046683858206,
+     "true_change_vs_position_truth_deg": 3.829285961198466,
+     "matched_distance_m": 0.1232251284392017
+    },
+    {
+     "measured_deg": 5.985398733930456,
+     "true_change_vs_attached_attitude_deg": 3.452614225417672,
+     "true_change_vs_position_truth_deg": 5.1547054640977015,
+     "matched_distance_m": 0.2635053460603579
+    },
+    {
+     "measured_deg": 6.253947889506603,
+     "true_change_vs_attached_attitude_deg": 4.348220788402536,
+     "true_change_vs_position_truth_deg": 5.301629775706755,
+     "matched_distance_m": 0.15533975962495922
+    },
+    {
+     "measured_deg": 6.238188458116349,
+     "true_change_vs_attached_attitude_deg": 4.565301599084804,
+     "true_change_vs_position_truth_deg": 5.56575248613957,
+     "matched_distance_m": 0.21812539659452032
+    },
+    {
+     "measured_deg": 4.435588397085358,
+     "true_change_vs_attached_attitude_deg": 7.007953451024288,
+     "true_change_vs_position_truth_deg": 6.582164935913016,
+     "matched_distance_m": 0.3140866423774884
+    },
+    {
+     "measured_deg": 5.745352085720344,
+     "true_change_vs_attached_attitude_deg": 11.06049472062503,
+     "true_change_vs_position_truth_deg": 9.336248827494057,
+     "matched_distance_m": 0.20337244560598144
+    },
+    {
+     "measured_deg": -3.5597399520991786,
+     "true_change_vs_attached_attitude_deg": 7.676189055293896,
+     "true_change_vs_position_truth_deg": 4.00970503358463,
+     "matched_distance_m": 0.28041338001882526
+    },
+    {
+     "measured_deg": 7.512973633187274,
+     "true_change_vs_attached_attitude_deg": 11.97273742933133,
+     "true_change_vs_position_truth_deg": 9.227633109446735,
+     "matched_distance_m": 0.10017483725805242
+    },
+    {
+     "measured_deg": -0.4015368099459901,
+     "true_change_vs_attached_attitude_deg": 6.824062428384836,
+     "true_change_vs_position_truth_deg": 3.3055574531195027,
+     "matched_distance_m": 0.21264360189112003
+    },
+    {
+     "measured_deg": 21.778923479789484,
+     "true_change_vs_attached_attitude_deg": 14.682755058954468,
+     "true_change_vs_position_truth_deg": 9.004202266851252,
+     "matched_distance_m": 0.0857943361894457
+    },
+    {
+     "measured_deg": 6.3698040897654575,
+     "true_change_vs_attached_attitude_deg": 6.533143527548608,
+     "true_change_vs_position_truth_deg": 2.466581998972407,
+     "matched_distance_m": 0.4374756374376955
+    },
+    {
+     "measured_deg": 24.635289760558756,
+     "true_change_vs_attached_attitude_deg": 5.08086910071497,
+     "true_change_vs_position_truth_deg": 2.188771484374519,
+     "matched_distance_m": 0.2623682418310799
+    }
+   ]
+  },
+  {
+   "series": "a053_2",
+   "subject": "a053",
+   "device": "asus",
+   "n_correction_points": 6,
+   "n_matched_same_direction_pairs": 274,
+   "n_measurements_used": 23,
+   "n_measurements_downweighted": 0,
+   "ronin": {
+    "none": {
+     "slow_heading_error_rms_deg": 3.522162884418349,
+     "ate_m": 4.631179052752651,
+     "rte_m": 2.3448642429623505
+    },
+    "proposal": {
+     "slow_heading_error_rms_deg": 4.712374032208722,
+     "ate_m": 4.684648814717582,
+     "rte_m": 2.604499365726731
+    },
+    "revisit_only": {
+     "slow_heading_error_rms_deg": 5.408527312340687,
+     "ate_m": 4.6416433138586495,
+     "rte_m": 2.7841071704370024
+    },
+    "proposal_plus_revisit": {
+     "slow_heading_error_rms_deg": 5.695308601624106,
+     "ate_m": 4.643823093866979,
+     "rte_m": 2.8589467467330936
+    },
+    "change_in_slow_heading_error_rms_deg": 0.9829345694153835
+   },
+   "eqnio": {
+    "none": {
+     "slow_heading_error_rms_deg": 4.6058334587493714,
+     "ate_m": 2.916197578528363,
+     "rte_m": 2.4038265653631825
+    },
+    "proposal": {
+     "slow_heading_error_rms_deg": 5.893137212272178,
+     "ate_m": 3.0646497669067347,
+     "rte_m": 2.7714285638123863
+    },
+    "revisit_only": {
+     "slow_heading_error_rms_deg": 6.574560484025604,
+     "ate_m": 3.066475724226961,
+     "rte_m": 2.95149838407288
+    },
+    "proposal_plus_revisit": {
+     "slow_heading_error_rms_deg": 6.865521628298253,
+     "ate_m": 3.1086496904697807,
+     "rte_m": 3.060321656105035
+    },
+    "change_in_slow_heading_error_rms_deg": 0.9723844160260748
+   },
+   "measurements": [
+    {
+     "measured_deg": -0.25969970306167584,
+     "true_change_vs_attached_attitude_deg": -2.468070917314655,
+     "true_change_vs_position_truth_deg": -0.42943574630146775,
+     "matched_distance_m": 0.3672212158465704
+    },
+    {
+     "measured_deg": 1.5476998141559615,
+     "true_change_vs_attached_attitude_deg": -2.549197384587893,
+     "true_change_vs_position_truth_deg": -0.5036688327559693,
+     "matched_distance_m": 0.3919201541021782
+    },
+    {
+     "measured_deg": -1.4230006503895711,
+     "true_change_vs_attached_attitude_deg": -4.836902935844609,
+     "true_change_vs_position_truth_deg": -0.9715521126951895,
+     "matched_distance_m": 0.2312091482526215
+    },
+    {
+     "measured_deg": -1.9500171067492051,
+     "true_change_vs_attached_attitude_deg": -4.889031614526017,
+     "true_change_vs_position_truth_deg": -0.8953826783639135,
+     "matched_distance_m": 0.25299495812631606
+    },
+    {
+     "measured_deg": -2.901273817588445,
+     "true_change_vs_attached_attitude_deg": -4.379107909647226,
+     "true_change_vs_position_truth_deg": -0.6983331765066962,
+     "matched_distance_m": 0.39392448548111775
+    },
+    {
+     "measured_deg": 9.113338268761789,
+     "true_change_vs_attached_attitude_deg": -4.432147370087234,
+     "true_change_vs_position_truth_deg": -0.542689744927272,
+     "matched_distance_m": 0.45533880287182615
+    },
+    {
+     "measured_deg": -1.1896928716996522,
+     "true_change_vs_attached_attitude_deg": -4.41735860358103,
+     "true_change_vs_position_truth_deg": -0.3557554295511071,
+     "matched_distance_m": 0.33503709247477564
+    },
+    {
+     "measured_deg": -0.315702365702689,
+     "true_change_vs_attached_attitude_deg": -3.680696199247111,
+     "true_change_vs_position_truth_deg": -0.15332832246434303,
+     "matched_distance_m": 0.4685791093489964
+    },
+    {
+     "measured_deg": -0.7696318041068814,
+     "true_change_vs_attached_attitude_deg": -4.078494212896758,
+     "true_change_vs_position_truth_deg": -0.10921282040274277,
+     "matched_distance_m": 0.3271028284545594
+    },
+    {
+     "measured_deg": 5.213034057360557,
+     "true_change_vs_attached_attitude_deg": -4.043585985299492,
+     "true_change_vs_position_truth_deg": -0.019749577330900506,
+     "matched_distance_m": 0.27503646189431197
+    },
+    {
+     "measured_deg": 3.8700777324845634,
+     "true_change_vs_attached_attitude_deg": -4.08649936121782,
+     "true_change_vs_position_truth_deg": 0.035791460780653324,
+     "matched_distance_m": 0.2415981732092031
+    },
+    {
+     "measured_deg": 3.972664563098852,
+     "true_change_vs_attached_attitude_deg": -0.4396357735048612,
+     "true_change_vs_position_truth_deg": 2.6000929678506286,
+     "matched_distance_m": 0.2933622691442151
+    },
+    {
+     "measured_deg": 3.5838545514697837,
+     "true_change_vs_attached_attitude_deg": 0.7328090553920874,
+     "true_change_vs_position_truth_deg": 2.6612672571173253,
+     "matched_distance_m": 0.04248046638218383
+    },
+    {
+     "measured_deg": 3.963812469506252,
+     "true_change_vs_attached_attitude_deg": 1.405679374003521,
+     "true_change_vs_position_truth_deg": 2.6784100932529062,
+     "matched_distance_m": 0.6331782775613876
+    },
+    {
+     "measured_deg": 7.703771887564492,
+     "true_change_vs_attached_attitude_deg": 1.8262395298681342,
+     "true_change_vs_position_truth_deg": 3.0669557373099114,
+     "matched_distance_m": 0.26223687468183116
+    },
+    {
+     "measured_deg": 14.382526576930635,
+     "true_change_vs_attached_attitude_deg": 0.5796984156487216,
+     "true_change_vs_position_truth_deg": 2.9870328469393326,
+     "matched_distance_m": 0.2686073884161839
+    },
+    {
+     "measured_deg": 4.852046819477278,
+     "true_change_vs_attached_attitude_deg": 2.8244965013652394,
+     "true_change_vs_position_truth_deg": 3.6552659135048646,
+     "matched_distance_m": 0.0915095414186916
+    },
+    {
+     "measured_deg": 11.953744870015662,
+     "true_change_vs_attached_attitude_deg": -2.0633293538744746,
+     "true_change_vs_position_truth_deg": 2.879019369001866,
+     "matched_distance_m": 0.7832514650716584
+    },
+    {
+     "measured_deg": -3.166997527341419,
+     "true_change_vs_attached_attitude_deg": 0.010567504473463276,
+     "true_change_vs_position_truth_deg": 0.6813709586521497,
+     "matched_distance_m": 0.2918267686178878
+    },
+    {
+     "measured_deg": 3.0224336115090322,
+     "true_change_vs_attached_attitude_deg": 0.43753790974454965,
+     "true_change_vs_position_truth_deg": 0.593055231218987,
+     "matched_distance_m": 0.3841934519982549
+    },
+    {
+     "measured_deg": 0.608325646418164,
+     "true_change_vs_attached_attitude_deg": 2.0920417623153247,
+     "true_change_vs_position_truth_deg": 3.276785011450365,
+     "matched_distance_m": 0.09435396560988701
+    },
+    {
+     "measured_deg": 2.3355599387451083,
+     "true_change_vs_attached_attitude_deg": 1.981931421387295,
+     "true_change_vs_position_truth_deg": 3.353497548873523,
+     "matched_distance_m": 0.3218943708228508
+    },
+    {
+     "measured_deg": 1.247608969710001,
+     "true_change_vs_attached_attitude_deg": -0.04317082541801597,
+     "true_change_vs_position_truth_deg": 0.47599712784195525,
+     "matched_distance_m": 0.23557655438024624
+    }
+   ]
+  },
+  {
+   "series": "a053_3",
+   "subject": "a053",
+   "device": "asus",
+   "n_correction_points": 11,
+   "n_matched_same_direction_pairs": 86,
+   "n_measurements_used": 6,
+   "n_measurements_downweighted": 0,
+   "ronin": {
+    "none": {
+     "slow_heading_error_rms_deg": 2.1680712785893705,
+     "ate_m": 4.199967273934937,
+     "rte_m": 2.2656510958672764
+    },
+    "proposal": {
+     "slow_heading_error_rms_deg": 2.3278922542512723,
+     "ate_m": 4.16946748258218,
+     "rte_m": 2.297112859199874
+    },
+    "revisit_only": {
+     "slow_heading_error_rms_deg": 4.090057155876782,
+     "ate_m": 4.258292634545139,
+     "rte_m": 2.7243157240507574
+    },
+    "proposal_plus_revisit": {
+     "slow_heading_error_rms_deg": 4.336178445563219,
+     "ate_m": 4.227075306748041,
+     "rte_m": 2.7884335770379387
+    },
+    "change_in_slow_heading_error_rms_deg": 2.0082861913119463
+   },
+   "eqnio": {
+    "none": {
+     "slow_heading_error_rms_deg": 3.322886563309701,
+     "ate_m": 2.9415073562440237,
+     "rte_m": 2.398418170853041
+    },
+    "proposal": {
+     "slow_heading_error_rms_deg": 3.477484483633152,
+     "ate_m": 3.0256875394690046,
+     "rte_m": 2.444370552746228
+    },
+    "revisit_only": {
+     "slow_heading_error_rms_deg": 5.147843676590593,
+     "ate_m": 3.0113409011504344,
+     "rte_m": 2.9923732279919393
+    },
+    "proposal_plus_revisit": {
+     "slow_heading_error_rms_deg": 5.389309534691852,
+     "ate_m": 3.0963016986838108,
+     "rte_m": 3.0695884351477543
+    },
+    "change_in_slow_heading_error_rms_deg": 1.9118250510586994
+   },
+   "measurements": [
+    {
+     "measured_deg": 5.032180605623989,
+     "true_change_vs_attached_attitude_deg": -1.3491199721197167,
+     "true_change_vs_position_truth_deg": -0.28286998143340886,
+     "matched_distance_m": 0.2664002706666139
+    },
+    {
+     "measured_deg": 0.8679722974304303,
+     "true_change_vs_attached_attitude_deg": -1.8573026154369139,
+     "true_change_vs_position_truth_deg": 0.05027527989565472,
+     "matched_distance_m": 0.3731282954783943
+    },
+    {
+     "measured_deg": 1.9816899976174425,
+     "true_change_vs_attached_attitude_deg": -0.9858239037450134,
+     "true_change_vs_position_truth_deg": -0.011679894576809863,
+     "matched_distance_m": 0.1562356826294736
+    },
+    {
+     "measured_deg": 1.3982242070230866,
+     "true_change_vs_attached_attitude_deg": -0.6441957110274816,
+     "true_change_vs_position_truth_deg": -0.07087288647414709,
+     "matched_distance_m": 0.2753908749805744
+    },
+    {
+     "measured_deg": 13.931289942684453,
+     "true_change_vs_attached_attitude_deg": -0.5166882628779463,
+     "true_change_vs_position_truth_deg": -0.022524535120573487,
+     "matched_distance_m": 0.2510079287114756
+    },
+    {
+     "measured_deg": 0.2912669167675789,
+     "true_change_vs_attached_attitude_deg": 0.006434688488854262,
+     "true_change_vs_position_truth_deg": 0.09557443424959587,
+     "matched_distance_m": 0.0709052089266393
+    }
+   ]
+  },
+  {
+   "series": "a054_1",
+   "subject": "a054",
+   "device": "asus",
+   "n_correction_points": 1,
+   "n_matched_same_direction_pairs": 4,
+   "n_measurements_used": 1,
+   "n_measurements_downweighted": 0,
+   "ronin": {
+    "none": {
+     "slow_heading_error_rms_deg": 4.28602700400075,
+     "ate_m": 2.8830943019412554,
+     "rte_m": 3.95977545974432
+    },
+    "proposal": {
+     "slow_heading_error_rms_deg": 4.28602700400075,
+     "ate_m": 2.8830943019412554,
+     "rte_m": 3.95977545974432
+    },
+    "revisit_only": {
+     "slow_heading_error_rms_deg": 4.29394556266906,
+     "ate_m": 2.8827011349473173,
+     "rte_m": 3.9602736819480073
+    },
+    "proposal_plus_revisit": {
+     "slow_heading_error_rms_deg": 4.293945562471449,
+     "ate_m": 2.88270113495686,
+     "rte_m": 3.9602736819355986
+    },
+    "change_in_slow_heading_error_rms_deg": 0.00791855847069911
+   },
+   "eqnio": {
+    "none": {
+     "slow_heading_error_rms_deg": 6.120818002823638,
+     "ate_m": 4.365649265193359,
+     "rte_m": 4.87438975182532
+    },
+    "proposal": {
+     "slow_heading_error_rms_deg": 6.120818002823638,
+     "ate_m": 4.365649265193359,
+     "rte_m": 4.87438975182532
+    },
+    "revisit_only": {
+     "slow_heading_error_rms_deg": 6.127192971174889,
+     "ate_m": 4.364884008782467,
+     "rte_m": 4.874917336463605
+    },
+    "proposal_plus_revisit": {
+     "slow_heading_error_rms_deg": 6.127192971016303,
+     "ate_m": 4.364884008801167,
+     "rte_m": 4.874917336450487
+    },
+    "change_in_slow_heading_error_rms_deg": 0.006374968192664809
+   },
+   "measurements": [
+    {
+     "measured_deg": -1.9607291542275151,
+     "true_change_vs_attached_attitude_deg": 0.9952128935303427,
+     "true_change_vs_position_truth_deg": 0.817564849535413,
+     "matched_distance_m": 0.14534772077403643
+    }
+   ]
+  },
+  {
+   "series": "a054_2",
+   "subject": "a054",
+   "device": "asus",
+   "n_correction_points": 9,
+   "n_matched_same_direction_pairs": 15,
+   "n_measurements_used": 2,
+   "n_measurements_downweighted": 0,
+   "ronin": {
+    "none": {
+     "slow_heading_error_rms_deg": 3.3449953527259932,
+     "ate_m": 2.4182821347237433,
+     "rte_m": 2.740670562576007
+    },
+    "proposal": {
+     "slow_heading_error_rms_deg": 2.928381221868597,
+     "ate_m": 2.5337640012525737,
+     "rte_m": 2.810094540589274
+    },
+    "revisit_only": {
+     "slow_heading_error_rms_deg": 2.496662634988951,
+     "ate_m": 2.0963464066990474,
+     "rte_m": 2.7177168429654754
+    },
+    "proposal_plus_revisit": {
+     "slow_heading_error_rms_deg": 3.0659278397073395,
+     "ate_m": 2.150634474630815,
+     "rte_m": 2.811430314611249
+    },
+    "change_in_slow_heading_error_rms_deg": 0.13754661783874234
+   },
+   "eqnio": {
+    "none": {
+     "slow_heading_error_rms_deg": 3.889927611508195,
+     "ate_m": 2.9910591662066217,
+     "rte_m": 2.959723692677095
+    },
+    "proposal": {
+     "slow_heading_error_rms_deg": 3.4577314158263897,
+     "ate_m": 2.94566718593627,
+     "rte_m": 2.9986468540056284
+    },
+    "revisit_only": {
+     "slow_heading_error_rms_deg": 2.660619232158408,
+     "ate_m": 3.3670249748673897,
+     "rte_m": 2.905146717203365
+    },
+    "proposal_plus_revisit": {
+     "slow_heading_error_rms_deg": 3.093937601312645,
+     "ate_m": 3.4114819239727754,
+     "rte_m": 2.9752621417945484
+    },
+    "change_in_slow_heading_error_rms_deg": -0.3637938145137447
+   },
+   "measurements": [
+    {
+     "measured_deg": -12.261076843795847,
+     "true_change_vs_attached_attitude_deg": 0.5934629895897227,
+     "true_change_vs_position_truth_deg": -0.27136647672739017,
+     "matched_distance_m": 0.156658666042547
+    },
+    {
+     "measured_deg": -1.935708039564457,
+     "true_change_vs_attached_attitude_deg": 1.396398703103814,
+     "true_change_vs_position_truth_deg": -0.06650846472047625,
+     "matched_distance_m": 0.7238423841899023
+    }
+   ]
+  },
+  {
+   "series": "a054_3",
+   "subject": "a054",
+   "device": "asus",
+   "n_correction_points": 2,
+   "n_matched_same_direction_pairs": 98,
+   "n_measurements_used": 9,
+   "n_measurements_downweighted": 0,
+   "ronin": {
+    "none": {
+     "slow_heading_error_rms_deg": 2.3211242740905,
+     "ate_m": 5.238511856301078,
+     "rte_m": 3.859548219848991
+    },
+    "proposal": {
+     "slow_heading_error_rms_deg": 2.6386025471909162,
+     "ate_m": 5.152536877693724,
+     "rte_m": 4.006683318840171
+    },
+    "revisit_only": {
+     "slow_heading_error_rms_deg": 2.2618153685855624,
+     "ate_m": 5.1435187159153,
+     "rte_m": 3.960253763747498
+    },
+    "proposal_plus_revisit": {
+     "slow_heading_error_rms_deg": 2.334321753621077,
+     "ate_m": 5.177430023769919,
+     "rte_m": 4.012492613638415
+    },
+    "change_in_slow_heading_error_rms_deg": -0.30428079356983906
+   },
+   "eqnio": {
+    "none": {
+     "slow_heading_error_rms_deg": 2.223367616619281,
+     "ate_m": 5.480810232709396,
+     "rte_m": 4.256618825177008
+    },
+    "proposal": {
+     "slow_heading_error_rms_deg": 2.524358099526954,
+     "ate_m": 5.423006287367056,
+     "rte_m": 4.393292900344945
+    },
+    "revisit_only": {
+     "slow_heading_error_rms_deg": 2.151917050717225,
+     "ate_m": 5.351657076511015,
+     "rte_m": 4.364190334025211
+    },
+    "proposal_plus_revisit": {
+     "slow_heading_error_rms_deg": 2.202388183657034,
+     "ate_m": 5.39319950271891,
+     "rte_m": 4.394394088777116
+    },
+    "change_in_slow_heading_error_rms_deg": -0.3219699158699201
+   },
+   "measurements": [
+    {
+     "measured_deg": 4.779741654843989,
+     "true_change_vs_attached_attitude_deg": -3.704002814823402,
+     "true_change_vs_position_truth_deg": -1.8968735508062342,
+     "matched_distance_m": 0.3147084393943206
+    },
+    {
+     "measured_deg": 7.531437391485466,
+     "true_change_vs_attached_attitude_deg": -3.000438908794347,
+     "true_change_vs_position_truth_deg": -1.894400903542175,
+     "matched_distance_m": 0.11838278436409107
+    },
+    {
+     "measured_deg": 1.4271143863896523,
+     "true_change_vs_attached_attitude_deg": 1.1233719084347737,
+     "true_change_vs_position_truth_deg": -1.8317364159627263,
+     "matched_distance_m": 0.15468038745656681
+    },
+    {
+     "measured_deg": -0.9485128951977944,
+     "true_change_vs_attached_attitude_deg": 2.895447101175596,
+     "true_change_vs_position_truth_deg": -1.8609063241862114,
+     "matched_distance_m": 0.25087400931330006
+    },
+    {
+     "measured_deg": 0.6876278356627502,
+     "true_change_vs_attached_attitude_deg": 4.125605623313201,
+     "true_change_vs_position_truth_deg": -1.8755017589532121,
+     "matched_distance_m": 0.9156510370843219
+    },
+    {
+     "measured_deg": -7.291723258566828,
+     "true_change_vs_attached_attitude_deg": 7.048513482827994,
+     "true_change_vs_position_truth_deg": -1.8746413105803728,
+     "matched_distance_m": 0.5244890854898121
+    },
+    {
+     "measured_deg": -12.66943219022758,
+     "true_change_vs_attached_attitude_deg": 9.43228241878411,
+     "true_change_vs_position_truth_deg": -1.7195163209955773,
+     "matched_distance_m": 0.10170223911628373
+    },
+    {
+     "measured_deg": -13.32327850778089,
+     "true_change_vs_attached_attitude_deg": 8.628594794420215,
+     "true_change_vs_position_truth_deg": -1.6481679762479013,
+     "matched_distance_m": 0.1341490794550226
+    },
+    {
+     "measured_deg": -5.922439894649225,
+     "true_change_vs_attached_attitude_deg": 8.539593563832243,
+     "true_change_vs_position_truth_deg": -1.71675712143052,
+     "matched_distance_m": 0.5272550584931776
+    }
+   ]
+  },
+  {
+   "series": "a055_2",
+   "subject": "a055",
+   "device": "asus",
+   "n_correction_points": 8,
+   "n_matched_same_direction_pairs": 52,
+   "n_measurements_used": 7,
+   "n_measurements_downweighted": 0,
+   "ronin": {
+    "none": {
+     "slow_heading_error_rms_deg": 2.4217548718548825,
+     "ate_m": 7.215513590235297,
+     "rte_m": 5.019337584294288
+    },
+    "proposal": {
+     "slow_heading_error_rms_deg": 2.789583954861752,
+     "ate_m": 7.201186822431174,
+     "rte_m": 5.119997201836078
+    },
+    "revisit_only": {
+     "slow_heading_error_rms_deg": 2.3235175702418664,
+     "ate_m": 6.9834835088945875,
+     "rte_m": 5.061701017079346
+    },
+    "proposal_plus_revisit": {
+     "slow_heading_error_rms_deg": 2.617914831336889,
+     "ate_m": 7.255918040672207,
+     "rte_m": 5.230116141224467
+    },
+    "change_in_slow_heading_error_rms_deg": -0.17166912352486285
+   },
+   "eqnio": {
+    "none": {
+     "slow_heading_error_rms_deg": 1.8012975182864923,
+     "ate_m": 8.538780403453632,
+     "rte_m": 4.733593437947068
+    },
+    "proposal": {
+     "slow_heading_error_rms_deg": 1.387270617178677,
+     "ate_m": 8.543267318343878,
+     "rte_m": 4.838446371017822
+    },
+    "revisit_only": {
+     "slow_heading_error_rms_deg": 1.4527028836051945,
+     "ate_m": 8.2991409377813,
+     "rte_m": 4.813078111638012
+    },
+    "proposal_plus_revisit": {
+     "slow_heading_error_rms_deg": 1.7033812562750126,
+     "ate_m": 8.610995470485587,
+     "rte_m": 4.99676195023865
+    },
+    "change_in_slow_heading_error_rms_deg": 0.3161106390963355
+   },
+   "measurements": [
+    {
+     "measured_deg": -3.0349498992926502,
+     "true_change_vs_attached_attitude_deg": -0.6407941395787179,
+     "true_change_vs_position_truth_deg": 1.2440783433415992,
+     "matched_distance_m": 0.36446703406324815
+    },
+    {
+     "measured_deg": 0.9181413798499959,
+     "true_change_vs_attached_attitude_deg": -2.222988218463099,
+     "true_change_vs_position_truth_deg": 2.5550599328920107,
+     "matched_distance_m": 0.6117479100564257
+    },
+    {
+     "measured_deg": -4.780917163760836,
+     "true_change_vs_attached_attitude_deg": -0.15253648525515592,
+     "true_change_vs_position_truth_deg": 0.546989188656817,
+     "matched_distance_m": 0.1984729565509909
+    },
+    {
+     "measured_deg": -0.10214890017596526,
+     "true_change_vs_attached_attitude_deg": 0.12249386198496195,
+     "true_change_vs_position_truth_deg": 0.6818992489644247,
+     "matched_distance_m": 0.16544332457325614
+    },
+    {
+     "measured_deg": 6.010773413738416,
+     "true_change_vs_attached_attitude_deg": -1.9092479463148169,
+     "true_change_vs_position_truth_deg": 3.0789299400606103,
+     "matched_distance_m": 0.2574381926005031
+    },
+    {
+     "measured_deg": -0.457534500101643,
+     "true_change_vs_attached_attitude_deg": -1.1898696886292692,
+     "true_change_vs_position_truth_deg": 1.2170872718682382,
+     "matched_distance_m": 0.6510738821066534
+    },
+    {
+     "measured_deg": 13.68821424829075,
+     "true_change_vs_attached_attitude_deg": -3.1426348074939154,
+     "true_change_vs_position_truth_deg": 0.8307240312946164,
+     "matched_distance_m": 0.2761312352339127
+    }
+   ]
+  },
+  {
+   "series": "a055_3",
+   "subject": "a055",
+   "device": "asus",
+   "n_correction_points": 13,
+   "n_matched_same_direction_pairs": 323,
+   "n_measurements_used": 30,
+   "n_measurements_downweighted": 3,
+   "ronin": {
+    "none": {
+     "slow_heading_error_rms_deg": 0.9107754685152474,
+     "ate_m": 8.791336926691834,
+     "rte_m": 5.295420667646135
+    },
+    "proposal": {
+     "slow_heading_error_rms_deg": 2.412040141804784,
+     "ate_m": 8.805010412813402,
+     "rte_m": 5.418405161940057
+    },
+    "revisit_only": {
+     "slow_heading_error_rms_deg": 2.106299835936066,
+     "ate_m": 9.939085079550498,
+     "rte_m": 5.42872516143844
+    },
+    "proposal_plus_revisit": {
+     "slow_heading_error_rms_deg": 1.9870729511885779,
+     "ate_m": 9.959014602696145,
+     "rte_m": 5.4336568924374005
+    },
+    "change_in_slow_heading_error_rms_deg": -0.42496719061620625
+   },
+   "eqnio": {
+    "none": {
+     "slow_heading_error_rms_deg": 0.6894645879538085,
+     "ate_m": 7.291170433256341,
+     "rte_m": 5.299285734865916
+    },
+    "proposal": {
+     "slow_heading_error_rms_deg": 2.358631636357412,
+     "ate_m": 7.303351882304377,
+     "rte_m": 5.436509314015448
+    },
+    "revisit_only": {
+     "slow_heading_error_rms_deg": 1.9277314408773654,
+     "ate_m": 8.857359788654264,
+     "rte_m": 5.3220487384999275
+    },
+    "proposal_plus_revisit": {
+     "slow_heading_error_rms_deg": 1.785142271026969,
+     "ate_m": 8.888817973873449,
+     "rte_m": 5.328794638150286
+    },
+    "change_in_slow_heading_error_rms_deg": -0.5734893653304429
+   },
+   "measurements": [
+    {
+     "measured_deg": -1.2945397614400125,
+     "true_change_vs_attached_attitude_deg": -1.9880409400784411,
+     "true_change_vs_position_truth_deg": 1.3697681688215082,
+     "matched_distance_m": 0.2101498010448607
+    },
+    {
+     "measured_deg": 0.07275874239847634,
+     "true_change_vs_attached_attitude_deg": -1.1711068194161918,
+     "true_change_vs_position_truth_deg": 1.5881955922890691,
+     "matched_distance_m": 0.46329289507534727
+    },
+    {
+     "measured_deg": 8.170055649654596,
+     "true_change_vs_attached_attitude_deg": -6.565843104807374,
+     "true_change_vs_position_truth_deg": 1.5365694498594784,
+     "matched_distance_m": 16.94618288674735
+    },
+    {
+     "measured_deg": -2.8058426807804353,
+     "true_change_vs_attached_attitude_deg": -1.973206823404773,
+     "true_change_vs_position_truth_deg": 0.9061130226460418,
+     "matched_distance_m": 0.10777945322755768
+    },
+    {
+     "measured_deg": -2.5943790136681266,
+     "true_change_vs_attached_attitude_deg": 0.38615567631433384,
+     "true_change_vs_position_truth_deg": 0.566346924000789,
+     "matched_distance_m": 0.999030416155555
+    },
+    {
+     "measured_deg": -3.0034487557982774,
+     "true_change_vs_attached_attitude_deg": -4.915092100390171,
+     "true_change_vs_position_truth_deg": 0.27402295261196324,
+     "matched_distance_m": 0.04400987032040104
+    },
+    {
+     "measured_deg": -0.08172002809924293,
+     "true_change_vs_attached_attitude_deg": 0.958639126272126,
+     "true_change_vs_position_truth_deg": 0.31546942690309865,
+     "matched_distance_m": 0.2964891551184474
+    },
+    {
+     "measured_deg": -2.763494707248917,
+     "true_change_vs_attached_attitude_deg": 0.8458026906392864,
+     "true_change_vs_position_truth_deg": -0.010391925525291371,
+     "matched_distance_m": 0.05195661010048705
+    },
+    {
+     "measured_deg": -7.0620423631042,
+     "true_change_vs_attached_attitude_deg": -3.029933193740727,
+     "true_change_vs_position_truth_deg": -0.2646793592759884,
+     "matched_distance_m": 0.3796724832798139
+    },
+    {
+     "measured_deg": -1.9776003845246504,
+     "true_change_vs_attached_attitude_deg": -1.1012008622179068,
+     "true_change_vs_position_truth_deg": -0.15556026394166816,
+     "matched_distance_m": 0.10384789563791016
+    },
+    {
+     "measured_deg": 5.498538965489164,
+     "true_change_vs_attached_attitude_deg": 2.576869141126806,
+     "true_change_vs_position_truth_deg": -1.1691337992383295,
+     "matched_distance_m": 0.13732394197384495
+    },
+    {
+     "measured_deg": 7.036182103463561,
+     "true_change_vs_attached_attitude_deg": 2.70648563541222,
+     "true_change_vs_position_truth_deg": 0.5398078628925606,
+     "matched_distance_m": 0.11322270134007267
+    },
+    {
+     "measured_deg": -1.5370039531973079,
+     "true_change_vs_attached_attitude_deg": 1.3577926141967396,
+     "true_change_vs_position_truth_deg": 0.660017727099566,
+     "matched_distance_m": 1.2712383552139273
+    },
+    {
+     "measured_deg": 1.128232362963349,
+     "true_change_vs_attached_attitude_deg": 0.6572653351274462,
+     "true_change_vs_position_truth_deg": -0.2548322478882943,
+     "matched_distance_m": 0.16721688576169338
+    },
+    {
+     "measured_deg": 10.48995314617434,
+     "true_change_vs_attached_attitude_deg": 4.722305426186496,
+     "true_change_vs_position_truth_deg": -0.357636589417665,
+     "matched_distance_m": 0.14707412268133865
+    },
+    {
+     "measured_deg": 9.605991923164815,
+     "true_change_vs_attached_attitude_deg": 3.6983603509444585,
+     "true_change_vs_position_truth_deg": -0.7829065544299633,
+     "matched_distance_m": 0.06912165523973861
+    },
+    {
+     "measured_deg": -0.31880114407289634,
+     "true_change_vs_attached_attitude_deg": 3.269638671627443,
+     "true_change_vs_position_truth_deg": -0.5766216841519404,
+     "matched_distance_m": 0.10531759665273031
+    },
+    {
+     "measured_deg": 5.312226510211168,
+     "true_change_vs_attached_attitude_deg": 4.453000551835022,
+     "true_change_vs_position_truth_deg": -0.9357128315669645,
+     "matched_distance_m": 0.0622239604409302
+    },
+    {
+     "measured_deg": 1.8672784534882847,
+     "true_change_vs_attached_attitude_deg": 4.374241844847674,
+     "true_change_vs_position_truth_deg": -1.0843664812977176,
+     "matched_distance_m": 0.2226473239379622
+    },
+    {
+     "measured_deg": 6.591028936340203,
+     "true_change_vs_attached_attitude_deg": 2.5861580162543256,
+     "true_change_vs_position_truth_deg": -1.0036365142770614,
+     "matched_distance_m": 0.12903608870706768
+    },
+    {
+     "measured_deg": 6.422244380623181,
+     "true_change_vs_attached_attitude_deg": 2.2644970940308933,
+     "true_change_vs_position_truth_deg": -0.7331872554782444,
+     "matched_distance_m": 0.2849565717808716
+    },
+    {
+     "measured_deg": 9.92577271518082,
+     "true_change_vs_attached_attitude_deg": 2.1910348821908916,
+     "true_change_vs_position_truth_deg": -0.9861709680054909,
+     "matched_distance_m": 0.18819423291460902
+    },
+    {
+     "measured_deg": 4.865292193041825,
+     "true_change_vs_attached_attitude_deg": 2.5081710503701755,
+     "true_change_vs_position_truth_deg": -0.36982793365178973,
+     "matched_distance_m": 0.2524521581485789
+    },
+    {
+     "measured_deg": 2.6957887759981887,
+     "true_change_vs_attached_attitude_deg": 3.212435247659155,
+     "true_change_vs_position_truth_deg": 0.4681694053027436,
+     "matched_distance_m": 0.09798237714928938
+    },
+    {
+     "measured_deg": -4.100349860883574,
+     "true_change_vs_attached_attitude_deg": 0.5467196796984988,
+     "true_change_vs_position_truth_deg": 0.5660879179098877,
+     "matched_distance_m": 0.3894175462887548
+    },
+    {
+     "measured_deg": -10.529958855968417,
+     "true_change_vs_attached_attitude_deg": 0.9875015499731842,
+     "true_change_vs_position_truth_deg": 0.42209589524318153,
+     "matched_distance_m": 0.6126055584259139
+    },
+    {
+     "measured_deg": -9.111054705138388,
+     "true_change_vs_attached_attitude_deg": 0.587279317731626,
+     "true_change_vs_position_truth_deg": -0.3137273189197461,
+     "matched_distance_m": 0.2701321908513641
+    },
+    {
+     "measured_deg": -0.9877412490962334,
+     "true_change_vs_attached_attitude_deg": 3.109977804686023,
+     "true_change_vs_position_truth_deg": 0.21364028181744615,
+     "matched_distance_m": 0.10903068837358948
+    },
+    {
+     "measured_deg": 3.9029317167942836,
+     "true_change_vs_attached_attitude_deg": -0.468834437055023,
+     "true_change_vs_position_truth_deg": 0.31706669119198927,
+     "matched_distance_m": 0.3693786165276721
+    },
+    {
+     "measured_deg": 0.3581693483253495,
+     "true_change_vs_attached_attitude_deg": 1.8689081283519882,
+     "true_change_vs_position_truth_deg": 0.18418148937434237,
+     "matched_distance_m": 0.307970416854781
+    }
+   ]
+  },
+  {
+   "series": "a057_1",
+   "subject": "a057",
+   "device": "samsung",
+   "n_correction_points": 7,
+   "n_matched_same_direction_pairs": 24,
+   "n_measurements_used": 2,
+   "n_measurements_downweighted": 1,
+   "ronin": {
+    "none": {
+     "slow_heading_error_rms_deg": 14.602802381760318,
+     "ate_m": 7.275131872904529,
+     "rte_m": 8.008452452966377
+    },
+    "proposal": {
+     "slow_heading_error_rms_deg": 13.681397433335876,
+     "ate_m": 7.356703027315483,
+     "rte_m": 7.929016704321167
+    },
+    "revisit_only": {
+     "slow_heading_error_rms_deg": 16.47830960329614,
+     "ate_m": 7.555601974974185,
+     "rte_m": 8.376289334731842
+    },
+    "proposal_plus_revisit": {
+     "slow_heading_error_rms_deg": 16.864678809573906,
+     "ate_m": 7.5597458998214915,
+     "rte_m": 8.4713212876044
+    },
+    "change_in_slow_heading_error_rms_deg": 3.18328137623803
+   },
+   "eqnio": {
+    "none": {
+     "slow_heading_error_rms_deg": 17.79845456991215,
+     "ate_m": 7.115955053909847,
+     "rte_m": 8.741988501835149
+    },
+    "proposal": {
+     "slow_heading_error_rms_deg": 16.906887330981284,
+     "ate_m": 7.088817549053404,
+     "rte_m": 8.656196443515066
+    },
+    "revisit_only": {
+     "slow_heading_error_rms_deg": 19.6213420269644,
+     "ate_m": 7.1797896323761385,
+     "rte_m": 9.110881366874684
+    },
+    "proposal_plus_revisit": {
+     "slow_heading_error_rms_deg": 19.98477823003072,
+     "ate_m": 7.224787122582023,
+     "rte_m": 9.203198611122001
+    },
+    "change_in_slow_heading_error_rms_deg": 3.077890899049436
+   },
+   "measurements": [
+    {
+     "measured_deg": 2.855581550351457,
+     "true_change_vs_attached_attitude_deg": -11.494195406018246,
+     "true_change_vs_position_truth_deg": 2.4127781006494873,
+     "matched_distance_m": 0.3197904876372165
+    },
+    {
+     "measured_deg": -18.47115157597858,
+     "true_change_vs_attached_attitude_deg": 5.709729697731016,
+     "true_change_vs_position_truth_deg": 1.2039889313640435,
+     "matched_distance_m": 0.44521957854064775
+    }
+   ]
+  },
+  {
+   "series": "a057_2",
+   "subject": "a057",
+   "device": "samsung",
+   "n_correction_points": 0,
+   "n_matched_same_direction_pairs": 0,
+   "n_measurements_used": 0,
+   "n_measurements_downweighted": 0,
+   "ronin": {
+    "none": {
+     "slow_heading_error_rms_deg": 4.085994465013535,
+     "ate_m": 4.590877999513149,
+     "rte_m": 3.1368249019233443
+    },
+    "proposal": {
+     "slow_heading_error_rms_deg": 4.085994465013535,
+     "ate_m": 4.590877999513149,
+     "rte_m": 3.1368249019233443
+    },
+    "revisit_only": {
+     "slow_heading_error_rms_deg": 4.085994465013535,
+     "ate_m": 4.590877999513149,
+     "rte_m": 3.1368249019233443
+    },
+    "proposal_plus_revisit": {
+     "slow_heading_error_rms_deg": 4.085994465013535,
+     "ate_m": 4.590877999513149,
+     "rte_m": 3.1368249019233443
+    },
+    "change_in_slow_heading_error_rms_deg": 0.0
+   },
+   "eqnio": {
+    "none": {
+     "slow_heading_error_rms_deg": 4.085195550750156,
+     "ate_m": 4.255580121914963,
+     "rte_m": 2.913108148063288
+    },
+    "proposal": {
+     "slow_heading_error_rms_deg": 4.085195550750156,
+     "ate_m": 4.255580121914963,
+     "rte_m": 2.913108148063288
+    },
+    "revisit_only": {
+     "slow_heading_error_rms_deg": 4.085195550750156,
+     "ate_m": 4.255580121914963,
+     "rte_m": 2.913108148063288
+    },
+    "proposal_plus_revisit": {
+     "slow_heading_error_rms_deg": 4.085195550750156,
+     "ate_m": 4.255580121914963,
+     "rte_m": 2.913108148063288
+    },
+    "change_in_slow_heading_error_rms_deg": 0.0
+   },
+   "measurements": []
+  },
+  {
+   "series": "a057_3",
+   "subject": "a057",
+   "device": "samsung",
+   "n_correction_points": 0,
+   "n_matched_same_direction_pairs": 0,
+   "n_measurements_used": 0,
+   "n_measurements_downweighted": 0,
+   "ronin": {
+    "none": {
+     "slow_heading_error_rms_deg": 6.265833928775359,
+     "ate_m": 9.99866791450076,
+     "rte_m": 4.666130637121975
+    },
+    "proposal": {
+     "slow_heading_error_rms_deg": 6.265833928775359,
+     "ate_m": 9.99866791450076,
+     "rte_m": 4.666130637121975
+    },
+    "revisit_only": {
+     "slow_heading_error_rms_deg": 6.265833928775359,
+     "ate_m": 9.99866791450076,
+     "rte_m": 4.666130637121975
+    },
+    "proposal_plus_revisit": {
+     "slow_heading_error_rms_deg": 6.265833928775359,
+     "ate_m": 9.99866791450076,
+     "rte_m": 4.666130637121975
+    },
+    "change_in_slow_heading_error_rms_deg": 0.0
+   },
+   "eqnio": {
+    "none": {
+     "slow_heading_error_rms_deg": 6.3824003240932745,
+     "ate_m": 11.09911025215138,
+     "rte_m": 4.687184153715829
+    },
+    "proposal": {
+     "slow_heading_error_rms_deg": 6.3824003240932745,
+     "ate_m": 11.09911025215138,
+     "rte_m": 4.687184153715829
+    },
+    "revisit_only": {
+     "slow_heading_error_rms_deg": 6.3824003240932745,
+     "ate_m": 11.09911025215138,
+     "rte_m": 4.687184153715829
+    },
+    "proposal_plus_revisit": {
+     "slow_heading_error_rms_deg": 6.3824003240932745,
+     "ate_m": 11.09911025215138,
+     "rte_m": 4.687184153715829
+    },
+    "change_in_slow_heading_error_rms_deg": 0.0
+   },
+   "measurements": []
+  },
+  {
+   "series": "a058_1",
+   "subject": "a058",
+   "device": "asus",
+   "n_correction_points": 11,
+   "n_matched_same_direction_pairs": 102,
+   "n_measurements_used": 7,
+   "n_measurements_downweighted": 0,
+   "ronin": {
+    "none": {
+     "slow_heading_error_rms_deg": 18.717340355673645,
+     "ate_m": 4.5956096515033416,
+     "rte_m": 8.808039317781878
+    },
+    "proposal": {
+     "slow_heading_error_rms_deg": 17.964420410859027,
+     "ate_m": 4.379263631506738,
+     "rte_m": 8.498004036939713
+    },
+    "revisit_only": {
+     "slow_heading_error_rms_deg": 16.84348083735792,
+     "ate_m": 4.118397579293098,
+     "rte_m": 8.033555499935572
+    },
+    "proposal_plus_revisit": {
+     "slow_heading_error_rms_deg": 16.676580620880294,
+     "ate_m": 4.081054048020241,
+     "rte_m": 7.966623476538153
+    },
+    "change_in_slow_heading_error_rms_deg": -1.287839789978733
+   },
+   "eqnio": {
+    "none": {
+     "slow_heading_error_rms_deg": 18.950934914467286,
+     "ate_m": 4.6983084468412555,
+     "rte_m": 9.058707935926895
+    },
+    "proposal": {
+     "slow_heading_error_rms_deg": 18.20255267478296,
+     "ate_m": 4.469596389521965,
+     "rte_m": 8.751597439613214
+    },
+    "revisit_only": {
+     "slow_heading_error_rms_deg": 17.089894521181858,
+     "ate_m": 4.22392003195872,
+     "rte_m": 8.292772577558695
+    },
+    "proposal_plus_revisit": {
+     "slow_heading_error_rms_deg": 16.923366810428885,
+     "ate_m": 4.183047843689757,
+     "rte_m": 8.22553033088455
+    },
+    "change_in_slow_heading_error_rms_deg": -1.2791858643540763
+   },
+   "measurements": [
+    {
+     "measured_deg": 9.547546199339457,
+     "true_change_vs_attached_attitude_deg": 5.605448087624086,
+     "true_change_vs_position_truth_deg": 6.784150607381065,
+     "matched_distance_m": 0.3404985759767043
+    },
+    {
+     "measured_deg": 10.655468926024268,
+     "true_change_vs_attached_attitude_deg": 5.477726119721675,
+     "true_change_vs_position_truth_deg": 6.625286184500975,
+     "matched_distance_m": 0.270716848860732
+    },
+    {
+     "measured_deg": 10.275704768443186,
+     "true_change_vs_attached_attitude_deg": 5.847656699638347,
+     "true_change_vs_position_truth_deg": 6.33979307714163,
+     "matched_distance_m": 0.2422103992206052
+    },
+    {
+     "measured_deg": 9.194164651968318,
+     "true_change_vs_attached_attitude_deg": 5.877058850564103,
+     "true_change_vs_position_truth_deg": 6.055484994654957,
+     "matched_distance_m": 0.23329855615681452
+    },
+    {
+     "measured_deg": 7.146395337318851,
+     "true_change_vs_attached_attitude_deg": 5.502638295856563,
+     "true_change_vs_position_truth_deg": 4.8392682538389415,
+     "matched_distance_m": 0.15100648364781313
+    },
+    {
+     "measured_deg": 8.603779151496616,
+     "true_change_vs_attached_attitude_deg": 6.267579658640635,
+     "true_change_vs_position_truth_deg": 4.518965369548085,
+     "matched_distance_m": 0.15542172506285964
+    },
+    {
+     "measured_deg": 7.9003226591384825,
+     "true_change_vs_attached_attitude_deg": 6.626785015723033,
+     "true_change_vs_position_truth_deg": 4.405124797806617,
+     "matched_distance_m": 0.15817200182961025
+    }
+   ]
+  },
+  {
+   "series": "a058_2",
+   "subject": "a058",
+   "device": "asus",
+   "n_correction_points": 22,
+   "n_matched_same_direction_pairs": 422,
+   "n_measurements_used": 30,
+   "n_measurements_downweighted": 0,
+   "ronin": {
+    "none": {
+     "slow_heading_error_rms_deg": 6.0608848173158645,
+     "ate_m": 2.3778675440830863,
+     "rte_m": 2.9427025539850913
+    },
+    "proposal": {
+     "slow_heading_error_rms_deg": 3.395443255046836,
+     "ate_m": 2.0829783475768893,
+     "rte_m": 2.4307295740408303
+    },
+    "revisit_only": {
+     "slow_heading_error_rms_deg": 1.3258004370104595,
+     "ate_m": 2.0270856540134683,
+     "rte_m": 2.1113363013307413
+    },
+    "proposal_plus_revisit": {
+     "slow_heading_error_rms_deg": 1.2506640910426918,
+     "ate_m": 1.976197254408403,
+     "rte_m": 2.1026941520358653
+    },
+    "change_in_slow_heading_error_rms_deg": -2.1447791640041443
+   },
+   "eqnio": {
+    "none": {
+     "slow_heading_error_rms_deg": 4.879915443786899,
+     "ate_m": 1.8624603545931462,
+     "rte_m": 2.7424393504898026
+    },
+    "proposal": {
+     "slow_heading_error_rms_deg": 2.083946027829697,
+     "ate_m": 1.6536148173215772,
+     "rte_m": 2.337797426413807
+    },
+    "revisit_only": {
+     "slow_heading_error_rms_deg": 0.44585239239744817,
+     "ate_m": 1.9565285876564502,
+     "rte_m": 2.2308042423589503
+    },
+    "proposal_plus_revisit": {
+     "slow_heading_error_rms_deg": 0.4927687370524269,
+     "ate_m": 1.8960662378563853,
+     "rte_m": 2.2310523389066854
+    },
+    "change_in_slow_heading_error_rms_deg": -1.5911772907772699
+   },
+   "measurements": [
+    {
+     "measured_deg": -2.0418614785565508,
+     "true_change_vs_attached_attitude_deg": -8.734131959952046,
+     "true_change_vs_position_truth_deg": -2.094473296886871,
+     "matched_distance_m": 0.20155146338893562
+    },
+    {
+     "measured_deg": -2.816753131642218,
+     "true_change_vs_attached_attitude_deg": -8.432946836116203,
+     "true_change_vs_position_truth_deg": -2.2119503247717724,
+     "matched_distance_m": 0.044782417033640734
+    },
+    {
+     "measured_deg": -1.8619004993402224,
+     "true_change_vs_attached_attitude_deg": -8.606903507785074,
+     "true_change_vs_position_truth_deg": -2.2661520359855016,
+     "matched_distance_m": 0.267489897046071
+    },
+    {
+     "measured_deg": -2.040874828799087,
+     "true_change_vs_attached_attitude_deg": -8.124054547184048,
+     "true_change_vs_position_truth_deg": -2.2779714947116716,
+     "matched_distance_m": 0.13234180899611495
+    },
+    {
+     "measured_deg": -4.450630960271653,
+     "true_change_vs_attached_attitude_deg": -3.0125260017030393,
+     "true_change_vs_position_truth_deg": -1.4407403692983507,
+     "matched_distance_m": 0.4635947088401809
+    },
+    {
+     "measured_deg": -3.634876820482948,
+     "true_change_vs_attached_attitude_deg": -9.142822400612856,
+     "true_change_vs_position_truth_deg": -3.8208391540932896,
+     "matched_distance_m": 0.4593570192185161
+    },
+    {
+     "measured_deg": -10.599316241007312,
+     "true_change_vs_attached_attitude_deg": -8.07541037612395,
+     "true_change_vs_position_truth_deg": -4.031177121557717,
+     "matched_distance_m": 0.054712872452014935
+    },
+    {
+     "measured_deg": -1.2764876150355822,
+     "true_change_vs_attached_attitude_deg": -7.447794093479307,
+     "true_change_vs_position_truth_deg": -4.236409406661501,
+     "matched_distance_m": 0.22107850801662088
+    },
+    {
+     "measured_deg": -1.3233012184569088,
+     "true_change_vs_attached_attitude_deg": -7.260506375232106,
+     "true_change_vs_position_truth_deg": -4.454202423327113,
+     "matched_distance_m": 0.08377220071649856
+    },
+    {
+     "measured_deg": -3.503843405460366,
+     "true_change_vs_attached_attitude_deg": -6.938212728348644,
+     "true_change_vs_position_truth_deg": -4.682899708782955,
+     "matched_distance_m": 0.08385008418811783
+    },
+    {
+     "measured_deg": -4.066752711039622,
+     "true_change_vs_attached_attitude_deg": -6.445642057808762,
+     "true_change_vs_position_truth_deg": -4.7553367294673095,
+     "matched_distance_m": 0.36855346692286756
+    },
+    {
+     "measured_deg": -3.784280704503344,
+     "true_change_vs_attached_attitude_deg": -5.894006719315313,
+     "true_change_vs_position_truth_deg": -4.818689730676108,
+     "matched_distance_m": 0.3300122063994485
+    },
+    {
+     "measured_deg": -6.424866468082348,
+     "true_change_vs_attached_attitude_deg": -4.593044933615187,
+     "true_change_vs_position_truth_deg": -4.948883052980054,
+     "matched_distance_m": 0.14491506321678146
+    },
+    {
+     "measured_deg": -4.159785237295696,
+     "true_change_vs_attached_attitude_deg": -4.813265234937495,
+     "true_change_vs_position_truth_deg": -5.018980103821164,
+     "matched_distance_m": 0.1966558566390608
+    },
+    {
+     "measured_deg": -4.777941481728695,
+     "true_change_vs_attached_attitude_deg": -4.265211841223202,
+     "true_change_vs_position_truth_deg": -5.110326053308095,
+     "matched_distance_m": 0.3109553786423955
+    },
+    {
+     "measured_deg": -6.1613627095681185,
+     "true_change_vs_attached_attitude_deg": -4.107872921147667,
+     "true_change_vs_position_truth_deg": -5.034626350794658,
+     "matched_distance_m": 0.43823804747922096
+    },
+    {
+     "measured_deg": 0.4956629855536769,
+     "true_change_vs_attached_attitude_deg": -4.032698738900894,
+     "true_change_vs_position_truth_deg": -4.8715511969835825,
+     "matched_distance_m": 0.2573352494717603
+    },
+    {
+     "measured_deg": -4.95633721225841,
+     "true_change_vs_attached_attitude_deg": -11.347866772591797,
+     "true_change_vs_position_truth_deg": -6.750858200917244,
+     "matched_distance_m": 0.357551821256122
+    },
+    {
+     "measured_deg": -6.73266350947652,
+     "true_change_vs_attached_attitude_deg": -11.26034442796934,
+     "true_change_vs_position_truth_deg": -6.689460320069925,
+     "matched_distance_m": 0.13935744464114072
+    },
+    {
+     "measured_deg": -4.646332066482135,
+     "true_change_vs_attached_attitude_deg": -2.3417082128875704,
+     "true_change_vs_position_truth_deg": -4.317775052633579,
+     "matched_distance_m": 0.2141338990124162
+    },
+    {
+     "measured_deg": -4.628706026405756,
+     "true_change_vs_attached_attitude_deg": -0.2561306590044874,
+     "true_change_vs_position_truth_deg": -2.785791363904256,
+     "matched_distance_m": 0.3071648271805509
+    },
+    {
+     "measured_deg": -7.876203732237645,
+     "true_change_vs_attached_attitude_deg": -0.8770944061764312,
+     "true_change_vs_position_truth_deg": -4.305029130558169,
+     "matched_distance_m": 0.0824250629096404
+    },
+    {
+     "measured_deg": -9.050205054662914,
+     "true_change_vs_attached_attitude_deg": -8.136782411160818,
+     "true_change_vs_position_truth_deg": -7.040545937817275,
+     "matched_distance_m": 0.14577448133981352
+    },
+    {
+     "measured_deg": -9.224999844561804,
+     "true_change_vs_attached_attitude_deg": -6.785674117278219,
+     "true_change_vs_position_truth_deg": -7.106574229767143,
+     "matched_distance_m": 0.048464467547154395
+    },
+    {
+     "measured_deg": -1.7876862431148846,
+     "true_change_vs_attached_attitude_deg": 0.43647783630259673,
+     "true_change_vs_position_truth_deg": -2.2533349575965484,
+     "matched_distance_m": 0.6686784735665017
+    },
+    {
+     "measured_deg": -6.622615960608409,
+     "true_change_vs_attached_attitude_deg": -0.15232087209817596,
+     "true_change_vs_position_truth_deg": -2.1075418968598956,
+     "matched_distance_m": 0.1184435408493591
+    },
+    {
+     "measured_deg": -10.818855976011784,
+     "true_change_vs_attached_attitude_deg": -4.84211682551712,
+     "true_change_vs_position_truth_deg": -6.956906439471739,
+     "matched_distance_m": 0.10474070345932239
+    },
+    {
+     "measured_deg": -9.317624456712743,
+     "true_change_vs_attached_attitude_deg": -6.0836267866821885,
+     "true_change_vs_position_truth_deg": -7.274934734465908,
+     "matched_distance_m": 0.22229577758964822
+    },
+    {
+     "measured_deg": -10.13086221724511,
+     "true_change_vs_attached_attitude_deg": -5.386530642033244,
+     "true_change_vs_position_truth_deg": -7.35310241506691,
+     "matched_distance_m": 0.20635348603250586
+    },
+    {
+     "measured_deg": -17.581893456605506,
+     "true_change_vs_attached_attitude_deg": -4.253950494582488,
+     "true_change_vs_position_truth_deg": -7.164318073485612,
+     "matched_distance_m": 0.7592618031555718
+    }
+   ]
+  },
+  {
+   "series": "a058_3",
+   "subject": "a058",
+   "device": "asus",
+   "n_correction_points": 26,
+   "n_matched_same_direction_pairs": 137,
+   "n_measurements_used": 11,
+   "n_measurements_downweighted": 0,
+   "ronin": {
+    "none": {
+     "slow_heading_error_rms_deg": 9.0233495088702,
+     "ate_m": 2.860261527457263,
+     "rte_m": 4.517669204879624
+    },
+    "proposal": {
+     "slow_heading_error_rms_deg": 6.099786670854815,
+     "ate_m": 2.694043128105108,
+     "rte_m": 3.9587814140848647
+    },
+    "revisit_only": {
+     "slow_heading_error_rms_deg": 4.283202126436797,
+     "ate_m": 2.864713857836974,
+     "rte_m": 3.441655501886476
+    },
+    "proposal_plus_revisit": {
+     "slow_heading_error_rms_deg": 3.7578804552353455,
+     "ate_m": 2.9786910878011357,
+     "rte_m": 3.3730095547478407
+    },
+    "change_in_slow_heading_error_rms_deg": -2.3419062156194697
+   },
+   "eqnio": {
+    "none": {
+     "slow_heading_error_rms_deg": 8.318548257783602,
+     "ate_m": 3.4672152123333118,
+     "rte_m": 4.421710486055623
+    },
+    "proposal": {
+     "slow_heading_error_rms_deg": 5.136831768550591,
+     "ate_m": 2.9931069855437493,
+     "rte_m": 3.8472957564221697
+    },
+    "revisit_only": {
+     "slow_heading_error_rms_deg": 3.257837240283209,
+     "ate_m": 2.648234828610522,
+     "rte_m": 3.433462956735083
+    },
+    "proposal_plus_revisit": {
+     "slow_heading_error_rms_deg": 2.5954114479151307,
+     "ate_m": 2.6872248110134773,
+     "rte_m": 3.36142470270918
+    },
+    "change_in_slow_heading_error_rms_deg": -2.5414203206354604
+   },
+   "measurements": [
+    {
+     "measured_deg": -7.607966417124664,
+     "true_change_vs_attached_attitude_deg": -5.966461238069543,
+     "true_change_vs_position_truth_deg": -4.385811911394675,
+     "matched_distance_m": 0.17350826379427645
+    },
+    {
+     "measured_deg": -5.4174441085524245,
+     "true_change_vs_attached_attitude_deg": -5.290451490133835,
+     "true_change_vs_position_truth_deg": -4.262550080602781,
+     "matched_distance_m": 0.3347439008684346
+    },
+    {
+     "measured_deg": -6.626515140868293,
+     "true_change_vs_attached_attitude_deg": -3.406460915971481,
+     "true_change_vs_position_truth_deg": -4.0790305129371465,
+     "matched_distance_m": 0.5797154994520272
+    },
+    {
+     "measured_deg": -7.225762406886667,
+     "true_change_vs_attached_attitude_deg": -1.8351334599516265,
+     "true_change_vs_position_truth_deg": -4.222751638331582,
+     "matched_distance_m": 0.1939298089680155
+    },
+    {
+     "measured_deg": -7.872421006848284,
+     "true_change_vs_attached_attitude_deg": -1.091525992823588,
+     "true_change_vs_position_truth_deg": -4.330279137767349,
+     "matched_distance_m": 0.30313416711023733
+    },
+    {
+     "measured_deg": -9.498865619535488,
+     "true_change_vs_attached_attitude_deg": -0.645017944934399,
+     "true_change_vs_position_truth_deg": -4.410625877279665,
+     "matched_distance_m": 0.21989552845805113
+    },
+    {
+     "measured_deg": -2.0889677295829006,
+     "true_change_vs_attached_attitude_deg": 0.5950619075669686,
+     "true_change_vs_position_truth_deg": -4.5009525161243955,
+     "matched_distance_m": 0.5768004867118323
+    },
+    {
+     "measured_deg": -7.938482528231342,
+     "true_change_vs_attached_attitude_deg": 0.6325811824149381,
+     "true_change_vs_position_truth_deg": -4.7046302054716085,
+     "matched_distance_m": 0.2774753696717631
+    },
+    {
+     "measured_deg": -2.6440861599412107,
+     "true_change_vs_attached_attitude_deg": 1.2572311155671083,
+     "true_change_vs_position_truth_deg": -4.915263126986519,
+     "matched_distance_m": 0.5312650250623553
+    },
+    {
+     "measured_deg": -6.12626321423106,
+     "true_change_vs_attached_attitude_deg": 0.8149477874460315,
+     "true_change_vs_position_truth_deg": -4.544393976144367,
+     "matched_distance_m": 0.19890319744627602
+    },
+    {
+     "measured_deg": -6.263660408311714,
+     "true_change_vs_attached_attitude_deg": 0.6728382254414357,
+     "true_change_vs_position_truth_deg": -4.213811143338935,
+     "matched_distance_m": 0.21850691651680798
+    }
+   ]
+  }
+ ]
+}

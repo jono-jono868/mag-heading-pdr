@@ -1,0 +1,247 @@
+{
+ "description": "補正なしの遅い方位誤差の分布と、採用した方位補正がそれをどれだけ変えたか、補正点の数との関係。設計データ・学習データ・評価データ（RoNIN）。集計した値と系列ごとの値だけ。",
+ "definitions": {
+  "slow_heading_error": "方位誤差は、推定した速度の向きから正解の速度の向きを引いた角度（窓ごと。正解の速さが 0.2 m/s 以下の窓は除く）。遅い方位誤差は、その 300 秒の中心移動平均（円形平均。端では窓が短くなる）。系列ごとに、遅い方位誤差の二乗平均平方根（RMS）を測る",
+  "groups": "補正なしの遅い方位誤差（RMS）で、5° 以下・5° 超 10° 以下・10° 超に分けた。正解の速度を使う事後の層別で、実際の歩行では分けられない。探索的な分析",
+  "adopted_setting": "提案した方位補正の採用した設定（予測誤差 5.33° 以下の補正点、観測雑音の標準偏差 29.8°）。補正をかけた速度で、同じ量を測る",
+  "n_correction_points": "方位補正で使った補正点の数（系列ごと）",
+  "splits_note": "設計データ・評価データの補正点は、直進判定器と評価器が選んだもの。学習データは、正解の直進区間を候補にし、評価器は被験者単位の交差検証の予測を使って再構成したもので、実際の運用より補正点の選び方が有利。学習データは RoNIN の学習に使った系列"
+ },
+ "splits": {
+  "design": {
+   "name": "設計データ",
+   "n_series": 35,
+   "n_subjects": 34,
+   "slow_error_no_correction_median_deg": 4.03607122101991,
+   "slow_error_adopted_median_deg": 4.437138790729486,
+   "n_correction_points_median": 4,
+   "n_series_with_0_or_1_points": 14,
+   "n_series_with_0_points": 6,
+   "n_series_by_device": {
+    "asus3": 2,
+    "asus4": 12,
+    "asus5": 2,
+    "asus6": 1,
+    "asus7": 2,
+    "samsung1": 16
+   },
+   "n_series_over_5_deg": 11,
+   "n_series_over_10_deg": 2,
+   "groups": {
+    "at_most_5": {
+     "label": "5° 以下",
+     "n_series": 24,
+     "n_subjects": 24,
+     "slow_error_no_correction_median_deg": 3.0132168987334187,
+     "slow_error_adopted_median_deg": 3.209128841871242,
+     "n_correction_points_median": 3.5,
+     "n_series_with_0_or_1_points": 10,
+     "n_series_with_0_points": 4,
+     "n_series_by_device": {
+      "asus3": 1,
+      "asus4": 9,
+      "asus5": 2,
+      "asus7": 2,
+      "samsung1": 10
+     }
+    },
+    "5_to_10": {
+     "label": "5° 超 10° 以下",
+     "n_series": 9,
+     "n_subjects": 9,
+     "slow_error_no_correction_median_deg": 8.597411093571212,
+     "slow_error_adopted_median_deg": 7.538444847514818,
+     "n_correction_points_median": 4,
+     "n_series_with_0_or_1_points": 4,
+     "n_series_with_0_points": 2,
+     "n_series_by_device": {
+      "asus3": 1,
+      "asus4": 3,
+      "asus6": 1,
+      "samsung1": 4
+     }
+    },
+    "over_10": {
+     "label": "10° 超",
+     "n_series": 2,
+     "n_subjects": 2,
+     "slow_error_no_correction_median_deg": 21.182067330947447,
+     "slow_error_adopted_median_deg": 15.806699959818873,
+     "n_correction_points_median": 7,
+     "n_series_with_0_or_1_points": 0,
+     "n_series_with_0_points": 0,
+     "n_series_by_device": {
+      "samsung1": 2
+     }
+    }
+   }
+  },
+  "train": {
+   "name": "学習データ",
+   "n_series": 85,
+   "n_subjects": 42,
+   "slow_error_no_correction_median_deg": 1.923871948986849,
+   "slow_error_adopted_median_deg": 2.1314865090331097,
+   "n_correction_points_median": 5,
+   "n_series_with_0_or_1_points": 18,
+   "n_series_with_0_points": 11,
+   "n_series_by_device": {
+    "asus3": 10,
+    "asus4": 24,
+    "asus5": 6,
+    "asus7": 5,
+    "samsung1": 40
+   },
+   "n_series_over_5_deg": 26,
+   "n_series_over_10_deg": 17,
+   "groups": {
+    "at_most_5": {
+     "label": "5° 以下",
+     "n_series": 59,
+     "n_subjects": 34,
+     "slow_error_no_correction_median_deg": 1.1377780421880301,
+     "slow_error_adopted_median_deg": 1.3495059987063125,
+     "n_correction_points_median": 4,
+     "n_series_with_0_or_1_points": 12,
+     "n_series_with_0_points": 7,
+     "n_series_by_device": {
+      "asus3": 7,
+      "asus4": 19,
+      "asus5": 6,
+      "asus7": 4,
+      "samsung1": 23
+     }
+    },
+    "5_to_10": {
+     "label": "5° 超 10° 以下",
+     "n_series": 9,
+     "n_subjects": 9,
+     "slow_error_no_correction_median_deg": 6.757326214042483,
+     "slow_error_adopted_median_deg": 6.765501433682273,
+     "n_correction_points_median": 4,
+     "n_series_with_0_or_1_points": 2,
+     "n_series_with_0_points": 2,
+     "n_series_by_device": {
+      "asus3": 2,
+      "asus4": 3,
+      "samsung1": 4
+     }
+    },
+    "over_10": {
+     "label": "10° 超",
+     "n_series": 17,
+     "n_subjects": 14,
+     "slow_error_no_correction_median_deg": 21.51228546251659,
+     "slow_error_adopted_median_deg": 17.281780910459556,
+     "n_correction_points_median": 6,
+     "n_series_with_0_or_1_points": 4,
+     "n_series_with_0_points": 2,
+     "n_series_by_device": {
+      "asus3": 1,
+      "asus4": 2,
+      "asus7": 1,
+      "samsung1": 13
+     }
+    }
+   }
+  },
+  "test": {
+   "name": "評価データ",
+   "n_series": 32,
+   "n_subjects": 15,
+   "slow_error_no_correction_median_deg": 6.163359373045612,
+   "slow_error_adopted_median_deg": 5.967215136815847,
+   "n_correction_points_median": 2.5,
+   "n_series_with_0_or_1_points": 15,
+   "n_series_with_0_points": 10,
+   "n_series_by_device": {
+    "asus3": 2,
+    "asus4": 15,
+    "asus7": 3,
+    "samsung1": 12
+   },
+   "n_series_over_5_deg": 19,
+   "n_series_over_10_deg": 8,
+   "groups": {
+    "at_most_5": {
+     "label": "5° 以下",
+     "n_series": 13,
+     "n_subjects": 7,
+     "slow_error_no_correction_median_deg": 3.110584584096033,
+     "slow_error_adopted_median_deg": 2.789583954861752,
+     "n_correction_points_median": 6,
+     "n_series_with_0_or_1_points": 5,
+     "n_series_with_0_points": 4,
+     "n_series_by_device": {
+      "asus3": 2,
+      "asus4": 6,
+      "asus7": 2,
+      "samsung1": 3
+     }
+    },
+    "5_to_10": {
+     "label": "5° 超 10° 以下",
+     "n_series": 11,
+     "n_subjects": 9,
+     "slow_error_no_correction_median_deg": 6.705918883071457,
+     "slow_error_adopted_median_deg": 6.429260354298618,
+     "n_correction_points_median": 1,
+     "n_series_with_0_or_1_points": 6,
+     "n_series_with_0_points": 5,
+     "n_series_by_device": {
+      "asus4": 6,
+      "samsung1": 5
+     }
+    },
+    "over_10": {
+     "label": "10° 超",
+     "n_series": 8,
+     "n_subjects": 7,
+     "slow_error_no_correction_median_deg": 16.36580505498796,
+     "slow_error_adopted_median_deg": 16.006498553270443,
+     "n_correction_points_median": 2.5,
+     "n_series_with_0_or_1_points": 4,
+     "n_series_with_0_points": 1,
+     "n_series_by_device": {
+      "asus4": 3,
+      "asus7": 1,
+      "samsung1": 4
+     }
+    }
+   },
+   "note": "評価のあとに加えた集計（保存済みの系列ごとの値から数えた）。評価データは開発の途中の評価にも使っており、一度も見ていないデータではない"
+  }
+ },
+ "reference_not_in_paper_text": {
+  "note": "補正点の観測だけを正解に置き換えた場合の、設計データの群ごとの遅い方位誤差の中央値 [°]。正解を使う非因果の値。10° 超の群は 2 系列だけで、原因を一般に示すものではない",
+  "design_groups": {
+   "at_most_5": {
+    "slow_error_adopted_median_deg": 3.209128841871242,
+    "slow_error_true_observations_median_deg": 3.1124211015500416
+   },
+   "5_to_10": {
+    "slow_error_adopted_median_deg": 7.538444847514818,
+    "slow_error_true_observations_median_deg": 7.538444847514818
+   },
+   "over_10": {
+    "slow_error_adopted_median_deg": 15.806699959818873,
+    "slow_error_true_observations_median_deg": 15.720323353682932
+   }
+  }
+ },
+ "consistency": {
+  "note": "位置誤差（ATE）と補正点の数が、公開済みの方位補正の結果（results/heading_correction/design.json・test.json の RoNIN）と合うか。系列ごとの最大の差",
+  "design": {
+   "n_series": 35,
+   "max_abs_ate_diff_no_correction_m": 6.1119593111058634e-06,
+   "max_abs_ate_diff_adopted_m": 6.1119593111058634e-06,
+   "n_series_with_different_point_count": 0
+  },
+  "test": {
+   "n_series": 32,
+   "max_abs_ate_diff_no_correction_m": 5.568137710909582e-06,
+   "max_abs_ate_diff_adopted_m": 5.576863522538389e-06,
+   "n_series_with_different_point_count": 0
+  }
+ }
+}

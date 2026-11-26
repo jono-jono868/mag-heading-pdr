@@ -7,7 +7,12 @@
   "field_variation_matched": "緩い閾値・厳しい閾値の形（強さと伏角の比）を保ったまま、学習データ 85 系列の正解の直進候補で、提案と同じ補正点の数（810 個）になる倍率を決めた",
   "residual_test": "窓内の磁場ベクトルの、最初の 20 秒から作った参照との残差の χ² 検定（有意水準 5%）",
   "fix_error_attitude_basis": "補正点の誤差（付属の姿勢推定を基準）: 地磁気も使う付属の姿勢推定を基準にした、補正点での磁北方向の誤差（4 m の平均）。評価器が学習で予測している量",
-  "fix_error_position_basis": "補正点の誤差（位置の正解を基準）: 位置の正解から求めた方位の補正量（補正点の前後 30 秒で、RoNIN の速度と正解の速度の向きの差を、速さで重みづけして平均したもの）との差から、系列ごとの一定のずれ（その系列の補正点の候補すべての誤差の円形中央値）を引いた値"
+  "fix_error_position_basis": "補正点の誤差（位置の正解を基準）: 位置の正解から求めた方位の補正量（補正点の前後 30 秒で、RoNIN の速度と正解の速度の向きの差を、速さで重みづけして平均したもの）との差から、系列ごとの一定のずれ（その系列の補正点の候補すべての誤差の円形中央値）を引いた値",
+  "heading_difference_test": "既存の考え方（地磁気とジャイロの向きの変化の一致を検定する方法）に当たる規則。1 ストライド（約 1.25 秒）ごとに、地磁気から求めた方位とジャイロの方位の差・伏角・磁場の強さを取り、窓（3 ストライド = 3.51 m、または 4 m。1 ストライドは 1.17 m）の中での 3 つの量の変化の和の二乗を、その量の 1 ストライドごとの変化の雑音の分散で割って足し、窓の中の刻みの数で割った値 T を作る。T が閾値 τ 未満の候補を補正点にする（補正点の間隔は 4 m 以上）。雑音の分散は学習データ 85 系列の歩行中の変化のロバストな分散（(1.4826 × 中央絶対偏差) の二乗）で、方位の差 0.1205 rad²、伏角 0.01702 rad²、強さ 42.7 µT²。候補は、提案と同じ直進の候補に限るか、歩行（速さが 0.3 m/s 超）が 4 m 続くすべての時刻。τ は学習データで補正点の数が提案と同じ 810 個になる値（4 通りで 0.13〜0.21）。補正点での観測、カルマンフィルタ、候補の作り方は提案と同じ。考え方を本論文の量に置き換えたもので、原著の実装そのものではない。雑音の大きさは学習データから推定した",
+  "feature_g_removed": "提案の評価器から、通路が主に直交する建物を仮定する特徴 G（進行方位と地磁気の方位の差を 90° を法として求め、過去の安定した区間の値と比べたもの）の 4 列だけを除き、同じ手順で学習し直した評価器。評価器は補正点の誤差を予測する 4 種類の勾配ブースティング木の平均で、学習データ 85 系列の正解の直進候補で学習する。特徴は提案が 45 列、G を除いた版が 41 列。受理の閾値は、学習データを被験者単位で 5 分割した交差検証の予測で補正点が毎分 1 点になる値に決め直した（予測誤差 6.22° 以下。G を除かない再学習版は 5.36°、提案は 5.33°）。候補とカルマンフィルタは提案と同じ。ほかに、補正点の数を提案と同じにする閾値（6.18°）と、提案の 5.33° をそのまま当てた場合（学習データの補正点は 457 個に減る）も調べた",
+  "fix_error_difference_by_series": "補正点の誤差の、系列ごとの中央値の差: 両方の規則で補正点が 3 個以上ある系列だけについて、系列ごとの補正点の誤差の中央値の差（規則 − 比較対象。正なら規則の誤差が大きい）の HL、95% 信頼区間、exact Wilcoxon の p。探索的で、多重性の補正はしていない",
+  "holm_families": "既存の考え方に当たる規則 4 通り: p_exact_holm は、既存の比較の族（補正なしとの比較 11 本、提案との比較 10 本）にこの 4 通りを足した 15 本・14 本の Holm 補正、p_exact_holm_among_four_variants はこの 4 通りだけの族（補正なしとの比較 4 本、提案との比較 4 本）。特徴 G を除いた版: p_exact_holm は 3 通りの閾値（毎分 1 点・提案と同じ補正点の数・提案と同じ閾値）の、補正なしとの比較 3 本、提案との比較 3 本の Holm 補正。G を除かない再学習版は族に入れていない",
+  "noninferiority_margin": "非劣性の許容幅 0.0295 m（補正なしに対する位置誤差の差の HL の 95% 信頼区間の上限がこれ未満なら、悪化が許容幅内に収まるとする）。論文の方位補正の非劣性の判定と同じ値"
  },
  "selection_comparison": {
   "proposal": {
@@ -995,6 +1000,346 @@
      "rte_p_exact": 0.38616096158511937
     }
    }
+  },
+  "heading_difference_test": {
+   "label": "方位差の検定（既存の考え方に当たる規則）: 窓 3 ストライド・直進に限る（提案と同じ補正点の数に合わせた）",
+   "definition": "地磁気とジャイロの向きの変化の一致を検定する規則。窓 3 ストライド（3.51 m）、候補は提案と同じ直進の候補に限る。補正点の数が提案と同じになるよう、学習データで検定の量の閾値を決めた（τ = 0.211）",
+   "train_threshold": {
+    "test_statistic_threshold": 0.2108256399209237,
+    "fix_points": 810,
+    "fix_points_per_minute": 0.9801756450194988,
+    "fix_error_median_deg_attitude_basis": 11.275238175810777,
+    "share_over_20_attitude_basis": 0.28641975308641976
+   },
+   "fix_points": {
+    "total": 217,
+    "per_series_median": 5.0,
+    "series_without_points": 1
+   },
+   "fix_error_deg_attitude_basis": {
+    "median": 12.393,
+    "p90": 44.372400000000006,
+    "share_over_10": 0.576036866359447,
+    "share_over_20": 0.3271889400921659
+   },
+   "fix_error_deg_position_basis": {
+    "median": 11.438,
+    "p90": 42.409800000000004,
+    "share_over_10": 0.5668202764976958,
+    "share_over_20": 0.3225806451612903
+   },
+   "ronin": {
+    "ate_median_m": 3.782850444783842,
+    "ate_mean_m": 3.9253957358640035,
+    "baseline_ate_median_m": 3.515468394948718,
+    "vs_baseline": {
+     "hl_m": 0.01641666449638146,
+     "hl_ci95_m": [
+      -0.0428715359733188,
+      0.10077678092053888
+     ],
+     "p_exact": 0.4548785090446472,
+     "p_exact_holm": 1.0,
+     "p_exact_holm_among_four_variants": 1.0,
+     "p_subject": 0.2145,
+     "better": 12,
+     "worse": 17,
+     "unchanged": 6,
+     "worse_over_w": 7,
+     "better_over_w": 8,
+     "worst_diff_m": 2.083434811879681
+    },
+    "vs_proposal": {
+     "hl_m": 0.05312450726466467,
+     "hl_ci95_m": [
+      0.0,
+      0.1862863375673967
+     ],
+     "p_exact": 0.08406547829508781,
+     "p_exact_holm": 1.0,
+     "p_exact_holm_among_four_variants": 0.33626191318035126,
+     "p_subject": 0.0621,
+     "better": 11,
+     "worse": 19,
+     "unchanged": 5,
+     "worse_over_w": 10,
+     "better_over_w": 5,
+     "worst_diff_m": 3.0220564766305067
+    }
+   },
+   "eqnio": {
+    "ate_median_m": 3.387332933702284,
+    "ate_mean_m": 3.3354634329432784,
+    "baseline_ate_median_m": 3.1881332080507114,
+    "vs_baseline": {
+     "hl_m": 0.0,
+     "hl_ci95_m": [
+      -0.04017564332340472,
+      0.08750482843507813
+     ],
+     "p_exact": 0.8647311441600323,
+     "p_exact_holm": 1.0,
+     "p_exact_holm_among_four_variants": 1.0,
+     "p_subject": 0.27385,
+     "better": 15,
+     "worse": 14,
+     "unchanged": 6,
+     "worse_over_w": 8,
+     "better_over_w": 7,
+     "worst_diff_m": 2.2663148965129243
+    },
+    "vs_proposal": {
+     "hl_m": 0.025891808151802642,
+     "hl_ci95_m": [
+      -0.01118094933137769,
+      0.19546461928976414
+     ],
+     "p_exact": 0.18396909348666668,
+     "p_exact_holm": 1.0,
+     "p_exact_holm_among_four_variants": 0.7358763739466667,
+     "p_subject": 0.07035,
+     "better": 12,
+     "worse": 18,
+     "unchanged": 5,
+     "worse_over_w": 11,
+     "better_over_w": 5,
+     "worst_diff_m": 3.2078785253238
+    }
+   },
+   "fix_error_difference_by_series": {
+    "vs_proposal": {
+     "attitude_basis": {
+      "n_series": 19,
+      "hl_deg": 6.2935,
+      "hl_ci95_deg": [
+       3.8600000000000003,
+       13.363
+      ],
+      "p_exact": 9.5367431640625e-05,
+      "ci_excludes_zero": true
+     },
+     "position_basis": {
+      "n_series": 19,
+      "hl_deg": 7.7208749999999995,
+      "hl_ci95_deg": [
+       3.642499999999999,
+       14.686696874999997
+      ],
+      "p_exact": 0.000209808349609375,
+      "ci_excludes_zero": true
+     }
+    }
+   }
+  },
+  "proposal_without_feature_g": {
+   "label": "評価器から特徴 G を除く: 学習し直した評価器が予測した誤差で、毎分 1 点を選ぶ",
+   "definition": "提案の評価器から特徴 G を除いて学習し直した評価器。受理の閾値: 学習データを被験者単位で 5 分割した交差検証の予測で、補正点が毎分 1 点になる閾値（予測誤差 6.22° 以下）",
+   "train_threshold": {
+    "predicted_error_threshold_deg": 6.2217025949286295,
+    "fix_points": 827,
+    "fix_points_per_minute": 1.0007472326310192,
+    "fix_error_median_deg_attitude_basis": 5.982650374057709,
+    "share_over_20_attitude_basis": 0.09068923821039904
+   },
+   "fix_points": {
+    "total": 225,
+    "per_series_median": 5.0,
+    "series_without_points": 5
+   },
+   "fix_error_deg_attitude_basis": {
+    "median": 6.41,
+    "p90": 17.075399999999995,
+    "share_over_10": 0.31555555555555553,
+    "share_over_20": 0.07111111111111111,
+    "median_ci95": [
+     5.14735,
+     7.757062499999999
+    ],
+    "share_over_20_ci95": [
+     0.026777447089947087,
+     0.11538844621513943
+    ]
+   },
+   "fix_error_deg_position_basis": {
+    "median": 5.326,
+    "p90": 16.1994,
+    "share_over_10": 0.27555555555555555,
+    "share_over_20": 0.04888888888888889,
+    "median_ci95": [
+     4.571437499999999,
+     7.192
+    ],
+    "share_over_20_ci95": [
+     0.013885703363914372,
+     0.09794296174968684
+    ]
+   },
+   "ronin": {
+    "ate_median_m": 3.6740912030907964,
+    "ate_mean_m": 3.8008788330742385,
+    "baseline_ate_median_m": 3.515468394948718,
+    "vs_baseline": {
+     "hl_m": -0.000956610251144907,
+     "hl_ci95_m": [
+      -0.03215963237901576,
+      0.03557154747682398
+     ],
+     "p_exact": 0.7621389999985695,
+     "p_exact_holm": 1.0,
+     "hl_ci_upper_below_margin": false,
+     "p_subject": 0.96175,
+     "better": 16,
+     "worse": 12,
+     "unchanged": 7,
+     "worse_over_w": 3,
+     "better_over_w": 5,
+     "worst_diff_m": 1.0341972788229241
+    },
+    "vs_proposal": {
+     "hl_m": 0.023763501156445654,
+     "hl_ci95_m": [
+      -0.003887386227248725,
+      0.13528110127112744
+     ],
+     "p_exact": 0.38083895295858383,
+     "p_exact_holm": 0.5451895594596863,
+     "p_subject": 0.196,
+     "better": 15,
+     "worse": 14,
+     "unchanged": 6,
+     "worse_over_w": 8,
+     "better_over_w": 3,
+     "worst_diff_m": 0.7850196747271001
+    },
+    "vs_heading_difference_test": {
+     "hl_m": -0.018540315436660793,
+     "hl_ci95_m": [
+      -0.11420344640249036,
+      0.03565208871811648
+     ],
+     "p_exact": 0.4540447914041579,
+     "p_subject": 0.23605,
+     "better": 17,
+     "worse": 15,
+     "unchanged": 3,
+     "worse_over_w": 8,
+     "better_over_w": 10,
+     "worst_diff_m": 0.8375131550915018
+    }
+   },
+   "eqnio": {
+    "ate_median_m": 3.2482785133412264,
+    "ate_mean_m": 3.2032568020896144,
+    "baseline_ate_median_m": 3.1881332080507114,
+    "vs_baseline": {
+     "hl_m": -0.005845191729632049,
+     "hl_ci95_m": [
+      -0.04802774943064325,
+      0.00428333037939338
+     ],
+     "p_exact": 0.2450956031680107,
+     "p_exact_holm": 0.7352868095040321,
+     "hl_ci_upper_below_margin": true,
+     "p_subject": 0.76085,
+     "better": 17,
+     "worse": 11,
+     "unchanged": 7,
+     "worse_over_w": 3,
+     "better_over_w": 5,
+     "worst_diff_m": 1.2668907340010702
+    },
+    "vs_proposal": {
+     "hl_m": 0.005292906734919056,
+     "hl_ci95_m": [
+      -0.006940598149731202,
+      0.08204603260224597
+     ],
+     "p_exact": 0.5361509844660759,
+     "p_exact_holm": 0.588236503303051,
+     "p_subject": 0.2473,
+     "better": 14,
+     "worse": 15,
+     "unchanged": 6,
+     "worse_over_w": 7,
+     "better_over_w": 3,
+     "worst_diff_m": 1.049656621580978
+    },
+    "vs_heading_difference_test": {
+     "hl_m": -0.013985836658841455,
+     "hl_ci95_m": [
+      -0.1006524741315516,
+      0.028317238990157093
+     ],
+     "p_exact": 0.4104635491967201,
+     "p_subject": 0.25585,
+     "better": 18,
+     "worse": 14,
+     "unchanged": 3,
+     "worse_over_w": 7,
+     "better_over_w": 10,
+     "worst_diff_m": 0.8985174979839412
+    }
+   },
+   "fix_error_difference_by_series": {
+    "vs_proposal": {
+     "attitude_basis": {
+      "n_series": 20,
+      "hl_deg": 0.9655000000000001,
+      "hl_ci95_deg": [
+       -0.36499999999999977,
+       2.701
+      ],
+      "p_exact": 0.20244979858398438,
+      "ci_excludes_zero": false
+     },
+     "position_basis": {
+      "n_series": 20,
+      "hl_deg": 1.604375,
+      "hl_ci95_deg": [
+       0.06800000000000006,
+       3.1107500000000003
+      ],
+      "p_exact": 0.039989471435546875,
+      "ci_excludes_zero": true
+     }
+    },
+    "vs_heading_difference_test": {
+     "attitude_basis": {
+      "n_series": 22,
+      "hl_deg": -4.98575,
+      "hl_ci95_deg": [
+       -9.899999999999999,
+       -2.629999999999999
+      ],
+      "p_exact": 0.000255584716796875,
+      "ci_excludes_zero": true
+     },
+     "position_basis": {
+      "n_series": 22,
+      "hl_deg": -5.32275,
+      "hl_ci95_deg": [
+       -11.264999999999997,
+       -2.7204999999999995
+      ],
+      "p_exact": 0.0021948814392089844,
+      "ci_excludes_zero": true
+     }
+    }
+   },
+   "fix_points_overlap_with_proposal": {
+    "shared": {
+     "n": 51,
+     "error_median_deg": 7.422
+    },
+    "only_this_rule": {
+     "n": 174,
+     "error_median_deg": 6.1645
+    },
+    "only_proposal": {
+     "n": 180,
+     "error_median_deg": 4.7995
+    }
+   }
   }
  },
  "heading_ablation": {
@@ -1877,5 +2222,1308 @@
     }
    }
   }
- }
+ },
+ "heading_difference_test_variants": {
+  "window_3_strides_straight_only": {
+   "label": "窓 3 ストライド（3.51 m）・直進に限る（主の構成）",
+   "definition": "地磁気とジャイロの向きの変化の一致を検定する規則。窓 3 ストライド（3.51 m）、候補は提案と同じ直進の候補に限る。補正点の数が提案と同じになるよう、学習データで検定の量の閾値を決めた（τ = 0.211）",
+   "train_threshold": {
+    "test_statistic_threshold": 0.2108256399209237,
+    "fix_points": 810,
+    "fix_points_per_minute": 0.9801756450194988,
+    "fix_error_median_deg_attitude_basis": 11.275238175810777,
+    "share_over_20_attitude_basis": 0.28641975308641976
+   },
+   "fix_points": {
+    "total": 217,
+    "per_series_median": 5.0,
+    "series_without_points": 1
+   },
+   "fix_error_deg_attitude_basis": {
+    "median": 12.393,
+    "p90": 44.372400000000006,
+    "share_over_10": 0.576036866359447,
+    "share_over_20": 0.3271889400921659
+   },
+   "fix_error_deg_position_basis": {
+    "median": 11.438,
+    "p90": 42.409800000000004,
+    "share_over_10": 0.5668202764976958,
+    "share_over_20": 0.3225806451612903
+   },
+   "ronin": {
+    "ate_median_m": 3.782850444783842,
+    "ate_mean_m": 3.9253957358640035,
+    "baseline_ate_median_m": 3.515468394948718,
+    "vs_baseline": {
+     "hl_m": 0.01641666449638146,
+     "hl_ci95_m": [
+      -0.0428715359733188,
+      0.10077678092053888
+     ],
+     "p_exact": 0.4548785090446472,
+     "p_exact_holm": 1.0,
+     "p_exact_holm_among_four_variants": 1.0,
+     "p_subject": 0.2145,
+     "better": 12,
+     "worse": 17,
+     "unchanged": 6,
+     "worse_over_w": 7,
+     "better_over_w": 8,
+     "worst_diff_m": 2.083434811879681
+    },
+    "vs_proposal": {
+     "hl_m": 0.05312450726466467,
+     "hl_ci95_m": [
+      0.0,
+      0.1862863375673967
+     ],
+     "p_exact": 0.08406547829508781,
+     "p_exact_holm": 1.0,
+     "p_exact_holm_among_four_variants": 0.33626191318035126,
+     "p_subject": 0.0621,
+     "better": 11,
+     "worse": 19,
+     "unchanged": 5,
+     "worse_over_w": 10,
+     "better_over_w": 5,
+     "worst_diff_m": 3.0220564766305067
+    }
+   },
+   "eqnio": {
+    "ate_median_m": 3.387332933702284,
+    "ate_mean_m": 3.3354634329432784,
+    "baseline_ate_median_m": 3.1881332080507114,
+    "vs_baseline": {
+     "hl_m": 0.0,
+     "hl_ci95_m": [
+      -0.04017564332340472,
+      0.08750482843507813
+     ],
+     "p_exact": 0.8647311441600323,
+     "p_exact_holm": 1.0,
+     "p_exact_holm_among_four_variants": 1.0,
+     "p_subject": 0.27385,
+     "better": 15,
+     "worse": 14,
+     "unchanged": 6,
+     "worse_over_w": 8,
+     "better_over_w": 7,
+     "worst_diff_m": 2.2663148965129243
+    },
+    "vs_proposal": {
+     "hl_m": 0.025891808151802642,
+     "hl_ci95_m": [
+      -0.01118094933137769,
+      0.19546461928976414
+     ],
+     "p_exact": 0.18396909348666668,
+     "p_exact_holm": 1.0,
+     "p_exact_holm_among_four_variants": 0.7358763739466667,
+     "p_subject": 0.07035,
+     "better": 12,
+     "worse": 18,
+     "unchanged": 5,
+     "worse_over_w": 11,
+     "better_over_w": 5,
+     "worst_diff_m": 3.2078785253238
+    }
+   },
+   "fix_error_difference_by_series": {
+    "vs_proposal": {
+     "attitude_basis": {
+      "n_series": 19,
+      "hl_deg": 6.2935,
+      "hl_ci95_deg": [
+       3.8600000000000003,
+       13.363
+      ],
+      "p_exact": 9.5367431640625e-05,
+      "ci_excludes_zero": true
+     },
+     "position_basis": {
+      "n_series": 19,
+      "hl_deg": 7.7208749999999995,
+      "hl_ci95_deg": [
+       3.642499999999999,
+       14.686696874999997
+      ],
+      "p_exact": 0.000209808349609375,
+      "ci_excludes_zero": true
+     }
+    }
+   }
+  },
+  "window_3_strides_all_candidates": {
+   "label": "窓 3 ストライド（3.51 m）・直進に限らない",
+   "definition": "地磁気とジャイロの向きの変化の一致を検定する規則。窓 3 ストライド（3.51 m）、候補は歩行が 4 m 続くすべての時刻（直進に限らない）。補正点の数が提案と同じになるよう、学習データで検定の量の閾値を決めた（τ = 0.143）",
+   "train_threshold": {
+    "test_statistic_threshold": 0.1426551643956936,
+    "fix_points": 811,
+    "fix_points_per_minute": 0.9813857384084118,
+    "fix_error_median_deg_attitude_basis": 11.713585528389045,
+    "share_over_20_attitude_basis": 0.2725030826140567
+   },
+   "fix_points": {
+    "total": 332,
+    "per_series_median": 8.0,
+    "series_without_points": 0
+   },
+   "fix_error_deg_attitude_basis": {
+    "median": 10.511500000000002,
+    "p90": 40.90550000000001,
+    "share_over_10": 0.5150602409638554,
+    "share_over_20": 0.27710843373493976
+   },
+   "fix_error_deg_position_basis": {
+    "median": 10.7255,
+    "p90": 40.0223,
+    "share_over_10": 0.5271084337349398,
+    "share_over_20": 0.27710843373493976
+   },
+   "ronin": {
+    "ate_median_m": 3.5518889433495295,
+    "ate_mean_m": 3.8728024075359517,
+    "baseline_ate_median_m": 3.515468394948718,
+    "vs_baseline": {
+     "hl_m": 0.01648118721496511,
+     "hl_ci95_m": [
+      -0.10998450253067982,
+      0.20825397813936247
+     ],
+     "p_exact": 0.8001492922194302,
+     "p_exact_holm": 1.0,
+     "p_exact_holm_among_four_variants": 1.0,
+     "p_subject": 0.5257,
+     "better": 18,
+     "worse": 16,
+     "unchanged": 1,
+     "worse_over_w": 12,
+     "better_over_w": 10,
+     "worst_diff_m": 2.097689688018534
+    },
+    "vs_proposal": {
+     "hl_m": 0.0034360218348788996,
+     "hl_ci95_m": [
+      -0.09585278556561025,
+      0.1541169950346916
+     ],
+     "p_exact": 0.9059782412368804,
+     "p_exact_holm": 1.0,
+     "p_exact_holm_among_four_variants": 1.0,
+     "p_subject": 0.291,
+     "better": 19,
+     "worse": 15,
+     "unchanged": 1,
+     "worse_over_w": 10,
+     "better_over_w": 10,
+     "worst_diff_m": 3.03631135276936
+    }
+   },
+   "eqnio": {
+    "ate_median_m": 3.2754121774570324,
+    "ate_mean_m": 3.3154069998308557,
+    "baseline_ate_median_m": 3.1881332080507114,
+    "vs_baseline": {
+     "hl_m": 0.056705431804476125,
+     "hl_ci95_m": [
+      -0.057178865805581666,
+      0.23405438840260687
+     ],
+     "p_exact": 0.3604972792090848,
+     "p_exact_holm": 1.0,
+     "p_exact_holm_among_four_variants": 1.0,
+     "p_subject": 0.42985,
+     "better": 15,
+     "worse": 19,
+     "unchanged": 1,
+     "worse_over_w": 12,
+     "better_over_w": 9,
+     "worst_diff_m": 2.2479191337490367
+    },
+    "vs_proposal": {
+     "hl_m": 0.04051613564075701,
+     "hl_ci95_m": [
+      -0.04737784300711218,
+      0.21363247905749602
+     ],
+     "p_exact": 0.3974188358988613,
+     "p_exact_holm": 1.0,
+     "p_exact_holm_among_four_variants": 1.0,
+     "p_subject": 0.1684,
+     "better": 16,
+     "worse": 18,
+     "unchanged": 1,
+     "worse_over_w": 10,
+     "better_over_w": 8,
+     "worst_diff_m": 3.1894827625599125
+    }
+   },
+   "fix_error_difference_by_series": {
+    "vs_proposal": {
+     "attitude_basis": {
+      "n_series": 21,
+      "hl_deg": 5.189,
+      "hl_ci95_deg": [
+       3.02675,
+       8.068999999999999
+      ],
+      "p_exact": 0.0001049041748046875,
+      "ci_excludes_zero": true
+     },
+     "position_basis": {
+      "n_series": 21,
+      "hl_deg": 6.03975,
+      "hl_ci95_deg": [
+       3.97175,
+       9.096743749999986
+      ],
+      "p_exact": 0.0001049041748046875,
+      "ci_excludes_zero": true
+     }
+    }
+   }
+  },
+  "window_4m_straight_only": {
+   "label": "窓 4 m・直進に限る",
+   "definition": "地磁気とジャイロの向きの変化の一致を検定する規則。窓 4 m、候補は提案と同じ直進の候補に限る。補正点の数が提案と同じになるよう、学習データで検定の量の閾値を決めた（τ = 0.187）",
+   "train_threshold": {
+    "test_statistic_threshold": 0.1874748339855805,
+    "fix_points": 810,
+    "fix_points_per_minute": 0.9801756450194988,
+    "fix_error_median_deg_attitude_basis": 11.427424441585112,
+    "share_over_20_attitude_basis": 0.30493827160493825
+   },
+   "fix_points": {
+    "total": 214,
+    "per_series_median": 4.0,
+    "series_without_points": 0
+   },
+   "fix_error_deg_attitude_basis": {
+    "median": 12.0195,
+    "p90": 44.47230000000002,
+    "share_over_10": 0.5560747663551402,
+    "share_over_20": 0.34579439252336447
+   },
+   "fix_error_deg_position_basis": {
+    "median": 11.027000000000001,
+    "p90": 41.00130000000003,
+    "share_over_10": 0.5420560747663551,
+    "share_over_20": 0.308411214953271
+   },
+   "ronin": {
+    "ate_median_m": 3.6913743810267943,
+    "ate_mean_m": 3.8869799551507,
+    "baseline_ate_median_m": 3.515468394948718,
+    "vs_baseline": {
+     "hl_m": 0.01861772167726239,
+     "hl_ci95_m": [
+      -0.009051305159887238,
+      0.13476015169161007
+     ],
+     "p_exact": 0.21665488090366125,
+     "p_exact_holm": 1.0,
+     "p_exact_holm_among_four_variants": 0.866619523614645,
+     "p_subject": 0.301,
+     "better": 12,
+     "worse": 19,
+     "unchanged": 4,
+     "worse_over_w": 9,
+     "better_over_w": 5,
+     "worst_diff_m": 1.6838844170236738
+    },
+    "vs_proposal": {
+     "hl_m": 0.018142520447728683,
+     "hl_ci95_m": [
+      -0.016481205328311876,
+      0.24624543999300474
+     ],
+     "p_exact": 0.31757172010838985,
+     "p_exact_holm": 1.0,
+     "p_exact_holm_among_four_variants": 0.9527151603251696,
+     "p_subject": 0.0999,
+     "better": 14,
+     "worse": 17,
+     "unchanged": 4,
+     "worse_over_w": 10,
+     "better_over_w": 6,
+     "worst_diff_m": 1.7891100028613083
+    }
+   },
+   "eqnio": {
+    "ate_median_m": 3.2809551856437738,
+    "ate_mean_m": 3.2768231364708966,
+    "baseline_ate_median_m": 3.1881332080507114,
+    "vs_baseline": {
+     "hl_m": 0.008276568630584319,
+     "hl_ci95_m": [
+      -0.044050270379969565,
+      0.12690472243276596
+     ],
+     "p_exact": 0.635700810700655,
+     "p_exact_holm": 1.0,
+     "p_exact_holm_among_four_variants": 1.0,
+     "p_subject": 0.51345,
+     "better": 15,
+     "worse": 16,
+     "unchanged": 4,
+     "worse_over_w": 9,
+     "better_over_w": 7,
+     "worst_diff_m": 1.3863450120821963
+    },
+    "vs_proposal": {
+     "hl_m": 0.006016833670240085,
+     "hl_ci95_m": [
+      -0.030856261989993104,
+      0.16420196857259972
+     ],
+     "p_exact": 0.6495812004432082,
+     "p_exact_holm": 1.0,
+     "p_exact_holm_among_four_variants": 1.0,
+     "p_subject": 0.1471,
+     "better": 17,
+     "worse": 14,
+     "unchanged": 4,
+     "worse_over_w": 9,
+     "better_over_w": 4,
+     "worst_diff_m": 1.8856001623312872
+    }
+   },
+   "fix_error_difference_by_series": {
+    "vs_proposal": {
+     "attitude_basis": {
+      "n_series": 19,
+      "hl_deg": 7.2445,
+      "hl_ci95_deg": [
+       3.3712500000000003,
+       14.922249999999998
+      ],
+      "p_exact": 0.000644683837890625,
+      "ci_excludes_zero": true
+     },
+     "position_basis": {
+      "n_series": 19,
+      "hl_deg": 6.5065,
+      "hl_ci95_deg": [
+       3.64925,
+       14.129875
+      ],
+      "p_exact": 0.000644683837890625,
+      "ci_excludes_zero": true
+     }
+    }
+   }
+  },
+  "window_4m_all_candidates": {
+   "label": "窓 4 m・直進に限らない",
+   "definition": "地磁気とジャイロの向きの変化の一致を検定する規則。窓 4 m、候補は歩行が 4 m 続くすべての時刻（直進に限らない）。補正点の数が提案と同じになるよう、学習データで検定の量の閾値を決めた（τ = 0.131）",
+   "train_threshold": {
+    "test_statistic_threshold": 0.13078896650500743,
+    "fix_points": 811,
+    "fix_points_per_minute": 0.9813857384084118,
+    "fix_error_median_deg_attitude_basis": 11.472421110802214,
+    "share_over_20_attitude_basis": 0.27743526510480887
+   },
+   "fix_points": {
+    "total": 338,
+    "per_series_median": 8.0,
+    "series_without_points": 0
+   },
+   "fix_error_deg_attitude_basis": {
+    "median": 10.964500000000001,
+    "p90": 42.02340000000001,
+    "share_over_10": 0.5414201183431953,
+    "share_over_20": 0.3136094674556213
+   },
+   "fix_error_deg_position_basis": {
+    "median": 10.713000000000001,
+    "p90": 39.6251,
+    "share_over_10": 0.5266272189349113,
+    "share_over_20": 0.3047337278106509
+   },
+   "ronin": {
+    "ate_median_m": 3.317691467411347,
+    "ate_mean_m": 3.7792012241378945,
+    "baseline_ate_median_m": 3.515468394948718,
+    "vs_baseline": {
+     "hl_m": 0.014290639900097046,
+     "hl_ci95_m": [
+      -0.11715501287893369,
+      0.1477238039292379
+     ],
+     "p_exact": 0.8659985983977094,
+     "p_exact_holm": 1.0,
+     "p_exact_holm_among_four_variants": 1.0,
+     "p_subject": 0.88615,
+     "better": 18,
+     "worse": 16,
+     "unchanged": 1,
+     "worse_over_w": 12,
+     "better_over_w": 10,
+     "worst_diff_m": 1.3042526869802127
+    },
+    "vs_proposal": {
+     "hl_m": -0.016503578380501704,
+     "hl_ci95_m": [
+      -0.1338468382890392,
+      0.14139594286757523
+     ],
+     "p_exact": 0.8263502409681678,
+     "p_exact_holm": 1.0,
+     "p_exact_holm_among_four_variants": 1.0,
+     "p_subject": 0.7048,
+     "better": 20,
+     "worse": 14,
+     "unchanged": 1,
+     "worse_over_w": 11,
+     "better_over_w": 12,
+     "worst_diff_m": 2.2428743517310386
+    }
+   },
+   "eqnio": {
+    "ate_median_m": 2.996934516815489,
+    "ate_mean_m": 3.2616978794447222,
+    "baseline_ate_median_m": 3.1881332080507114,
+    "vs_baseline": {
+     "hl_m": 0.07334941104651971,
+     "hl_ci95_m": [
+      -0.05368318846719364,
+      0.21020867785759534
+     ],
+     "p_exact": 0.2628566062776372,
+     "p_exact_holm": 1.0,
+     "p_exact_holm_among_four_variants": 1.0,
+     "p_subject": 0.6942,
+     "better": 15,
+     "worse": 19,
+     "unchanged": 1,
+     "worse_over_w": 16,
+     "better_over_w": 8,
+     "worst_diff_m": 1.2557872355216204
+    },
+    "vs_proposal": {
+     "hl_m": 0.044842427388852024,
+     "hl_ci95_m": [
+      -0.07374896570261069,
+      0.2171876289942707
+     ],
+     "p_exact": 0.41668229072820395,
+     "p_exact_holm": 1.0,
+     "p_exact_holm_among_four_variants": 1.0,
+     "p_subject": 0.25345,
+     "better": 18,
+     "worse": 16,
+     "unchanged": 1,
+     "worse_over_w": 14,
+     "better_over_w": 10,
+     "worst_diff_m": 2.1835148751643034
+    }
+   },
+   "fix_error_difference_by_series": {
+    "vs_proposal": {
+     "attitude_basis": {
+      "n_series": 21,
+      "hl_deg": 5.7265,
+      "hl_ci95_deg": [
+       2.206112500000001,
+       10.735568749999981
+      ],
+      "p_exact": 0.0008516311645507812,
+      "ci_excludes_zero": true
+     },
+     "position_basis": {
+      "n_series": 21,
+      "hl_deg": 6.23475,
+      "hl_ci95_deg": [
+       3.4762499999999994,
+       9.45325
+      ],
+      "p_exact": 0.0001049041748046875,
+      "ci_excludes_zero": true
+     }
+    }
+   }
+  }
+ },
+ "feature_g_removed_variants": {
+  "without_g_one_per_minute": {
+   "label": "特徴 G を除く: 毎分 1 点（論文の表 3 の行）",
+   "definition": "提案の評価器から特徴 G を除いて学習し直した評価器。受理の閾値: 学習データを被験者単位で 5 分割した交差検証の予測で、補正点が毎分 1 点になる閾値（予測誤差 6.22° 以下）",
+   "train_threshold": {
+    "predicted_error_threshold_deg": 6.2217025949286295,
+    "fix_points": 827,
+    "fix_points_per_minute": 1.0007472326310192,
+    "fix_error_median_deg_attitude_basis": 5.982650374057709,
+    "share_over_20_attitude_basis": 0.09068923821039904
+   },
+   "fix_points": {
+    "total": 225,
+    "per_series_median": 5.0,
+    "series_without_points": 5
+   },
+   "fix_error_deg_attitude_basis": {
+    "median": 6.41,
+    "p90": 17.075399999999995,
+    "share_over_10": 0.31555555555555553,
+    "share_over_20": 0.07111111111111111,
+    "median_ci95": [
+     5.14735,
+     7.757062499999999
+    ],
+    "share_over_20_ci95": [
+     0.026777447089947087,
+     0.11538844621513943
+    ]
+   },
+   "fix_error_deg_position_basis": {
+    "median": 5.326,
+    "p90": 16.1994,
+    "share_over_10": 0.27555555555555555,
+    "share_over_20": 0.04888888888888889,
+    "median_ci95": [
+     4.571437499999999,
+     7.192
+    ],
+    "share_over_20_ci95": [
+     0.013885703363914372,
+     0.09794296174968684
+    ]
+   },
+   "ronin": {
+    "ate_median_m": 3.6740912030907964,
+    "ate_mean_m": 3.8008788330742385,
+    "baseline_ate_median_m": 3.515468394948718,
+    "vs_baseline": {
+     "hl_m": -0.000956610251144907,
+     "hl_ci95_m": [
+      -0.03215963237901576,
+      0.03557154747682398
+     ],
+     "p_exact": 0.7621389999985695,
+     "p_exact_holm": 1.0,
+     "hl_ci_upper_below_margin": false,
+     "p_subject": 0.96175,
+     "better": 16,
+     "worse": 12,
+     "unchanged": 7,
+     "worse_over_w": 3,
+     "better_over_w": 5,
+     "worst_diff_m": 1.0341972788229241
+    },
+    "vs_proposal": {
+     "hl_m": 0.023763501156445654,
+     "hl_ci95_m": [
+      -0.003887386227248725,
+      0.13528110127112744
+     ],
+     "p_exact": 0.38083895295858383,
+     "p_exact_holm": 0.5451895594596863,
+     "p_subject": 0.196,
+     "better": 15,
+     "worse": 14,
+     "unchanged": 6,
+     "worse_over_w": 8,
+     "better_over_w": 3,
+     "worst_diff_m": 0.7850196747271001
+    },
+    "vs_heading_difference_test": {
+     "hl_m": -0.018540315436660793,
+     "hl_ci95_m": [
+      -0.11420344640249036,
+      0.03565208871811648
+     ],
+     "p_exact": 0.4540447914041579,
+     "p_subject": 0.23605,
+     "better": 17,
+     "worse": 15,
+     "unchanged": 3,
+     "worse_over_w": 8,
+     "better_over_w": 10,
+     "worst_diff_m": 0.8375131550915018
+    }
+   },
+   "eqnio": {
+    "ate_median_m": 3.2482785133412264,
+    "ate_mean_m": 3.2032568020896144,
+    "baseline_ate_median_m": 3.1881332080507114,
+    "vs_baseline": {
+     "hl_m": -0.005845191729632049,
+     "hl_ci95_m": [
+      -0.04802774943064325,
+      0.00428333037939338
+     ],
+     "p_exact": 0.2450956031680107,
+     "p_exact_holm": 0.7352868095040321,
+     "hl_ci_upper_below_margin": true,
+     "p_subject": 0.76085,
+     "better": 17,
+     "worse": 11,
+     "unchanged": 7,
+     "worse_over_w": 3,
+     "better_over_w": 5,
+     "worst_diff_m": 1.2668907340010702
+    },
+    "vs_proposal": {
+     "hl_m": 0.005292906734919056,
+     "hl_ci95_m": [
+      -0.006940598149731202,
+      0.08204603260224597
+     ],
+     "p_exact": 0.5361509844660759,
+     "p_exact_holm": 0.588236503303051,
+     "p_subject": 0.2473,
+     "better": 14,
+     "worse": 15,
+     "unchanged": 6,
+     "worse_over_w": 7,
+     "better_over_w": 3,
+     "worst_diff_m": 1.049656621580978
+    },
+    "vs_heading_difference_test": {
+     "hl_m": -0.013985836658841455,
+     "hl_ci95_m": [
+      -0.1006524741315516,
+      0.028317238990157093
+     ],
+     "p_exact": 0.4104635491967201,
+     "p_subject": 0.25585,
+     "better": 18,
+     "worse": 14,
+     "unchanged": 3,
+     "worse_over_w": 7,
+     "better_over_w": 10,
+     "worst_diff_m": 0.8985174979839412
+    }
+   },
+   "fix_error_difference_by_series": {
+    "vs_proposal": {
+     "attitude_basis": {
+      "n_series": 20,
+      "hl_deg": 0.9655000000000001,
+      "hl_ci95_deg": [
+       -0.36499999999999977,
+       2.701
+      ],
+      "p_exact": 0.20244979858398438,
+      "ci_excludes_zero": false
+     },
+     "position_basis": {
+      "n_series": 20,
+      "hl_deg": 1.604375,
+      "hl_ci95_deg": [
+       0.06800000000000006,
+       3.1107500000000003
+      ],
+      "p_exact": 0.039989471435546875,
+      "ci_excludes_zero": true
+     }
+    },
+    "vs_heading_difference_test": {
+     "attitude_basis": {
+      "n_series": 22,
+      "hl_deg": -4.98575,
+      "hl_ci95_deg": [
+       -9.899999999999999,
+       -2.629999999999999
+      ],
+      "p_exact": 0.000255584716796875,
+      "ci_excludes_zero": true
+     },
+     "position_basis": {
+      "n_series": 22,
+      "hl_deg": -5.32275,
+      "hl_ci95_deg": [
+       -11.264999999999997,
+       -2.7204999999999995
+      ],
+      "p_exact": 0.0021948814392089844,
+      "ci_excludes_zero": true
+     }
+    }
+   },
+   "fix_points_overlap_with_proposal": {
+    "shared": {
+     "n": 51,
+     "error_median_deg": 7.422
+    },
+    "only_this_rule": {
+     "n": 174,
+     "error_median_deg": 6.1645
+    },
+    "only_proposal": {
+     "n": 180,
+     "error_median_deg": 4.7995
+    }
+   }
+  },
+  "without_g_same_count_as_proposal": {
+   "label": "特徴 G を除く: 提案と同じ補正点の数（学習データで 810 個）",
+   "definition": "提案の評価器から特徴 G を除いて学習し直した評価器。受理の閾値: 学習データで補正点の数が提案と同じ（810 個）になる閾値（予測誤差 6.18° 以下）",
+   "train_threshold": {
+    "predicted_error_threshold_deg": 6.183568191320904,
+    "fix_points": 811,
+    "fix_points_per_minute": 0.9813857384084118,
+    "fix_error_median_deg_attitude_basis": 5.979898677878003,
+    "share_over_20_attitude_basis": 0.08877928483353884
+   },
+   "fix_points": {
+    "total": 221,
+    "per_series_median": 5.0,
+    "series_without_points": 5
+   },
+   "fix_error_deg_attitude_basis": {
+    "median": 6.504,
+    "p90": 17.491,
+    "share_over_10": 0.3212669683257919,
+    "share_over_20": 0.07239819004524888,
+    "median_ci95": [
+     5.55,
+     7.866
+    ],
+    "share_over_20_ci95": [
+     0.027467532467532467,
+     0.11713036565977734
+    ]
+   },
+   "fix_error_deg_position_basis": {
+    "median": 5.489,
+    "p90": 16.251,
+    "share_over_10": 0.2850678733031674,
+    "share_over_20": 0.049773755656108594,
+    "median_ci95": [
+     4.69,
+     7.346
+    ],
+    "share_over_20_ci95": [
+     0.014082861655916809,
+     0.09867525180193917
+    ]
+   },
+   "ronin": {
+    "ate_median_m": 3.6740912030907964,
+    "ate_mean_m": 3.806732187608762,
+    "baseline_ate_median_m": 3.515468394948718,
+    "vs_baseline": {
+     "hl_m": 0.0,
+     "hl_ci95_m": [
+      -0.017376246673466145,
+      0.03876399565077815
+     ],
+     "p_exact": 1.0,
+     "p_exact_holm": 1.0,
+     "hl_ci_upper_below_margin": false,
+     "p_subject": 0.8728,
+     "better": 15,
+     "worse": 13,
+     "unchanged": 7,
+     "worse_over_w": 4,
+     "better_over_w": 5,
+     "worst_diff_m": 1.0341972788229241
+    },
+    "vs_proposal": {
+     "hl_m": 0.03674961204209448,
+     "hl_ci95_m": [
+      -0.0035951936357103698,
+      0.14472657608429415
+     ],
+     "p_exact": 0.21324460953474045,
+     "p_exact_holm": 0.5451895594596863,
+     "p_subject": 0.15395,
+     "better": 14,
+     "worse": 15,
+     "unchanged": 6,
+     "worse_over_w": 8,
+     "better_over_w": 3,
+     "worst_diff_m": 0.7850196747271001
+    },
+    "vs_heading_difference_test": {
+     "hl_m": -0.010155743358176261,
+     "hl_ci95_m": [
+      -0.10977375368222199,
+      0.04794209210440126
+     ],
+     "p_exact": 0.6247301651164889,
+     "p_subject": 0.2589,
+     "better": 16,
+     "worse": 16,
+     "unchanged": 3,
+     "worse_over_w": 8,
+     "better_over_w": 10,
+     "worst_diff_m": 0.8375131550915018
+    }
+   },
+   "eqnio": {
+    "ate_median_m": 3.2482785133412264,
+    "ate_mean_m": 3.2119094228646228,
+    "baseline_ate_median_m": 3.1881332080507114,
+    "vs_baseline": {
+     "hl_m": -0.0016813531505135426,
+     "hl_ci95_m": [
+      -0.04525806838650051,
+      0.007581590213853406
+     ],
+     "p_exact": 0.49323366582393646,
+     "p_exact_holm": 0.9864673316478729,
+     "hl_ci_upper_below_margin": true,
+     "p_subject": 0.87205,
+     "better": 16,
+     "worse": 12,
+     "unchanged": 7,
+     "worse_over_w": 4,
+     "better_over_w": 5,
+     "worst_diff_m": 1.2668907340010702
+    },
+    "vs_proposal": {
+     "hl_m": 0.0077035466834531885,
+     "hl_ci95_m": [
+      -0.0018311863733830869,
+      0.08975866113486286
+     ],
+     "p_exact": 0.2941182516515255,
+     "p_exact_holm": 0.588236503303051,
+     "p_subject": 0.1719,
+     "better": 13,
+     "worse": 16,
+     "unchanged": 6,
+     "worse_over_w": 7,
+     "better_over_w": 3,
+     "worst_diff_m": 1.049656621580978
+    },
+    "vs_heading_difference_test": {
+     "hl_m": -0.00947713635500147,
+     "hl_ci95_m": [
+      -0.09738842985351917,
+      0.04286187374178563
+     ],
+     "p_exact": 0.573302308563143,
+     "p_subject": 0.291,
+     "better": 17,
+     "worse": 15,
+     "unchanged": 3,
+     "worse_over_w": 8,
+     "better_over_w": 10,
+     "worst_diff_m": 0.8985174979839412
+    }
+   },
+   "fix_error_difference_by_series": {
+    "vs_proposal": {
+     "attitude_basis": {
+      "n_series": 20,
+      "hl_deg": 1.069125,
+      "hl_ci95_deg": [
+       -0.17600000000000016,
+       2.7685000000000004
+      ],
+      "p_exact": 0.14290618896484375,
+      "ci_excludes_zero": false
+     },
+     "position_basis": {
+      "n_series": 20,
+      "hl_deg": 1.66025,
+      "hl_ci95_deg": [
+       0.08437499999999998,
+       3.0942968749999977
+      ],
+      "p_exact": 0.029575347900390625,
+      "ci_excludes_zero": true
+     }
+    },
+    "vs_heading_difference_test": {
+     "attitude_basis": {
+      "n_series": 22,
+      "hl_deg": -4.770750000000001,
+      "hl_ci95_deg": [
+       -9.6995,
+       -2.4210000000000007
+      ],
+      "p_exact": 0.0003619194030761719,
+      "ci_excludes_zero": true
+     },
+     "position_basis": {
+      "n_series": 22,
+      "hl_deg": -4.932250000000001,
+      "hl_ci95_deg": [
+       -10.684000000000001,
+       -2.2385000000000184
+      ],
+      "p_exact": 0.0028514862060546875,
+      "ci_excludes_zero": true
+     }
+    }
+   }
+  },
+  "without_g_proposal_threshold": {
+   "label": "特徴 G を除く: 提案と同じ予測誤差の閾値 5.33°",
+   "definition": "提案の評価器から特徴 G を除いて学習し直した評価器。受理の閾値: 提案と同じ予測誤差の閾値 5.33° をそのまま当てた（予測誤差 5.33° 以下）",
+   "train_threshold": {
+    "predicted_error_threshold_deg": 5.33,
+    "fix_points": 457,
+    "fix_points_per_minute": 0.5530126787332235,
+    "fix_error_median_deg_attitude_basis": 5.289890328770696,
+    "share_over_20_attitude_basis": 0.061269146608315096
+   },
+   "fix_points": {
+    "total": 116,
+    "per_series_median": 3.0,
+    "series_without_points": 8
+   },
+   "fix_error_deg_attitude_basis": {
+    "median": 5.922,
+    "p90": 18.8945,
+    "share_over_10": 0.28448275862068967,
+    "share_over_20": 0.08620689655172414,
+    "median_ci95": [
+     4.534,
+     7.3765624999999995
+    ],
+    "share_over_20_ci95": [
+     0.029122695933586604,
+     0.1512668703845174
+    ]
+   },
+   "fix_error_deg_position_basis": {
+    "median": 5.173500000000001,
+    "p90": 15.8015,
+    "share_over_10": 0.29310344827586204,
+    "share_over_20": 0.05172413793103448,
+    "median_ci95": [
+     4.448,
+     6.5766
+    ],
+    "share_over_20_ci95": [
+     0.0078125,
+     0.10570241177272102
+    ]
+   },
+   "ronin": {
+    "ate_median_m": 3.5720082037123184,
+    "ate_mean_m": 3.8015221707207933,
+    "baseline_ate_median_m": 3.515468394948718,
+    "vs_baseline": {
+     "hl_m": 0.0,
+     "hl_ci95_m": [
+      -0.022686150149630047,
+      0.01810793211309871
+     ],
+     "p_exact": 0.7502379417419434,
+     "p_exact_holm": 1.0,
+     "hl_ci_upper_below_margin": true,
+     "p_subject": 0.93815,
+     "better": 12,
+     "worse": 10,
+     "unchanged": 13,
+     "worse_over_w": 4,
+     "better_over_w": 5,
+     "worst_diff_m": 0.7993591912955127
+    },
+    "vs_proposal": {
+     "hl_m": 0.017787857471548096,
+     "hl_ci95_m": [
+      0.0,
+      0.0969059582289323
+     ],
+     "p_exact": 0.18172985315322876,
+     "p_exact_holm": 0.5451895594596863,
+     "p_subject": 0.2254,
+     "better": 8,
+     "worse": 17,
+     "unchanged": 10,
+     "worse_over_w": 10,
+     "better_over_w": 4,
+     "worst_diff_m": 0.945916610893935
+    },
+    "vs_heading_difference_test": {
+     "hl_m": -0.01403582255201441,
+     "hl_ci95_m": [
+      -0.1286870534328934,
+      0.05275850716833891
+     ],
+     "p_exact": 0.5682233804836869,
+     "p_subject": 0.19655,
+     "better": 17,
+     "worse": 14,
+     "unchanged": 4,
+     "worse_over_w": 8,
+     "better_over_w": 8,
+     "worst_diff_m": 0.759118645671772
+    }
+   },
+   "eqnio": {
+    "ate_median_m": 3.1881332080507114,
+    "ate_mean_m": 3.218325476006698,
+    "baseline_ate_median_m": 3.1881332080507114,
+    "vs_baseline": {
+     "hl_m": 0.0,
+     "hl_ci95_m": [
+      -0.02575956181059691,
+      0.006516254843611291
+     ],
+     "p_exact": 0.898735523223877,
+     "p_exact_holm": 0.9864673316478729,
+     "hl_ci_upper_below_margin": true,
+     "p_subject": 0.94415,
+     "better": 10,
+     "worse": 12,
+     "unchanged": 13,
+     "worse_over_w": 2,
+     "better_over_w": 5,
+     "worst_diff_m": 1.0168831290435114
+    },
+    "vs_proposal": {
+     "hl_m": 0.01042124021185406,
+     "hl_ci95_m": [
+      0.0,
+      0.09546670119437817
+     ],
+     "p_exact": 0.18750131130218506,
+     "p_exact_holm": 0.5625039339065552,
+     "p_subject": 0.14995,
+     "better": 8,
+     "worse": 16,
+     "unchanged": 11,
+     "worse_over_w": 8,
+     "better_over_w": 5,
+     "worst_diff_m": 0.9761950806791795
+    },
+    "vs_heading_difference_test": {
+     "hl_m": -0.003748435196764488,
+     "hl_ci95_m": [
+      -0.10462350152229805,
+      0.034774733418667124
+     ],
+     "p_exact": 0.7206862810999155,
+     "p_subject": 0.2222,
+     "better": 15,
+     "worse": 16,
+     "unchanged": 4,
+     "worse_over_w": 6,
+     "better_over_w": 8,
+     "worst_diff_m": 0.8021185506000919
+    }
+   },
+   "fix_error_difference_by_series": {
+    "vs_proposal": {
+     "attitude_basis": {
+      "n_series": 16,
+      "hl_deg": -0.12262499999999998,
+      "hl_ci95_deg": [
+       -1.6367499999999997,
+       1.2545000000000002
+      ],
+      "p_exact": 0.979949951171875,
+      "ci_excludes_zero": false
+     },
+     "position_basis": {
+      "n_series": 16,
+      "hl_deg": 0.6546249999999999,
+      "hl_ci95_deg": [
+       -0.7731249999999995,
+       2.4981187499999997
+      ],
+      "p_exact": 0.348388671875,
+      "ci_excludes_zero": false
+     }
+    },
+    "vs_heading_difference_test": {
+     "attitude_basis": {
+      "n_series": 16,
+      "hl_deg": -6.386875,
+      "hl_ci95_deg": [
+       -10.985609375000001,
+       -3.8165
+      ],
+      "p_exact": 0.000579833984375,
+      "ci_excludes_zero": true
+     },
+     "position_basis": {
+      "n_series": 16,
+      "hl_deg": -7.522874999999999,
+      "hl_ci95_deg": [
+       -12.49075,
+       -4.2353749999999994
+      ],
+      "p_exact": 0.000762939453125,
+      "ci_excludes_zero": true
+     }
+    }
+   }
+  },
+  "with_g_retrained_one_per_minute": {
+   "label": "特徴 G を除かずに同じ手順で学習し直した評価器: 毎分 1 点（参考）",
+   "definition": "特徴 G を除かずに、同じ手順で学習し直した評価器。受理の閾値: 学習データを被験者単位で 5 分割した交差検証の予測で、補正点が毎分 1 点になる閾値（予測誤差 5.36° 以下）",
+   "train_threshold": {
+    "predicted_error_threshold_deg": 5.3634825087971185,
+    "fix_points": 826,
+    "fix_points_per_minute": 0.9995371392421062,
+    "fix_error_median_deg_attitude_basis": 5.032039103263531,
+    "share_over_20_attitude_basis": 0.04116222760290557
+   },
+   "fix_points": {
+    "total": 228,
+    "per_series_median": 5.0,
+    "series_without_points": 6
+   },
+   "fix_error_deg_attitude_basis": {
+    "median": 4.9445,
+    "p90": 13.959200000000003,
+    "share_over_10": 0.23684210526315788,
+    "share_over_20": 0.02631578947368421,
+    "median_ci95": [
+     4.404,
+     6.849
+    ],
+    "share_over_20_ci95": [
+     0.009897367785559044,
+     0.047872340425531915
+    ]
+   },
+   "fix_error_deg_position_basis": {
+    "median": 4.6775,
+    "p90": 12.8574,
+    "share_over_10": 0.20175438596491227,
+    "share_over_20": 0.021929824561403508,
+    "median_ci95": [
+     3.963,
+     5.970000000000001
+    ],
+    "share_over_20_ci95": [
+     0.005346882466719763,
+     0.04794849841938881
+    ]
+   },
+   "ronin": {
+    "ate_median_m": 3.488978173539904,
+    "ate_mean_m": 3.7274129316397406,
+    "baseline_ate_median_m": 3.515468394948718,
+    "vs_baseline": {
+     "hl_m": 0.0,
+     "hl_ci95_m": [
+      -0.07269319745356606,
+      0.023068050914567095
+     ],
+     "p_exact": 0.6578273773193359,
+     "hl_ci_upper_below_margin": true,
+     "p_subject": 0.26635,
+     "better": 10,
+     "worse": 11,
+     "unchanged": 14,
+     "worse_over_w": 4,
+     "better_over_w": 7,
+     "worst_diff_m": 0.5356042337551239
+    },
+    "vs_proposal": {
+     "hl_m": 0.0,
+     "hl_ci95_m": [
+      -8.485338003216825e-05,
+      0.004110860910578662
+     ],
+     "p_exact": 0.979949951171875,
+     "p_subject": 0.42875,
+     "better": 7,
+     "worse": 9,
+     "unchanged": 19,
+     "worse_over_w": 0,
+     "better_over_w": 2,
+     "worst_diff_m": 0.11681317325328333
+    }
+   },
+   "eqnio": {
+    "ate_median_m": 3.1881332080507114,
+    "ate_mean_m": 3.130993213740938,
+    "baseline_ate_median_m": 3.1881332080507114,
+    "vs_baseline": {
+     "hl_m": 0.0,
+     "hl_ci95_m": [
+      -0.01819422604658129,
+      0.0067574214212049455
+     ],
+     "p_exact": 0.5167608261108398,
+     "hl_ci_upper_below_margin": true,
+     "p_subject": 0.15965,
+     "better": 11,
+     "worse": 10,
+     "unchanged": 14,
+     "worse_over_w": 5,
+     "better_over_w": 6,
+     "worst_diff_m": 0.4539837217406433
+    },
+    "vs_proposal": {
+     "hl_m": 0.0,
+     "hl_ci95_m": [
+      -0.002468813231408129,
+      0.0012169012551397351
+     ],
+     "p_exact": 0.677703857421875,
+     "p_subject": 0.36445,
+     "better": 9,
+     "worse": 8,
+     "unchanged": 18,
+     "worse_over_w": 1,
+     "better_over_w": 2,
+     "worst_diff_m": 0.17888298004546366
+    }
+   },
+   "fix_error_difference_by_series": {
+    "vs_proposal": {
+     "attitude_basis": {
+      "n_series": 21,
+      "hl_deg": -0.23699999999999988,
+      "hl_ci95_deg": [
+       -0.8050000000000002,
+       0.1180000000000001
+      ],
+      "p_exact": 0.207763671875,
+      "ci_excludes_zero": false
+     },
+     "position_basis": {
+      "n_series": 21,
+      "hl_deg": 0.018749999999999822,
+      "hl_ci95_deg": [
+       0.0,
+       0.410387499999998
+      ],
+      "p_exact": 0.305419921875,
+      "ci_excludes_zero": false
+     }
+    },
+    "vs_heading_difference_test": {
+     "attitude_basis": {
+      "n_series": 19,
+      "hl_deg": -6.701625,
+      "hl_ci95_deg": [
+       -14.0735,
+       -4.211878125000003
+      ],
+      "p_exact": 1.9073486328125e-05,
+      "ci_excludes_zero": true
+     },
+     "position_basis": {
+      "n_series": 19,
+      "hl_deg": -7.4879999999999995,
+      "hl_ci95_deg": [
+       -14.84175,
+       -3.29275
+      ],
+      "p_exact": 0.00026702880859375,
+      "ci_excludes_zero": true
+     }
+    }
+   },
+   "fix_points_overlap_with_proposal": {
+    "shared": {
+     "n": 187,
+     "error_median_deg": 4.822
+    },
+    "only_this_rule": {
+     "n": 41,
+     "error_median_deg": 5.574
+    },
+    "only_proposal": {
+     "n": 44,
+     "error_median_deg": 7.3765
+    }
+   }
+  }
+ },
+ "noninferiority_margin_m": 0.02946596904557519
 }

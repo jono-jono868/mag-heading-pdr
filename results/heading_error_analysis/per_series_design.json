@@ -1,0 +1,320 @@
+{
+ "description": "設計データの系列ごとの遅い方位誤差（RMS [°]）。補正なしと採用した設定。group は補正なしの値による群（at_most_5・5_to_10・over_10）",
+ "series": [
+  {
+   "name": "a000_11",
+   "subject": "a000",
+   "device": "asus6",
+   "n_correction_points": 17,
+   "group": "5_to_10",
+   "slow_error_no_correction_deg": 8.8389,
+   "slow_error_adopted_deg": 8.3925
+  },
+  {
+   "name": "a000_7",
+   "subject": "a000",
+   "device": "asus4",
+   "n_correction_points": 4,
+   "group": "at_most_5",
+   "slow_error_no_correction_deg": 0.9863,
+   "slow_error_adopted_deg": 0.9829
+  },
+  {
+   "name": "a001_2",
+   "subject": "a001",
+   "device": "asus7",
+   "n_correction_points": 27,
+   "group": "at_most_5",
+   "slow_error_no_correction_deg": 2.1373,
+   "slow_error_adopted_deg": 4.089
+  },
+  {
+   "name": "a003_3",
+   "subject": "a003",
+   "device": "samsung1",
+   "n_correction_points": 1,
+   "group": "5_to_10",
+   "slow_error_no_correction_deg": 7.5384,
+   "slow_error_adopted_deg": 7.5384
+  },
+  {
+   "name": "a004_3",
+   "subject": "a004",
+   "device": "asus3",
+   "n_correction_points": 5,
+   "group": "at_most_5",
+   "slow_error_no_correction_deg": 4.5497,
+   "slow_error_adopted_deg": 4.5992
+  },
+  {
+   "name": "a005_3",
+   "subject": "a005",
+   "device": "samsung1",
+   "n_correction_points": 3,
+   "group": "at_most_5",
+   "slow_error_no_correction_deg": 4.0361,
+   "slow_error_adopted_deg": 4.4371
+  },
+  {
+   "name": "a009_1",
+   "subject": "a009",
+   "device": "asus4",
+   "n_correction_points": 4,
+   "group": "at_most_5",
+   "slow_error_no_correction_deg": 1.4709,
+   "slow_error_adopted_deg": 1.8572
+  },
+  {
+   "name": "a010_2",
+   "subject": "a010",
+   "device": "samsung1",
+   "n_correction_points": 11,
+   "group": "5_to_10",
+   "slow_error_no_correction_deg": 9.4041,
+   "slow_error_adopted_deg": 5.1363
+  },
+  {
+   "name": "a011_2",
+   "subject": "a011",
+   "device": "samsung1",
+   "n_correction_points": 8,
+   "group": "over_10",
+   "slow_error_no_correction_deg": 18.1787,
+   "slow_error_adopted_deg": 13.856
+  },
+  {
+   "name": "a012_2",
+   "subject": "a012",
+   "device": "samsung1",
+   "n_correction_points": 0,
+   "group": "at_most_5",
+   "slow_error_no_correction_deg": 3.7001,
+   "slow_error_adopted_deg": 3.7001
+  },
+  {
+   "name": "a013_2",
+   "subject": "a013",
+   "device": "asus4",
+   "n_correction_points": 1,
+   "group": "at_most_5",
+   "slow_error_no_correction_deg": 2.8561,
+   "slow_error_adopted_deg": 2.8561
+  },
+  {
+   "name": "a014_2",
+   "subject": "a014",
+   "device": "asus4",
+   "n_correction_points": 9,
+   "group": "5_to_10",
+   "slow_error_no_correction_deg": 5.2461,
+   "slow_error_adopted_deg": 5.4152
+  },
+  {
+   "name": "a016_1",
+   "subject": "a016",
+   "device": "asus4",
+   "n_correction_points": 10,
+   "group": "at_most_5",
+   "slow_error_no_correction_deg": 0.4481,
+   "slow_error_adopted_deg": 1.1194
+  },
+  {
+   "name": "a017_2",
+   "subject": "a017",
+   "device": "samsung1",
+   "n_correction_points": 11,
+   "group": "at_most_5",
+   "slow_error_no_correction_deg": 1.9773,
+   "slow_error_adopted_deg": 4.8498
+  },
+  {
+   "name": "a018_1",
+   "subject": "a018",
+   "device": "asus4",
+   "n_correction_points": 0,
+   "group": "5_to_10",
+   "slow_error_no_correction_deg": 8.5974,
+   "slow_error_adopted_deg": 8.5974
+  },
+  {
+   "name": "a020_2",
+   "subject": "a020",
+   "device": "asus3",
+   "n_correction_points": 0,
+   "group": "5_to_10",
+   "slow_error_no_correction_deg": 8.8564,
+   "slow_error_adopted_deg": 8.8564
+  },
+  {
+   "name": "a021_2",
+   "subject": "a021",
+   "device": "samsung1",
+   "n_correction_points": 22,
+   "group": "at_most_5",
+   "slow_error_no_correction_deg": 2.3345,
+   "slow_error_adopted_deg": 3.2479
+  },
+  {
+   "name": "a022_2",
+   "subject": "a022",
+   "device": "asus5",
+   "n_correction_points": 11,
+   "group": "at_most_5",
+   "slow_error_no_correction_deg": 2.7121,
+   "slow_error_adopted_deg": 2.4377
+  },
+  {
+   "name": "a023_1",
+   "subject": "a023",
+   "device": "asus5",
+   "n_correction_points": 0,
+   "group": "at_most_5",
+   "slow_error_no_correction_deg": 3.1704,
+   "slow_error_adopted_deg": 3.1704
+  },
+  {
+   "name": "a025_2",
+   "subject": "a025",
+   "device": "samsung1",
+   "n_correction_points": 4,
+   "group": "5_to_10",
+   "slow_error_no_correction_deg": 9.1768,
+   "slow_error_adopted_deg": 9.8772
+  },
+  {
+   "name": "a026_2",
+   "subject": "a026",
+   "device": "asus4",
+   "n_correction_points": 19,
+   "group": "at_most_5",
+   "slow_error_no_correction_deg": 3.9358,
+   "slow_error_adopted_deg": 4.5499
+  },
+  {
+   "name": "a027_2",
+   "subject": "a027",
+   "device": "samsung1",
+   "n_correction_points": 0,
+   "group": "at_most_5",
+   "slow_error_no_correction_deg": 4.7478,
+   "slow_error_adopted_deg": 4.7478
+  },
+  {
+   "name": "a030_3",
+   "subject": "a030",
+   "device": "samsung1",
+   "n_correction_points": 1,
+   "group": "5_to_10",
+   "slow_error_no_correction_deg": 6.1258,
+   "slow_error_adopted_deg": 6.1258
+  },
+  {
+   "name": "a031_2",
+   "subject": "a031",
+   "device": "samsung1",
+   "n_correction_points": 1,
+   "group": "at_most_5",
+   "slow_error_no_correction_deg": 2.8524,
+   "slow_error_adopted_deg": 2.8524
+  },
+  {
+   "name": "a033_2",
+   "subject": "a033",
+   "device": "samsung1",
+   "n_correction_points": 9,
+   "group": "at_most_5",
+   "slow_error_no_correction_deg": 3.4571,
+   "slow_error_adopted_deg": 3.0883
+  },
+  {
+   "name": "a034_2",
+   "subject": "a034",
+   "device": "asus7",
+   "n_correction_points": 1,
+   "group": "at_most_5",
+   "slow_error_no_correction_deg": 4.5496,
+   "slow_error_adopted_deg": 4.5496
+  },
+  {
+   "name": "a035_3",
+   "subject": "a035",
+   "device": "samsung1",
+   "n_correction_points": 1,
+   "group": "at_most_5",
+   "slow_error_no_correction_deg": 4.8748,
+   "slow_error_adopted_deg": 4.8748
+  },
+  {
+   "name": "a036_2",
+   "subject": "a036",
+   "device": "asus4",
+   "n_correction_points": 28,
+   "group": "5_to_10",
+   "slow_error_no_correction_deg": 7.7011,
+   "slow_error_adopted_deg": 3.0617
+  },
+  {
+   "name": "a037_1",
+   "subject": "a037",
+   "device": "asus4",
+   "n_correction_points": 1,
+   "group": "at_most_5",
+   "slow_error_no_correction_deg": 1.4494,
+   "slow_error_adopted_deg": 1.4494
+  },
+  {
+   "name": "a038_2",
+   "subject": "a038",
+   "device": "samsung1",
+   "n_correction_points": 6,
+   "group": "at_most_5",
+   "slow_error_no_correction_deg": 1.7469,
+   "slow_error_adopted_deg": 2.7069
+  },
+  {
+   "name": "a043_3",
+   "subject": "a043",
+   "device": "asus4",
+   "n_correction_points": 1,
+   "group": "at_most_5",
+   "slow_error_no_correction_deg": 4.1004,
+   "slow_error_adopted_deg": 4.1004
+  },
+  {
+   "name": "a044_2",
+   "subject": "a044",
+   "device": "samsung1",
+   "n_correction_points": 3,
+   "group": "at_most_5",
+   "slow_error_no_correction_deg": 3.5889,
+   "slow_error_adopted_deg": 2.9791
+  },
+  {
+   "name": "a046_2",
+   "subject": "a046",
+   "device": "samsung1",
+   "n_correction_points": 6,
+   "group": "over_10",
+   "slow_error_no_correction_deg": 24.1854,
+   "slow_error_adopted_deg": 17.7574
+  },
+  {
+   "name": "a047_2",
+   "subject": "a047",
+   "device": "asus4",
+   "n_correction_points": 0,
+   "group": "at_most_5",
+   "slow_error_no_correction_deg": 4.8349,
+   "slow_error_adopted_deg": 4.8349
+  },
+  {
+   "name": "a059_2",
+   "subject": "a059",
+   "device": "asus4",
+   "n_correction_points": 6,
+   "group": "at_most_5",
+   "slow_error_no_correction_deg": 1.5188,
+   "slow_error_adopted_deg": 1.6788
+  }
+ ]
+}
